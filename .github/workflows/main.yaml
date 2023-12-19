@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 0 # 👈 Required to retrieve git history
 
-      # Deploy to storybook
+      # Deploy to  storybook
       - run: yarn
 
         #👇 Adds Chromatic as a step in the workflow
