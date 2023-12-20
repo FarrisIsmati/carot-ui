@@ -29,6 +29,7 @@ const CountryOriginField = () => {
 				countryOriginDropdownValues,
 				"overviewCountryOrigin"
 			)}
+			tooltip="The main country your business will be operating out of"
 			onChange={changeCurrency}
 		/>
 	);

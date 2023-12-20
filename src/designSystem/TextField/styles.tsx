@@ -157,3 +157,9 @@ export const ContentContainer = styled.div`
 export const MarginTopType = styled(Type)`
 	margin-top: ${spacer8};
 `;
+
+export const LabelContainer = styled.div`
+	display: flex;
+	align-items: center;
+	gap: ${spacer8};
+`;

@@ -25,6 +25,7 @@ const RetailPriceField = () => {
 			inputMode={revenueRetailPriceInputMode}
 			allowNegativeValue={false}
 			prefix={prefix}
+			tooltip="The amount you will sell your product for"
 			onChange={(value) => {
 				//
 				// Margin

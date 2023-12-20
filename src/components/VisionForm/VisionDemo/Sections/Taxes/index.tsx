@@ -1,13 +1,11 @@
-import Type from "@/designSystem/Type";
-import { semanticFonts } from "@/styles/fonts";
-
+import SectionTitle from "@/components/form/SectionTitle";
 import TaxRateGeneric from "../../fields/Taxes/TaxRateGeneric";
 import { FieldsContainer } from "../styles";
 
 const Taxes = () => {
 	return (
 		<FieldsContainer>
-			<Type semanticfont={semanticFonts.headlineSmall}>Taxes</Type>
+			<SectionTitle tooltip="Taxes to be paid on profits">Taxes</SectionTitle>{" "}
 			<TaxRateGeneric />
 		</FieldsContainer>
 	);

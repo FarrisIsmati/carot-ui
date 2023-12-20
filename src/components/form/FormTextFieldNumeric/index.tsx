@@ -20,7 +20,7 @@ const getFieldName = (
 	);
 };
 
-export type FormTextFieldSelectorProps = TextFieldNumericProps & {
+type FormTextFieldSelectorProps = TextFieldNumericProps & {
 	/**
 	 * Name of field
 	 */

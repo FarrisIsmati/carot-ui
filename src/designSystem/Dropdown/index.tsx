@@ -64,6 +64,10 @@ export type DropdownProps = Omit<
 		 * Action to perform on change
 		 */
 		onChange?: (selectedItemDataset: DropdownData<any>) => void;
+		/**
+		 * Info tooltip on hover
+		 */
+		tooltip?: string;
 	};
 
 const Dropdown = ({
@@ -77,6 +81,8 @@ const Dropdown = ({
 	input,
 	dropdownSize = Sizes.LARGE,
 	defaultValue,
+	tooltip,
+
 	onChange,
 }: DropdownProps) => {
 	// Dropdown
@@ -215,6 +221,7 @@ const Dropdown = ({
 				selectedItem={selectedItem}
 				placeholder={placeholder}
 				dropdownSize={dropdownSize}
+				tooltip={tooltip}
 			/>
 
 			{/* Dropdown menu */}

@@ -26,6 +26,7 @@ const CostToProduceField = () => {
 			prefix={prefix}
 			size={Sizes.SMALL}
 			allowNegativeValue={false}
+			tooltip="The amonut your product will cost you to make"
 			onChange={(value) => {
 				//
 				// Margin

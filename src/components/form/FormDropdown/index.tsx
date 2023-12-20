@@ -18,6 +18,7 @@ export interface FormDropdownSelectorProps {
 	 * Action to perform on change
 	 */
 	onChange?: (selectedItemDataset: DropdownData<any>) => void;
+	tooltip?: string;
 }
 
 const FormDropdown = ({
@@ -28,6 +29,7 @@ const FormDropdown = ({
 	onChange,
 	dropdownSize = Sizes.LARGE,
 	defaultValue,
+	tooltip,
 }: FormDropdownSelectorProps) => {
 	const field = useVisionFormField(fieldName);
 	const input = field.input;
@@ -44,6 +46,7 @@ const FormDropdown = ({
 			dropdownSize={dropdownSize}
 			defaultValue={defaultValue}
 			onChange={onChange}
+			tooltip={tooltip}
 			{...field}
 		/>
 	);

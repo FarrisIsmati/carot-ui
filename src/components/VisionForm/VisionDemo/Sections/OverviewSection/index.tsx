@@ -1,6 +1,4 @@
-import Type from "@/designSystem/Type";
-import { semanticFonts } from "@/styles/fonts";
-
+import SectionTitle from "@/components/form/SectionTitle";
 import CompanyNameField from "../../fields/Overview/CompanyNameField";
 import CountryOriginField from "../../fields/Overview/CountryOriginField";
 import CurrencyField from "../../fields/Overview/CurrencyField";
@@ -12,7 +10,9 @@ import { FieldsContainer, StyledDoubleDropdownContainer } from "../styles";
 const OverviewSection = () => {
 	return (
 		<FieldsContainer noMargin>
-			<Type semanticfont={semanticFonts.headlineSmall}>Business Type</Type>
+			<SectionTitle tooltip="General information about your company">
+				Business Type
+			</SectionTitle>
 			<CompanyNameField />
 			<IndustryField />
 			<StyledDoubleDropdownContainer>

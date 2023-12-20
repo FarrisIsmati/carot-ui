@@ -21,6 +21,7 @@ const TaxRateGeneric = () => {
 			inputMode={inputMode}
 			allowNegativeValue={false}
 			suffix={"%"}
+			tooltip="The percentage of taxes you will pay on all profits"
 			onChange={(value) => {
 				// Value cannot be greater than 100
 				if (value && value > 100) {

@@ -2,26 +2,23 @@ import {
 	hasVisibleErrors,
 	useVisionFormField,
 } from "@/components/VisionForm/utils/form";
-import TextField from "@/designSystem/TextField";
+import TextField, { FormInputProps } from "@/designSystem/TextField";
 import { Sizes } from "@/styles/sizes";
 import { AllFormValues } from "@/types/VisionForm";
 
-export interface FormTextFieldSelectorProps {
-	label: string;
-	placeholder: string;
+type FormTextFieldSelectorProps = FormInputProps & {
+	/**
+	 * Name of field
+	 */
 	fieldName: keyof AllFormValues;
-	isNumber?: boolean;
-	prefix?: string;
-	suffix?: string;
-	disabled?: boolean;
-	size?: Sizes;
-}
+};
 
 const FormTextField = ({
 	label,
 	placeholder,
 	fieldName,
 	disabled,
+	tooltip,
 	size = Sizes.LARGE,
 }: FormTextFieldSelectorProps) => {
 	const field = useVisionFormField(fieldName);
@@ -37,6 +34,7 @@ const FormTextField = ({
 			errorText={hasVisibleErrors(field.meta) && field.meta.error}
 			disabled={disabled}
 			size={size}
+			tooltip={tooltip}
 			{...field}
 		/>
 	);

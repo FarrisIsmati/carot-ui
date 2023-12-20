@@ -12,6 +12,7 @@ const FootTrafficTurnoverTime = () => {
 			inputMode={inputMode}
 			placeholder={"Length in minutes"}
 			allowNegativeValue={false}
+			tooltip="The average amount of time any one person customer will be in your store"
 		/>
 	);
 };

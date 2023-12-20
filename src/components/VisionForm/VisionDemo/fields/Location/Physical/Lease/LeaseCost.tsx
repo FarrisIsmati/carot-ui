@@ -28,6 +28,7 @@ const LeaseCost = () => {
 			placeholder={"Cost"}
 			prefix={formContext?.currencySymbol}
 			allowNegativeValue={false}
+			tooltip="The cost per unit of measurement to be paid per month"
 		/>
 	);
 };

@@ -13,6 +13,7 @@ const FootTrafficCurve = () => {
 				trafficCurveDropdownValues,
 				"trafficCurve"
 			)}
+			tooltip="The rate of growth of foot traffic (customers) over the entire projection duration"
 		/>
 	);
 };

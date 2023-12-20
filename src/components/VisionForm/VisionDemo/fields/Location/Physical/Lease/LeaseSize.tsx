@@ -27,6 +27,7 @@ const LeaseSize = () => {
 			inputMode={inputMode}
 			placeholder={"Size"}
 			allowNegativeValue={false}
+			tooltip="The size of the physical location (determines the lease length)"
 		/>
 	);
 };

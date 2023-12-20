@@ -1,5 +1,4 @@
-import Type from "@/designSystem/Type";
-import { semanticFonts } from "@/styles/fonts";
+import SectionTitle from "@/components/form/SectionTitle";
 import CostToProduceField from "../../fields/Revenue/CostToProduceField";
 import CustomerConversionRateField from "../../fields/Revenue/CustomerConversionRateField";
 import LocationIdField from "../../fields/Revenue/LocationIdField";
@@ -13,7 +12,9 @@ import { FieldsContainer, StyledDoubleDropdownContainer } from "../styles";
 const RevenueSection = () => {
 	return (
 		<FieldsContainer>
-			<Type semanticfont={semanticFonts.headlineSmall}>Goods & Services</Type>
+			<SectionTitle tooltip="Source of all your companies revenue from products">
+				Goods & Services
+			</SectionTitle>{" "}
 			<RevenueForm>
 				<FieldsContainer noMargin>
 					<LocationIdField />

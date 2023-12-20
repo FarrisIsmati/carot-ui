@@ -28,7 +28,7 @@ const getFieldName = (
 	);
 };
 
-export type FormTextFieldSelectorProps = TextFieldNumericProps & {
+type FormTextFieldSelectorProps = TextFieldNumericProps & {
 	/**
 	 * Name of field
 	 */
@@ -56,6 +56,7 @@ const FormTextFieldNumericInputMode = ({
 	size = Sizes.LARGE,
 	inputMode,
 	allowNegativeValue,
+	tooltip,
 	onChange,
 }: FormTextFieldSelectorProps) => {
 	const fieldNameFull = getFieldName(fieldName, fieldNameBase, inputMode);
@@ -83,6 +84,7 @@ const FormTextFieldNumericInputMode = ({
 			onChange={onChange}
 			size={size}
 			allowNegativeValue={allowNegativeValue}
+			tooltip={tooltip}
 			{...field}
 		/>
 	);

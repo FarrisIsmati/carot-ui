@@ -19,6 +19,7 @@ const InvestorStartingCash = () => {
 			inputMode={inputMode}
 			allowNegativeValue={false}
 			prefix={prefix}
+			tooltip="The amount of money the investor is putting into the company"
 		/>
 	);
 };

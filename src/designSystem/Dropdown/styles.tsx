@@ -172,3 +172,9 @@ export const StyledDropdownTriggerContentContainer = styled.div`
 export const StyledErrorTextDropdownTrigger = styled(Type)`
 	margin-top: ${spacer8};
 `;
+
+export const LabelContainer = styled.div`
+	display: flex;
+	align-items: center;
+	gap: ${spacer8};
+`;

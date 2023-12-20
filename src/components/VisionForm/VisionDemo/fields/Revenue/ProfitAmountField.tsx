@@ -26,6 +26,7 @@ const ProfitAmountField = () => {
 			inputMode={revenueProfitAmountInputMode}
 			prefix={prefix}
 			size={Sizes.SMALL}
+			tooltip="The amount of profit you will make on your product"
 			onChange={(value) => {
 				let forcedValue = value!;
 

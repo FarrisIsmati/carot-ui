@@ -29,6 +29,7 @@ const DaysOpenPerWeekGeneric = () => {
 				}
 			}}
 			allowNegativeValue={false}
+			tooltip="The number of days the store is open per week (out of 7)"
 		/>
 	);
 };

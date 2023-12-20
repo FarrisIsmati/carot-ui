@@ -14,6 +14,7 @@ const CurrencyField = () => {
 				currencyDropdownValues,
 				"overviewCurrency"
 			)}
+			tooltip="The type of currency all your business is done in"
 			dropdownSize={Sizes.SMALL}
 		/>
 	);

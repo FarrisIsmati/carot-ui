@@ -1,21 +1,19 @@
-import Type from "@/designSystem/Type";
-import { semanticFonts } from "@/styles/fonts";
-
+import SectionTitle from "@/components/form/SectionTitle";
 import DropdownSelect from "@/designSystem/Dropdown/DropdownSelect";
 import { LocationType } from "@/types/VisionForm/locationSection";
-import { useContext, useState } from "react";
-import LocationFormContext from "../../forms/LocationForm/LocationFormContext";
+import { useState } from "react";
 import { locationTypeDropdownValues } from "../../values/fields/dropdownValues";
 import { FieldsContainer } from "../styles";
 import PhysicalSection from "./PhysicalSection";
 
 const LocationSection = () => {
 	const [locationType, setLocationType] = useState<LocationType | null>(null);
-	const constext = useContext(LocationFormContext);
 
 	return (
 		<FieldsContainer>
-			<Type semanticfont={semanticFonts.headlineSmall}>Business Location</Type>
+			<SectionTitle tooltip="The location your business is operating from (either physical or online)">
+				Business Location
+			</SectionTitle>{" "}
 			<DropdownSelect
 				id={"locationType"}
 				name={"locationType"}

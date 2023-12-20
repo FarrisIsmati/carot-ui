@@ -29,6 +29,7 @@ const HoursOpenPerDayGeneric = () => {
 				}
 			}}
 			allowNegativeValue={false}
+			tooltip="The number of hours the store is open per day (out of 24)"
 		/>
 	);
 };

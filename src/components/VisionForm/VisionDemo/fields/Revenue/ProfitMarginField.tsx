@@ -29,6 +29,7 @@ const ProfitMarginField = () => {
 			inputMode={revenueProfitMarginInputMode}
 			suffix={"%"}
 			size={Sizes.SMALL}
+			tooltip="The percentage of profit you will make on your product"
 			onChange={(value) => {
 				let forcedValue = value!;
 

@@ -8,6 +8,7 @@ const InvestorEquity = () => {
 			placeholder={"Investor equity"}
 			suffix="%"
 			disabled
+			tooltip="The percentage of the company the investor owns"
 		/>
 	);
 };

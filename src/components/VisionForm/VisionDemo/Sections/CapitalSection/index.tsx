@@ -1,6 +1,5 @@
+import SectionTitle from "@/components/form/SectionTitle";
 import DropdownSelect from "@/designSystem/Dropdown/DropdownSelect";
-import Type from "@/designSystem/Type";
-import { semanticFonts } from "@/styles/fonts";
 import { CapitalType } from "@/types/VisionForm/capitalSection";
 import { useState } from "react";
 import InvestorForm from "../../forms/CapitalForm/InvestorForm";
@@ -14,7 +13,9 @@ const CapitalSection = () => {
 
 	return (
 		<FieldsContainer>
-			<Type semanticfont={semanticFonts.headlineSmall}>Investment</Type>
+			<SectionTitle tooltip="Your companies starting capital and its sources (e.g. Investors, Loans)">
+				Investment
+			</SectionTitle>
 			<DropdownSelect
 				id={"capitalType"}
 				name={"capitalType"}

@@ -9,8 +9,12 @@ import {
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import React from "react";
 import { IconWrapper } from "../IconWrapper";
+import InfoIcon from "../Icons/InfoIcon";
+import PlainTooltip from "../Tooltip/PlainTooltip";
+import TooltipPortal from "../Tooltip/TooltipPortal";
 import Type from "../Type";
 import {
+	LabelContainer,
 	StyledDropdownTrigger,
 	StyledDropdownTriggerContentContainer,
 	StyledDropdownTriggerText,
@@ -63,6 +67,10 @@ export type DropdownTriggerProps = StyledWrapperProps &
 		 * @default LARGE
 		 */
 		dropdownSize?: Sizes;
+		/**
+		 * Info tooltip on hover
+		 */
+		tooltip?: string;
 	};
 
 const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
@@ -78,6 +86,7 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 			isMenuOpen,
 			placeholder,
 			selectedItem,
+			tooltip,
 			dropdownSize = Sizes.LARGE,
 			type = DropdownType.NORMAL,
 			...props
@@ -99,16 +108,22 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 			>
 				{/* Top label to display */}
 				{label && (
-					<Type
-						colorset={colorSet}
-						disabled={disabled}
-						error={error}
-						semanticfont={semanticFonts.bodySmall}
-					>
-						{label}
-					</Type>
+					<LabelContainer>
+						<Type
+							colorset={colorSet}
+							disabled={disabled}
+							error={error}
+							semanticfont={semanticFonts.bodySmall}
+						>
+							{label}
+						</Type>
+						{tooltip !== undefined && (
+							<TooltipPortal tooltip={<PlainTooltip>{tooltip}</PlainTooltip>}>
+								<InfoIcon />
+							</TooltipPortal>
+						)}
+					</LabelContainer>
 				)}
-
 				{/* Content inside the dropdown */}
 				<StyledDropdownTriggerContentContainer>
 					{/* Text displaying inside the dropdown */}
@@ -138,7 +153,6 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 						/>
 					)}
 				</StyledDropdownTriggerContentContainer>
-
 				{/* Error text bottom of the dropdown */}
 				{errorText && (
 					<StyledErrorTextDropdownTrigger

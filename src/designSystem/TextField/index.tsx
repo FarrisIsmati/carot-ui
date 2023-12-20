@@ -12,11 +12,15 @@ import { FieldInputProps } from "react-final-form";
 import Dot from "../Badge/Dot";
 import { IconWrapper } from "../IconWrapper";
 import CrossSmall from "../Icons/CrossSmall";
+import InfoIcon from "../Icons/InfoIcon";
+import PlainTooltip from "../Tooltip/PlainTooltip";
+import TooltipPortal from "../Tooltip/TooltipPortal";
 import Type from "../Type";
 import {
 	ClearButtonContainer,
 	ContentContainer,
 	IconWrapperContainer,
+	LabelContainer,
 	MarginTopType,
 	StyledInput,
 	StyledInputContainer,
@@ -73,6 +77,10 @@ export type FormInputProps = Omit<
 		 * Size for width of TextField
 		 */
 		size?: Sizes;
+		/**
+		 * Info tooltip on hover
+		 */
+		tooltip?: string;
 	};
 
 export type StyledInputProps = FormInputProps & {
@@ -91,6 +99,7 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 		label,
 		errorText,
 		defaultValue,
+		tooltip,
 		colorSet = getColorSet(SemanticSetCores.SECONDARY),
 		size = Sizes.LARGE,
 		...props
@@ -144,14 +153,21 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 				{renderIcon()}
 				<ContentContainer>
 					{label && (
-						<Type
-							colorset={colorSet}
-							disabled={disabled}
-							error={error}
-							semanticfont={semanticFonts.bodySmall}
-						>
-							{label}
-						</Type>
+						<LabelContainer>
+							<Type
+								colorset={colorSet}
+								disabled={disabled}
+								error={error}
+								semanticfont={semanticFonts.bodySmall}
+							>
+								{label}
+							</Type>
+							{tooltip !== undefined && (
+								<TooltipPortal tooltip={<PlainTooltip>{tooltip}</PlainTooltip>}>
+									<InfoIcon />
+								</TooltipPortal>
+							)}
+						</LabelContainer>
 					)}
 					<StyledInput
 						ref={(el: HTMLInputElement) => {

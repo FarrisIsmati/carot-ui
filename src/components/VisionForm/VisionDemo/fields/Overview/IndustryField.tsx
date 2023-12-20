@@ -7,6 +7,7 @@ const IndustryField = () => {
 			label="Industry"
 			placeholder="Select"
 			fieldName="overviewIndustry"
+			tooltip="The type of industry your business is in"
 			dataset={industryDropdownValues}
 		/>
 	);

@@ -13,11 +13,15 @@ import { FieldInputProps } from "react-final-form";
 import Dot from "../Badge/Dot";
 import { IconWrapper } from "../IconWrapper";
 import CrossSmall from "../Icons/CrossSmall";
+import InfoIcon from "../Icons/InfoIcon";
+import PlainTooltip from "../Tooltip/PlainTooltip";
+import TooltipPortal from "../Tooltip/TooltipPortal";
 import Type from "../Type";
 import {
 	ClearButtonContainer,
 	ContentContainer,
 	IconWrapperContainer,
+	LabelContainer,
 	MarginTopType,
 	StyledInputContainer,
 	StyledTextFieldNumeric,
@@ -96,6 +100,10 @@ export type TextFieldNumericProps = Omit<
 		 * Action to perform on change
 		 */
 		onChange?: (val: number | undefined) => void;
+		/**
+		 * Info tooltip on hover
+		 */
+		tooltip?: string;
 	};
 
 export type StyledTextFieldNumericProps = TextFieldNumericProps & {
@@ -115,6 +123,7 @@ const TextFieldNumeric = React.forwardRef<HTMLElement, TextFieldNumericProps>(
 		label,
 		errorText,
 		defaultValue,
+		tooltip,
 		prefix = "",
 		suffix = "",
 		allowNegativeValue,
@@ -171,14 +180,21 @@ const TextFieldNumeric = React.forwardRef<HTMLElement, TextFieldNumericProps>(
 				{renderIcon()}
 				<ContentContainer>
 					{label && (
-						<Type
-							colorset={colorSet}
-							disabled={disabled}
-							error={error}
-							semanticfont={semanticFonts.bodySmall}
-						>
-							{label}
-						</Type>
+						<LabelContainer>
+							<Type
+								colorset={colorSet}
+								disabled={disabled}
+								error={error}
+								semanticfont={semanticFonts.bodySmall}
+							>
+								{label}
+							</Type>
+							{tooltip !== undefined && (
+								<TooltipPortal tooltip={<PlainTooltip>{tooltip}</PlainTooltip>}>
+									<InfoIcon />
+								</TooltipPortal>
+							)}
+						</LabelContainer>
 					)}
 
 					<StyledTextFieldNumeric

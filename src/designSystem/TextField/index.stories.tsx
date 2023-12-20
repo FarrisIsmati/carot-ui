@@ -11,8 +11,24 @@ export const Default = () => (
 	<TextField label="Label" placeholder="Placeholder" />
 );
 
+export const WithTooltip = () => (
+	<TextField
+		label="Label"
+		placeholder="Placeholder"
+		tooltip="Tooltip for hover"
+	/>
+);
+
 export const NumbersOnly = () => (
 	<TextFieldNumeric label="Label" placeholder="Placeholder" />
+);
+
+export const NumbersOnlyWithTooltip = () => (
+	<TextFieldNumeric
+		label="Label"
+		placeholder="Placeholder"
+		tooltip="Tooltip for hover"
+	/>
 );
 
 export const PrefixNumber = () => (

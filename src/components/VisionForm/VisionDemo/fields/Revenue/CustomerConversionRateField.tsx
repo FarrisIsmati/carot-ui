@@ -27,6 +27,7 @@ const CustomerConversionRateField = () => {
 					CustomerConversionRateField.input.onChange(100);
 				}
 			}}
+			tooltip="The percentage of foot traffic in your store that will actually buy something"
 		/>
 	);
 };
