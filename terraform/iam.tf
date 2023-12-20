@@ -19,7 +19,7 @@ resource "aws_iam_role" "amplify_role" {
 }
 
 # Policy 1
-resource "aws_iam_role_policy_attachment" "ecs_execution_policy" {
+resource "aws_iam_role_policy_attachment" "AdministratorAccess_amplify_policy" {
   role       = aws_iam_role.amplify_role.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess-Amplify"
 }
