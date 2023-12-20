@@ -13,7 +13,6 @@ import Dot from "../Badge/Dot";
 import { IconWrapper } from "../IconWrapper";
 import CrossSmall from "../Icons/CrossSmall";
 import InfoIcon from "../Icons/InfoIcon";
-import PlainTooltip from "../Tooltip/PlainTooltip";
 import TooltipPortal from "../Tooltip/TooltipPortal";
 import Type from "../Type";
 import {
@@ -163,7 +162,7 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 								{label}
 							</Type>
 							{tooltip !== undefined && (
-								<TooltipPortal tooltip={<PlainTooltip>{tooltip}</PlainTooltip>}>
+								<TooltipPortal tooltip={tooltip}>
 									<InfoIcon />
 								</TooltipPortal>
 							)}

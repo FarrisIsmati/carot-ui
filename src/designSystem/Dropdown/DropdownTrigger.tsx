@@ -10,7 +10,6 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import React from "react";
 import { IconWrapper } from "../IconWrapper";
 import InfoIcon from "../Icons/InfoIcon";
-import PlainTooltip from "../Tooltip/PlainTooltip";
 import TooltipPortal from "../Tooltip/TooltipPortal";
 import Type from "../Type";
 import {
@@ -118,7 +117,7 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 							{label}
 						</Type>
 						{tooltip !== undefined && (
-							<TooltipPortal tooltip={<PlainTooltip>{tooltip}</PlainTooltip>}>
+							<TooltipPortal tooltip={tooltip}>
 								<InfoIcon />
 							</TooltipPortal>
 						)}

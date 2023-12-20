@@ -1,52 +1,88 @@
-import { Tooltip, TooltipProps, tooltipClasses } from "@material-ui/core";
-import { ReactNode, useLayoutEffect, useReducer, useRef } from "react";
+import { spacer320, spacer8 } from "@/styles/sizes";
+import React, { ReactNode } from "react";
+import { usePopper } from "react-popper";
 import styled from "styled-components";
+import PlainTooltip from "./PlainTooltip";
 
-export const StyledMaterialsTooltip = styled(
-	({ className, ...props }: TooltipProps) => (
-		<Tooltip {...props} classes={{ popper: className }} />
-	)
-)(() => ({
-	inset: `-16px auto auto 0px !important`,
-	[`& .${tooltipClasses.tooltip}`]: {
-		padding: 0,
-		margin: 0,
-	},
-}));
+const TooltipContainer = styled.div<{ maxWidth: string }>`
+	visibility: hidden;
+	z-index: 1;
+	&[data-show="true"] {
+		visibility: visible;
+	}
+	max-width: ${(props) => props.maxWidth};
+`;
+
+const PaddingContainer = styled.div`
+	padding-left: ${spacer8};
+`;
 
 interface TooltipPortalProps {
 	tooltip: NonNullable<ReactNode>;
+	maxWidth?: string;
 	children?: React.ReactNode;
 }
 
-const TooltipPortal = ({ tooltip, children }: TooltipPortalProps) => {
-	const boundingElement = useRef<HTMLDivElement>(null);
-	const [, forceUpdate] = useReducer((x) => x + 1, 0);
+const TooltipPortal = ({
+	tooltip,
+	maxWidth = spacer320,
+	children,
+}: TooltipPortalProps) => {
+	const [referenceElement, setReferenceElement] =
+		React.useState<HTMLDivElement>();
+	const [popperElement, setPopperElement] = React.useState<HTMLDivElement>();
 
-	useLayoutEffect(() => {
-		forceUpdate();
-	}, []);
+	const { styles, attributes } = usePopper(referenceElement, popperElement, {
+		placement: "right",
+		modifiers: [
+			{
+				name: "offset",
+				options: {
+					offset: [0, 0], // [skidding, distance]
+				},
+			},
+		],
+	});
 
 	return (
-		<div ref={boundingElement}>
-			<StyledMaterialsTooltip
-				title={tooltip}
-				placement="right"
-				PopperProps={{
-					popperOptions: {
-						modifiers: [
-							{
-								name: "preventOverflow",
-								options: {
-									boundary: boundingElement.current,
-								},
-							},
-						],
-					},
+		<div>
+			<div
+				// @ts-ignore
+				ref={setReferenceElement}
+				onMouseEnter={() => {
+					if (popperElement) {
+						popperElement.setAttribute("data-show", "true");
+					}
+				}}
+				onMouseLeave={() => {
+					if (popperElement) {
+						popperElement.removeAttribute("data-show");
+					}
 				}}
 			>
-				<div>{children}</div>
-			</StyledMaterialsTooltip>
+				{children}
+			</div>
+			<TooltipContainer
+				// @ts-ignore
+				ref={setPopperElement}
+				style={styles.popper}
+				{...attributes.popper}
+				onMouseEnter={() => {
+					if (popperElement) {
+						popperElement.setAttribute("data-show", "true");
+					}
+				}}
+				onMouseLeave={() => {
+					if (popperElement) {
+						popperElement.removeAttribute("data-show");
+					}
+				}}
+				maxWidth={maxWidth}
+			>
+				<PaddingContainer>
+					<PlainTooltip>{tooltip}</PlainTooltip>
+				</PaddingContainer>
+			</TooltipContainer>
 		</div>
 	);
 };

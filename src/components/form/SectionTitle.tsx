@@ -1,5 +1,4 @@
 import InfoIcon from "@/designSystem/Icons/InfoIcon";
-import PlainTooltip from "@/designSystem/Tooltip/PlainTooltip";
 import TooltipPortal from "@/designSystem/Tooltip/TooltipPortal";
 import Type from "@/designSystem/Type";
 import { semanticFonts } from "@/styles/fonts";
@@ -22,7 +21,7 @@ const SectionTitle = ({ children, tooltip }: SectionTitleProps) => {
 		<LabelContainer>
 			<Type semanticfont={semanticFonts.headlineSmall}>{children}</Type>
 			{tooltip !== undefined && (
-				<TooltipPortal tooltip={<PlainTooltip>{tooltip}</PlainTooltip>}>
+				<TooltipPortal tooltip={tooltip}>
 					<InfoIcon />
 				</TooltipPortal>
 			)}
