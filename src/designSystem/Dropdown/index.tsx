@@ -4,7 +4,7 @@ import {
 } from "@/components/VisionForm/utils/form";
 import scrollToCursor from "@/designSystem/Dropdown/utils/scrollToCursor";
 import { ColorSet, SemanticSetCores, getColorSet } from "@/styles/colors";
-import { Sizes, spacer156, spacer320 } from "@/styles/sizes";
+import { Sizes } from "@/styles/sizes";
 import { PseudoClassProps, StyledWrapperProps } from "@/utils/typeHelpers";
 import { useEffect, useRef, useState } from "react";
 import { FieldInputProps } from "react-final-form";
@@ -16,6 +16,7 @@ import useNavigateDropdown from "./hooks/useNavigateDropdown";
 import useOffClick from "./hooks/useOffClick";
 import { StyledContainer } from "./styles";
 import { DropdownData } from "./types";
+import getDropdownWidth from "./utils/getDropdownWidth";
 
 export type DropdownProps = Omit<
 	StyledWrapperProps,
@@ -79,6 +80,7 @@ const Dropdown = ({
 	placeholder,
 	dataset,
 	input,
+	width,
 	dropdownSize = Sizes.LARGE,
 	defaultValue,
 	tooltip,
@@ -197,6 +199,9 @@ const Dropdown = ({
 	// Close menu when clicking off
 	useOffClick(dropdownRef, () => setIsMenuOpen(false));
 
+	// If custom width entered use it otherwise use sizes
+	const dropdownWidth = width?.toString() ?? getDropdownWidth(dropdownSize);
+	console.log("width", width, "ddownwidht", dropdownWidth);
 	return (
 		<StyledContainer ref={dropdownRef}>
 			{/* Button triggers dropdown to open */}
@@ -222,14 +227,12 @@ const Dropdown = ({
 				placeholder={placeholder}
 				dropdownSize={dropdownSize}
 				tooltip={tooltip}
+				width={dropdownWidth}
 			/>
 
 			{/* Dropdown menu */}
 			{isMenuOpen && (
-				<Overlay
-					placement={OverlayDirections.BOTTOM}
-					width={dropdownSize === Sizes.LARGE ? spacer320 : spacer156}
-				>
+				<Overlay placement={OverlayDirections.BOTTOM} width={dropdownWidth}>
 					{
 						<DropdownList ref={dropdownListRef}>
 							{dataset.map((e, i) => {

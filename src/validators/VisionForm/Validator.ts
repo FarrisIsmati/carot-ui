@@ -5,7 +5,6 @@ import {
 	overviewCurrencyValidator,
 	overviewEndDateValidator,
 	overviewIndustryValidator,
-	overviewNameValidator,
 	overviewStartDateValidator,
 } from "./Validators";
 
@@ -14,7 +13,6 @@ const Validator = (formValues: VisionFormValues) => {
 	// Overview
 	//
 
-	const overviewName = overviewNameValidator(formValues.overviewName);
 	const overviewIndustry = overviewIndustryValidator(
 		formValues.overviewIndustry
 	);
@@ -38,7 +36,6 @@ const Validator = (formValues: VisionFormValues) => {
 		//
 		// Overview
 		//
-		overviewName,
 		overviewIndustry,
 		overviewCountryOrigin,
 		overviewCurrency,

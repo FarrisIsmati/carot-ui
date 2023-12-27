@@ -2,14 +2,12 @@ import { SemanticSetCores, getColorSet } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
 import { formControlBaseSelect, rootStyle } from "@/styles/mixins";
 import {
-	Sizes,
 	spacer10,
 	spacer12,
-	spacer156,
 	spacer16,
 	spacer2,
-	spacer320,
 	spacer4,
+	spacer486,
 	spacer8,
 } from "@/styles/sizes";
 import React from "react";
@@ -97,7 +95,7 @@ export const StyledDropdownTrigger = styled(
 
 			border: none;
 
-			width: ${props.dropdownSize === Sizes.LARGE ? spacer320 : spacer156};
+			width: ${props.width ? props.width : spacer486};
 			background-color: ${props.colorSet?.essential.default};
 			border-radius: ${spacer4};
 			padding: ${spacer10} ${spacer12} ${spacer12} ${spacer12};

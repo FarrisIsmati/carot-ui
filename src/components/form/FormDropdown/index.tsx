@@ -14,9 +14,7 @@ export interface FormDropdownSelectorProps {
 	dataset: DropdownData<any>[];
 	dropdownSize?: Sizes;
 	defaultValue?: DropdownData<any>;
-	/**
-	 * Action to perform on change
-	 */
+	width?: string;
 	onChange?: (selectedItemDataset: DropdownData<any>) => void;
 	tooltip?: string;
 }
@@ -28,6 +26,7 @@ const FormDropdown = ({
 	dataset,
 	onChange,
 	dropdownSize = Sizes.LARGE,
+	width,
 	defaultValue,
 	tooltip,
 }: FormDropdownSelectorProps) => {
@@ -45,6 +44,7 @@ const FormDropdown = ({
 			errorText={hasVisibleErrors(field.meta) && field.meta.error}
 			dropdownSize={dropdownSize}
 			defaultValue={defaultValue}
+			width={width}
 			onChange={onChange}
 			tooltip={tooltip}
 			{...field}

@@ -1,4 +1,4 @@
-import { spacer320, spacer8 } from "@/styles/sizes";
+import { spacer486, spacer8 } from "@/styles/sizes";
 import { StyledWrapperProps } from "@/utils/typeHelpers";
 import React from "react";
 import { css, styled } from "styled-components";
@@ -36,7 +36,7 @@ const OverlayStyled = styled.div<OverlayTriggerProps>`
 	display: flex;
 	pointer-events: none;
 	position: absolute;
-	width: ${(props) => (props.width ? props.width : spacer320)};
+	width: ${(props) => (props.width ? props.width : spacer486)};
 
 	${(props) =>
 		props.placement === OverlayDirections.BOTTOM &&

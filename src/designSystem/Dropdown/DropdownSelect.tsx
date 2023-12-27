@@ -1,6 +1,6 @@
 import scrollToCursor from "@/designSystem/Dropdown/utils/scrollToCursor";
 import { ColorSet, SemanticSetCores, getColorSet } from "@/styles/colors";
-import { Sizes, spacer156, spacer320 } from "@/styles/sizes";
+import { Sizes } from "@/styles/sizes";
 import { PseudoClassProps, StyledWrapperProps } from "@/utils/typeHelpers";
 import { useEffect, useRef, useState } from "react";
 import Overlay, { OverlayDirections } from "../Overlay";
@@ -11,6 +11,7 @@ import useNavigateDropdown from "./hooks/useNavigateDropdown";
 import useOffClick from "./hooks/useOffClick";
 import { StyledContainer } from "./styles";
 import { DropdownData } from "./types";
+import getDropdownWidth from "./utils/getDropdownWidth";
 
 export type DropdownSelectProps = Omit<StyledWrapperProps, "label"> &
 	Pick<PseudoClassProps, "isHover" | "isFocus"> & {
@@ -57,6 +58,7 @@ const DropdownSelect = ({
 	dataset,
 	onselect,
 	islocked,
+	width,
 	dropdownSize = Sizes.LARGE,
 	error,
 	errorText,
@@ -144,6 +146,9 @@ const DropdownSelect = ({
 		}
 	};
 
+	// If custom width entered use it otherwise use sizes
+	const dropdownWidth = width?.toString() ?? getDropdownWidth(dropdownSize);
+
 	return (
 		<StyledContainer ref={dropdownRef}>
 			{/* Button triggers dropdown to open */}
@@ -164,14 +169,12 @@ const DropdownSelect = ({
 				islocked={islocked}
 				error={error}
 				errorText={errorText}
+				width={dropdownWidth}
 			/>
 
 			{/* Dropdown menu */}
 			{isMenuOpen && (
-				<Overlay
-					placement={OverlayDirections.BOTTOM}
-					width={dropdownSize === Sizes.LARGE ? spacer320 : spacer156}
-				>
+				<Overlay placement={OverlayDirections.BOTTOM} width={dropdownWidth}>
 					{
 						<DropdownList ref={dropdownListRef}>
 							{dataset.map((e, i) => {

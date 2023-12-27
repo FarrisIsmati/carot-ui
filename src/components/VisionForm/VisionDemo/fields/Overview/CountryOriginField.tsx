@@ -24,7 +24,7 @@ const CountryOriginField = () => {
 			placeholder="Select"
 			fieldName="overviewCountryOrigin"
 			dataset={countryOriginDropdownValues}
-			dropdownSize={Sizes.SMALL}
+			dropdownSize={Sizes.MEDIUM}
 			defaultValue={useGetDropdownDefaultValue(
 				countryOriginDropdownValues,
 				"overviewCountryOrigin"

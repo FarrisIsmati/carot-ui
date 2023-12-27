@@ -48,6 +48,10 @@ export type ButtonPrimaryProps = Omit<StyledWrapperProps, "size"> &
 		 **/
 		fullWidth?: boolean;
 		/**
+		 * Set if clicking button will navigate you to a page
+		 **/
+		routeTo?: () => void;
+		/**
 		 * Place icon start of button text
 		 **/
 		iconLeading?: AsProp;
@@ -148,6 +152,7 @@ const ButtonPrimary = React.forwardRef<HTMLElement, ButtonPrimaryProps>(
 			iconTrailing,
 			iconOnly,
 			children,
+			routeTo,
 			"aria-label": ariaLabel,
 			"aria-labelledby": ariaLabelledBy,
 			...props
@@ -183,6 +188,7 @@ const ButtonPrimary = React.forwardRef<HTMLElement, ButtonPrimaryProps>(
 				onClick={(e: any) => {
 					e.preventDefault();
 					e.target.blur();
+					routeTo?.();
 				}}
 				{...props}
 			>

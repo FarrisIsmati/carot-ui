@@ -19,7 +19,7 @@ interface SectionTitleProps {
 const SectionTitle = ({ children, tooltip }: SectionTitleProps) => {
 	return (
 		<LabelContainer>
-			<Type semanticfont={semanticFonts.headlineSmall}>{children}</Type>
+			<Type semanticfont={semanticFonts.labelMedium}>{children}</Type>
 			{tooltip !== undefined && (
 				<TooltipPortal tooltip={tooltip}>
 					<InfoIcon />

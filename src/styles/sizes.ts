@@ -25,6 +25,8 @@ export const spacer100 = "100px";
 export const spacer156 = "156px";
 export const spacer200 = "200px";
 export const spacer320 = "320px";
+export const spacer322 = "320px";
+export const spacer486 = "486px";
 
 /**
  * Converts a string with px in the end to a number

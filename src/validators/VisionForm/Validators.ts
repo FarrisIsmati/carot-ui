@@ -5,9 +5,6 @@ import { fieldRequired } from "../commonValidators";
 //
 
 // Overview industry
-export const overviewNameValidator = fieldRequired;
-
-// Overview industry
 export const overviewIndustryValidator = fieldRequired;
 
 // Overview location
