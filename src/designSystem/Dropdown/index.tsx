@@ -201,7 +201,7 @@ const Dropdown = ({
 
 	// If custom width entered use it otherwise use sizes
 	const dropdownWidth = width?.toString() ?? getDropdownWidth(dropdownSize);
-	console.log("width", width, "ddownwidht", dropdownWidth);
+
 	return (
 		<StyledContainer ref={dropdownRef}>
 			{/* Button triggers dropdown to open */}

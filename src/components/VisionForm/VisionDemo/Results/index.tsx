@@ -47,7 +47,7 @@ export const ResultsDimensions = { height: 400, width: 900 };
 const Results = () => {
 	// Creates a calendar everytime the form state on redux updates (redux triggers the calendar update)
 	const [calendar, calendarData] = useCalendar();
-
+	console.log(calendar);
 	// Chart data (if not set add default chart data)
 	const data: CalendarResult[] = !calendarData.length
 		? defaultVisionDemoLineChartData

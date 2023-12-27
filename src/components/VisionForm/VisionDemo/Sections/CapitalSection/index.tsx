@@ -13,8 +13,8 @@ const CapitalSection = () => {
 
 	return (
 		<FieldsContainer>
-			<SectionTitle tooltip="Your companies starting capital and its sources (e.g. Investors, Loans)">
-				Investment
+			<SectionTitle tooltip="The starting money you will operate your business with">
+				How much money will you start your business with?
 			</SectionTitle>
 			<DropdownSelect
 				id={"capitalType"}
