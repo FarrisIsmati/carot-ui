@@ -1,5 +1,4 @@
 import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
-import { Sizes } from "@/styles/sizes";
 import { useContext } from "react";
 import useRevenueFields from "../../Sections/RevenueSection/hooks/useRevenueFields";
 import RevenueFormContext from "../../forms/RevenueForm/RevenueFormContext";
@@ -25,7 +24,7 @@ const ProfitAmountField = () => {
 			placeholder={"Profit amount"}
 			inputMode={revenueProfitAmountInputMode}
 			prefix={prefix}
-			size={Sizes.SMALL}
+			width={"50%"}
 			tooltip="The amount of profit you will make on your product"
 			onChange={(value) => {
 				let forcedValue = value!;

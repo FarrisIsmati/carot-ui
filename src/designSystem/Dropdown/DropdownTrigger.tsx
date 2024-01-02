@@ -20,7 +20,7 @@ import {
 	StyledErrorTextDropdownTrigger,
 } from "./styles";
 import { DropdownData, DropdownType } from "./types";
-import getDropdownWidth from "./utils/getDropdownWidth";
+import getFieldWidth from "./utils/getFieldWidth";
 
 export type DropdownTriggerProps = StyledWrapperProps &
 	Pick<PseudoClassProps, "isHover" | "isFocus"> & {
@@ -95,7 +95,7 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 		ref
 	) {
 		// If custom width entered use it otherwise use sizes
-		const dropdownWidth = width ?? getDropdownWidth(dropdownSize);
+		const dropdownWidth = width ?? getFieldWidth(dropdownSize);
 
 		return (
 			<StyledDropdownTrigger

@@ -1,5 +1,4 @@
 import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
-import { Sizes } from "@/styles/sizes";
 import { useContext } from "react";
 import useRevenueFields from "../../Sections/RevenueSection/hooks/useRevenueFields";
 import RevenueFormContext from "../../forms/RevenueForm/RevenueFormContext";
@@ -40,7 +39,7 @@ const RetailPriceField = () => {
 					profitCalculator(revenueCostToProduceField.input.value, value!)
 				);
 			}}
-			size={Sizes.SMALL}
+			width={"50%"}
 		/>
 	);
 };

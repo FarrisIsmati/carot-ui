@@ -1,6 +1,6 @@
 import { Sizes, spacer156, spacer322, spacer486 } from "@/styles/sizes";
 
-const getDropdownWidth = (size: Sizes) => {
+const getFieldWidth = (size: Sizes) => {
 	switch (size) {
 		case Sizes.LARGE:
 			return spacer486;
@@ -13,4 +13,4 @@ const getDropdownWidth = (size: Sizes) => {
 	}
 };
 
-export default getDropdownWidth;
+export default getFieldWidth;

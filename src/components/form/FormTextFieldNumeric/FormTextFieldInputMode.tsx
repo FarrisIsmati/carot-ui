@@ -57,6 +57,7 @@ const FormTextFieldNumericInputMode = ({
 	inputMode,
 	allowNegativeValue,
 	tooltip,
+	width,
 	onChange,
 }: FormTextFieldSelectorProps) => {
 	const fieldNameFull = getFieldName(fieldName, fieldNameBase, inputMode);
@@ -85,6 +86,7 @@ const FormTextFieldNumericInputMode = ({
 			size={size}
 			allowNegativeValue={allowNegativeValue}
 			tooltip={tooltip}
+			width={width}
 			{...field}
 		/>
 	);

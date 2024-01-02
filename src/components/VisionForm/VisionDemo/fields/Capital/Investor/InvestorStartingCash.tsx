@@ -1,4 +1,5 @@
 import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { Sizes } from "@/styles/sizes";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
 import { useContext } from "react";
 import CapitalFormContext from "../../../forms/CapitalForm/CapitalFormContext";
@@ -13,13 +14,14 @@ const InvestorStartingCash = () => {
 
 	return (
 		<FormTextFieldNumericInputMode
-			label={"Cash"}
+			label={"Initial Investment"}
 			fieldNameBase={"investorStartingCash"}
-			placeholder={"Starting cash"}
+			placeholder={"Initial Investment"}
 			inputMode={inputMode}
 			allowNegativeValue={false}
 			prefix={prefix}
 			tooltip="The amount of money the investor is putting into the company"
+			size={Sizes.LARGE}
 		/>
 	);
 };

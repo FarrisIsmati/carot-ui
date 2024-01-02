@@ -10,6 +10,7 @@ import {
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FieldInputProps } from "react-final-form";
 import Dot from "../Badge/Dot";
+import getFieldWidth from "../Dropdown/utils/getFieldWidth";
 import { IconWrapper } from "../IconWrapper";
 import CrossSmall from "../Icons/CrossSmall";
 import InfoIcon from "../Icons/InfoIcon";
@@ -99,6 +100,7 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 		errorText,
 		defaultValue,
 		tooltip,
+		width,
 		colorSet = getColorSet(SemanticSetCores.SECONDARY),
 		size = Sizes.LARGE,
 		...props
@@ -106,6 +108,9 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 		const { isUsingKeyboard } = useContext(KeyboardDetectionContext);
 		const inputRef = useRef<HTMLInputElement | null>(null);
 		const [content, setContent] = useState("");
+
+		// If custom width entered use it otherwise use sizes
+		const textFieldWidth = width?.toString() ?? getFieldWidth(size);
 
 		// Add error state if error text included
 		if (!error && errorText) {
@@ -147,7 +152,7 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 				colorSet={colorSet}
 				disabled={disabled}
 				error={error}
-				size={size}
+				width={textFieldWidth}
 			>
 				{renderIcon()}
 				<ContentContainer>

@@ -6,39 +6,31 @@ import { InvestorSection } from "@/types/VisionForm/capitalSection/InvestorSecti
 import investorFormValidator from "@/validators/Capital/Investor/InvestorFormValidator";
 import { FormApi } from "final-form";
 import _ from "lodash";
-import { Form, useForm } from "react-final-form";
+import { Form, FormSpy, useForm, useFormState } from "react-final-form";
 import styled from "styled-components";
-import { v4 as uuid } from "uuid";
-import { InvestorsFormInitialValues } from "../../../values/forms/Capital/InvestorFormInitialValues";
 import { CapitalFormContextProvider } from "../CapitalFormContext";
 
 export const StyledAddButton = styled(ButtonPrimary)`
 	margin-top: ${spacer8};
 `;
 
-const handleSubmitInvestors = ({
-	form,
+const handleEditInvestor = ({
 	values,
 	visionForm,
 }: {
-	form: FormApi<InvestorSection, Partial<InvestorSection>>;
 	values: InvestorSection;
 	visionForm: FormApi<VisionFormValues, Partial<VisionFormValues>>;
 }) => {
 	// Get form values
 	const formValues = visionForm.getState().values;
-	// Get vision form investors
+	// Get first vision form investor
 	const investorsValue = formValues.investors;
 	// Clone object
 	const investorsCloned = _.cloneDeep(investorsValue);
-	// Add a UUID
-	values.id = uuid();
-	// Append submitted investor to investors cloned object
-	investorsCloned?.push(values);
+	// Update
+	investorsCloned[0] = values;
 	// Update vision form state
 	visionForm.change("investors", investorsCloned);
-	// Reset initial values of loan investor form
-	form.restart(InvestorsFormInitialValues);
 };
 
 const InvestorForm = ({
@@ -52,18 +44,24 @@ const InvestorForm = ({
 	const visionForm = useForm<VisionFormValues>();
 	const currencySymbol = useCurrencySymbol();
 
+	// Get initial values from main form page
+	const formState = useFormState<VisionFormValues>();
+	const initialFormValues = formState.values.investors[0];
+
 	return (
 		<CapitalFormContextProvider value={{ currencySymbol }}>
 			<Form<InvestorSection>
-				initialValues={InvestorsFormInitialValues}
+				initialValues={initialFormValues}
 				validate={(values) => investorFormValidator(values)}
-				onSubmit={(values, form) =>
-					handleSubmitInvestors({ form, values, visionForm })
-				}
-				render={({ handleSubmit }) => (
+				onSubmit={() => {}}
+				render={() => (
 					<div>
+						<FormSpy
+							onChange={({ values }: { values: InvestorSection }) => {
+								handleEditInvestor({ values, visionForm });
+							}}
+						/>
 						{children}
-						<StyledAddButton onClick={handleSubmit}>Add</StyledAddButton>
 					</div>
 				)}
 			/>

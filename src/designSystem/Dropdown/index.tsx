@@ -16,7 +16,7 @@ import useNavigateDropdown from "./hooks/useNavigateDropdown";
 import useOffClick from "./hooks/useOffClick";
 import { StyledContainer } from "./styles";
 import { DropdownData } from "./types";
-import getDropdownWidth from "./utils/getDropdownWidth";
+import getFieldWidth from "./utils/getFieldWidth";
 
 export type DropdownProps = Omit<
 	StyledWrapperProps,
@@ -200,7 +200,7 @@ const Dropdown = ({
 	useOffClick(dropdownRef, () => setIsMenuOpen(false));
 
 	// If custom width entered use it otherwise use sizes
-	const dropdownWidth = width?.toString() ?? getDropdownWidth(dropdownSize);
+	const dropdownWidth = width?.toString() ?? getFieldWidth(dropdownSize);
 
 	return (
 		<StyledContainer ref={dropdownRef}>

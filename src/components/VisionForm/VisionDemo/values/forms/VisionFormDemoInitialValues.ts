@@ -1,8 +1,10 @@
 import { dateFormatMapper } from "@/designSystem/DatePicker";
 import { DateFormatEnum } from "@/designSystem/DatePicker/types";
 import { VisionFormValues } from "@/types/VisionForm";
+import { InvestorType } from "@/types/VisionForm/capitalSection/InvestorSection";
 import { CountriesEnum } from "@/types/VisionForm/common/countries";
 import { CurrencyTypes } from "@/types/VisionForm/common/currency";
+import { ScheduleType } from "@/types/VisionForm/common/schedule";
 import moment from "moment";
 import { LegalStructureDropdownValuesEnum } from "../fields/dropdownValues";
 
@@ -24,7 +26,26 @@ export const visionFormDemoInitialValues: VisionFormValues = {
 	// Loans and Investors
 	//
 
-	investors: [],
+	investors: [
+		{
+			investorName: "investor1",
+			investorType: InvestorType.ACTIVE,
+			investorJoinDate: "",
+			investorEquityPercentage: 100,
+			investorStartingCashLow: 3000,
+			investorStartingCashAverage: 3000,
+			investorStartingCashHigh: 3000,
+			investorDrawProfitPercentageLow: 0,
+			investorDrawProfitPercentageAverage: 0,
+			investorDrawProfitPercentageHigh: 0,
+			investorDrawTargetLow: 0,
+			investorDrawTargetAverage: 0,
+			investorDrawTargetHigh: 0,
+			investorDrawSchedule: ScheduleType.MONTHLY,
+			investorTaxBracket: "",
+			id: "investor1",
+		},
+	],
 	loans: [],
 	leases: [],
 	products: [],

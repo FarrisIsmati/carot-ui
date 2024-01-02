@@ -2,15 +2,13 @@ import { SemanticSetCores, getColorSet } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
 import { formControlBase } from "@/styles/mixins";
 import {
-	Sizes,
 	spacer10,
 	spacer12,
 	spacer14,
-	spacer156,
 	spacer2,
 	spacer24,
-	spacer320,
 	spacer4,
+	spacer486,
 	spacer8,
 } from "@/styles/sizes";
 import React from "react";
@@ -100,7 +98,7 @@ export const StyledErrorText = styled.span`
 `;
 
 export const StyledInputContainer = styled.div<
-	Pick<StyledInputProps, "colorSet" | "disabled" | "error" | "size">
+	Pick<StyledInputProps, "colorSet" | "disabled" | "error" | "size" | "width">
 >`
 	${(props) => {
 		const highlightColor = getColorSet(SemanticSetCores.PRIMARY_ALT).essential
@@ -115,7 +113,7 @@ export const StyledInputContainer = styled.div<
 			background-color: ${props.colorSet?.essential.default};
 			border-radius: ${spacer4};
 			padding: ${spacer10} ${spacer12} ${spacer12} ${spacer12};
-			width: ${props.size === Sizes.LARGE ? spacer320 : spacer156};
+			width: ${props.width ? props.width : spacer486};
 			box-shadow: ${!props.disabled && props.error
 				? `0 -${spacer2} 0 0 ${errorColor} inset`
 				: "none"};

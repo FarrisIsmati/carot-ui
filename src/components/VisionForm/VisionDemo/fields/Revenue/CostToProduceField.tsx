@@ -1,5 +1,4 @@
 import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
-import { Sizes } from "@/styles/sizes";
 import { useContext } from "react";
 import useRevenueFields from "../../Sections/RevenueSection/hooks/useRevenueFields";
 import RevenueFormContext from "../../forms/RevenueForm/RevenueFormContext";
@@ -24,7 +23,7 @@ const CostToProduceField = () => {
 			inputMode={revenueCostToProduceInputMode}
 			placeholder={"Cost to make"}
 			prefix={prefix}
-			size={Sizes.SMALL}
+			width={"50%"}
 			allowNegativeValue={false}
 			tooltip="The amonut your product will cost you to make"
 			onChange={(value) => {

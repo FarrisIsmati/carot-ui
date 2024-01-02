@@ -11,6 +11,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { CurrencyInputProps } from "react-currency-input-field";
 import { FieldInputProps } from "react-final-form";
 import Dot from "../Badge/Dot";
+import getFieldWidth from "../Dropdown/utils/getFieldWidth";
 import { IconWrapper } from "../IconWrapper";
 import CrossSmall from "../Icons/CrossSmall";
 import InfoIcon from "../Icons/InfoIcon";
@@ -128,12 +129,16 @@ const TextFieldNumeric = React.forwardRef<HTMLElement, TextFieldNumericProps>(
 		allowNegativeValue,
 		colorSet = getColorSet(SemanticSetCores.SECONDARY),
 		size = Sizes.LARGE,
+		width,
 		onChange,
 		...props
 	}) {
 		const { isUsingKeyboard } = useContext(KeyboardDetectionContext);
 		const inputRef = useRef<HTMLInputElement | null>(null);
 		const [content, setContent] = useState<number | undefined>(0);
+
+		// If custom width entered use it otherwise use sizes
+		const textFieldWidth = width?.toString() ?? getFieldWidth(size);
 
 		// Add error state if error text included
 		if (!error && errorText) {
@@ -174,7 +179,7 @@ const TextFieldNumeric = React.forwardRef<HTMLElement, TextFieldNumericProps>(
 				colorSet={colorSet}
 				disabled={disabled}
 				error={error}
-				size={size}
+				width={textFieldWidth}
 			>
 				{renderIcon()}
 				<ContentContainer>
