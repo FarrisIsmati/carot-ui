@@ -20,7 +20,7 @@ const RetailPriceField = () => {
 		<FormTextFieldNumericInputMode
 			label={"Retail"}
 			fieldNameBase={"revenueRetailPrice"}
-			placeholder={"Physical Price"}
+			placeholder={"Inperson Price"}
 			inputMode={revenueRetailPriceInputMode}
 			allowNegativeValue={false}
 			prefix={prefix}

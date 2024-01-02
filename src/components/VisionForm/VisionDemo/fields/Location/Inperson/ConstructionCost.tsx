@@ -18,7 +18,7 @@ const ConstructionCost = () => {
 			placeholder={"Cost"}
 			prefix={formContext?.currencySymbol}
 			allowNegativeValue={false}
-			tooltip="The iniital amount of money it costs to build out the physical space"
+			tooltip="The iniital amount of money it costs to build out the inperson space"
 		/>
 	);
 };

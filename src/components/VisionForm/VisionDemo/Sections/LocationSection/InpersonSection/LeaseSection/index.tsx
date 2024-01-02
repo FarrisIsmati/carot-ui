@@ -1,14 +1,10 @@
-import ConstructionCost from "@/components/VisionForm/VisionDemo/fields/Location/Physical/ConstructionCost";
-import DaysOpenPerWeekGeneric from "@/components/VisionForm/VisionDemo/fields/Location/Physical/DaysOpenPerWeekGeneric";
-import FootTrafficCurve from "@/components/VisionForm/VisionDemo/fields/Location/Physical/FootTrafficCurve";
-import FootTrafficTurnoverTime from "@/components/VisionForm/VisionDemo/fields/Location/Physical/FootTrafficTurnoverTime";
-import HoursOpenPerDayGeneric from "@/components/VisionForm/VisionDemo/fields/Location/Physical/HoursOpenPerDayGeneric";
-import LeaseCost from "@/components/VisionForm/VisionDemo/fields/Location/Physical/Lease/LeaseCost";
-import LeaseLengthMonths from "@/components/VisionForm/VisionDemo/fields/Location/Physical/Lease/LeaseLengthMonths";
-import LeaseLengthYears from "@/components/VisionForm/VisionDemo/fields/Location/Physical/Lease/LeaseLengthYears";
-import LeaseSize from "@/components/VisionForm/VisionDemo/fields/Location/Physical/Lease/LeaseSize";
-import LocationName from "@/components/VisionForm/VisionDemo/fields/Location/Physical/LocationName";
-import MaxOccupancy from "@/components/VisionForm/VisionDemo/fields/Location/Physical/MaxOccupancy";
+import DaysOpenPerWeekGeneric from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/DaysOpenPerWeekGeneric";
+import FootTrafficCurve from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/FootTrafficCurve";
+import FootTrafficTurnoverTime from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/FootTrafficTurnoverTime";
+import HoursOpenPerDayGeneric from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/HoursOpenPerDayGeneric";
+import LeaseCost from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/Lease/LeaseCost";
+import LeaseSize from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/Lease/LeaseSize";
+import MaxOccupancy from "@/components/VisionForm/VisionDemo/fields/Location/Inperson/MaxOccupancy";
 import LocationFormContext from "@/components/VisionForm/VisionDemo/forms/LocationForm/LocationFormContext";
 import { datesDifference } from "@/components/VisionForm/utils/dates";
 import { useVisionFormField } from "@/components/VisionForm/utils/form";
@@ -35,14 +31,10 @@ const LeaseSection = () => {
 
 	return (
 		<FieldsContainer noMargin>
-			<LocationName />
 			<StyledDoubleDropdownContainer>
-				<LeaseLengthYears />
-				<LeaseLengthMonths />
+				<LeaseCost />
+				<LeaseSize />
 			</StyledDoubleDropdownContainer>
-			<LeaseCost />
-			<LeaseSize />
-			<ConstructionCost />
 			<MaxOccupancy />
 			<StyledDoubleDropdownContainer>
 				<HoursOpenPerDayGeneric />

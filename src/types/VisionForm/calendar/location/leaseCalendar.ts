@@ -7,7 +7,7 @@
 //
 export interface LocationLeaseCalendar
 	extends LocationCalendar,
-		LocationPhysicalCalendar,
+		LocationInpersonCalendar,
 		LocationLeaseCalendarLifetime,
 		LocationLeaseCalendarTotal {
 	// Lease cost per payment of period (week, month, annual)
@@ -20,7 +20,7 @@ interface LocationCalendar {
 	name: string;
 }
 
-interface LocationPhysicalCalendar {
+interface LocationInpersonCalendar {
 	// Initial Construction cost (one time expense)
 	initialConstructionCost: number;
 }

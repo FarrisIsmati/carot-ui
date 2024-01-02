@@ -12,7 +12,7 @@ const MaxOccupancy = () => {
 			inputMode={inputMode}
 			placeholder={"Occupancy"}
 			allowNegativeValue={false}
-			tooltip="The max amount of customers that can be in your physical site at once (not including staff)"
+			tooltip="The max amount of customers that can be in your inperson site at once (not including staff)"
 		/>
 	);
 };

@@ -45,7 +45,7 @@ export const revenueValidator = ({
 		revenueFormValues.revenueCostToProduceHigh
 	);
 
-	// Physical price
+	// Inperson price
 	const revenueRetailPriceLow = revenueRetailPriceValidator(
 		revenueFormValues.revenueRetailPriceLow
 	);
@@ -105,7 +105,7 @@ export const revenueValidator = ({
 		revenueCostToProduceAverage,
 		revenueCostToProduceHigh,
 
-		// Physical price
+		// Inperson price
 		revenueRetailPriceLow,
 		revenueRetailPriceAverage,
 		revenueRetailPriceHigh,

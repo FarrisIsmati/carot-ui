@@ -1,4 +1,4 @@
-import { PhysicalLeaseLocationSection } from "@/types/VisionForm/locationSection";
+import { InpersonLeaseLocationSection } from "@/types/VisionForm/locationSection";
 import {
 	combineValidators,
 	fieldRequired,
@@ -11,7 +11,7 @@ import {
 
 // Location link
 const requiresBusinessLocationAddedValidator = (
-	locations: PhysicalLeaseLocationSection[]
+	locations: InpersonLeaseLocationSection[]
 ) => {
 	if (!locations.length) {
 		return "This field requires you add a business location first";
@@ -19,7 +19,7 @@ const requiresBusinessLocationAddedValidator = (
 };
 export const locationIdsValidator = (
 	locationIds: Set<string>,
-	locations: PhysicalLeaseLocationSection[] // Todo add more locations when added (own/online/etc)
+	locations: InpersonLeaseLocationSection[] // Todo add more locations when added (own/online/etc)
 ) =>
 	combineValidators([
 		requiresBusinessLocationAddedValidator(locations),

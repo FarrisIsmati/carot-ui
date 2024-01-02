@@ -14,8 +14,8 @@ import {
 } from "@/types/VisionForm/capitalSection/InvestorSection";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
 import {
-	PhysicalLeaseLocationSection,
-	PhysicalLeaseLocationSectionInputModeLess,
+	InpersonLeaseLocationSection,
+	InpersonLeaseLocationSectionInputModeLess,
 } from "@/types/VisionForm/locationSection";
 import {
 	RevenueSection,
@@ -37,7 +37,7 @@ export const getAllCalendarValues = ({
 }: {
 	formState: VisionFormValues;
 	productState: RevenueSection;
-	leaseState: PhysicalLeaseLocationSection;
+	leaseState: InpersonLeaseLocationSection;
 	leasesFootTrafficCurveIdDataPointsMap: CurveDataPointMap;
 }): AllCalendarValues => {
 	/**
@@ -158,46 +158,46 @@ export const getLeaseCalendarValues = ({
 	lease,
 	leasesFootTrafficCurveIdDataPointsMap,
 }: {
-	lease: PhysicalLeaseLocationSection;
+	lease: InpersonLeaseLocationSection;
 	leasesFootTrafficCurveIdDataPointsMap: CurveDataPointMap;
 }): LocationLeaseCalendarValues => {
-	const getPhysicalLeaseLocationKey = getKeyInputMode<
-		PhysicalLeaseLocationSectionInputModeLess,
-		PhysicalLeaseLocationSection
+	const getInpersonLeaseLocationKey = getKeyInputMode<
+		InpersonLeaseLocationSectionInputModeLess,
+		InpersonLeaseLocationSection
 	>;
 
 	// Name
-	const name: keyof PhysicalLeaseLocationSection = "locationName";
+	const name: keyof InpersonLeaseLocationSection = "locationName";
 
 	// Id
-	const id: keyof PhysicalLeaseLocationSection = "id";
+	const id: keyof InpersonLeaseLocationSection = "id";
 
 	// Max occupancy
-	const maxOccupancyKey = getPhysicalLeaseLocationKey(
+	const maxOccupancyKey = getInpersonLeaseLocationKey(
 		"maxOccupancy",
 		InputModeEnum.Average
 	);
 
 	// Traffic turnover time
-	const trafficTurnoverTimeKey = getPhysicalLeaseLocationKey(
+	const trafficTurnoverTimeKey = getInpersonLeaseLocationKey(
 		"trafficTurnoverTime",
 		InputModeEnum.Average
 	);
 
 	// Days open per week
-	const daysOpenPerWeekGenericKey = getPhysicalLeaseLocationKey(
+	const daysOpenPerWeekGenericKey = getInpersonLeaseLocationKey(
 		"daysOpenPerWeekGeneric",
 		InputModeEnum.Average
 	);
 
 	// Hours open per day
-	const hoursOpenPerDayGenericKey = getPhysicalLeaseLocationKey(
+	const hoursOpenPerDayGenericKey = getInpersonLeaseLocationKey(
 		"hoursOpenPerDayGeneric",
 		InputModeEnum.Average
 	);
 
 	// Initial construction cost
-	const initialConstructionCostKey = getPhysicalLeaseLocationKey(
+	const initialConstructionCostKey = getInpersonLeaseLocationKey(
 		"constructionCost",
 		InputModeEnum.Average
 	);
@@ -207,13 +207,13 @@ export const getLeaseCalendarValues = ({
 	//
 
 	// Period per unit of measurement
-	const costPerUnitKey = getPhysicalLeaseLocationKey(
+	const costPerUnitKey = getInpersonLeaseLocationKey(
 		"leaseCost",
 		InputModeEnum.Average
 	);
 
 	// Lease size
-	const sizeKey = getPhysicalLeaseLocationKey(
+	const sizeKey = getInpersonLeaseLocationKey(
 		"leaseSize",
 		InputModeEnum.Average
 	);

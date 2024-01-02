@@ -1,36 +1,36 @@
 import { SegmentedControlOption } from "@/designSystem/SegmentedControl";
 import {
-	PhysicalFinanceType,
-	PhysicalUseType,
+	InpersonFinanceType,
+	InpersonUseType,
 } from "@/types/VisionForm/locationSection";
 
 //
 // Space and place values
 //
-export const physicalFinanceTypeValues: SegmentedControlOption[] = [
+export const inpersonFinanceTypeValues: SegmentedControlOption[] = [
 	{
-		id: PhysicalFinanceType.LEASE,
+		id: InpersonFinanceType.LEASE,
 		value: "Lease",
 		isActive: true,
 		disabled: false,
 	},
 	{
-		id: PhysicalFinanceType.OWN,
+		id: InpersonFinanceType.OWN,
 		value: "Own",
 		isActive: false,
 		disabled: true,
 	},
 ];
 
-export const physicalUseTypeValues: SegmentedControlOption[] = [
+export const inpersonUseTypeValues: SegmentedControlOption[] = [
 	{
-		id: PhysicalUseType.RETAIL,
+		id: InpersonUseType.RETAIL,
 		value: "Retail",
 		isActive: true,
 		disabled: false,
 	},
 	{
-		id: PhysicalUseType.OFFICE,
+		id: InpersonUseType.OFFICE,
 		value: "Office",
 		isActive: false,
 		disabled: true,

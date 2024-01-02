@@ -4,8 +4,8 @@ import { useVisionFormField } from "@/components/VisionForm/utils/form";
 import ButtonPrimary from "@/designSystem/Button/ButtonPrimary";
 import { spacer8 } from "@/styles/sizes";
 import { VisionFormValues } from "@/types/VisionForm";
-import { PhysicalLeaseLocationSection } from "@/types/VisionForm/locationSection";
-import { physicalLeaseLocationValidator } from "@/validators/Location/Physical/PhysicalLocationValidator";
+import { InpersonLeaseLocationSection } from "@/types/VisionForm/locationSection";
+import { inpersonLeaseLocationValidator } from "@/validators/Location/Inperson/InpersonLocationValidator";
 import { FormApi } from "final-form";
 import _ from "lodash";
 import { Form, useForm } from "react-final-form";
@@ -36,10 +36,10 @@ export const handleSubmitLease = ({
 	visionForm,
 }: {
 	form: FormApi<
-		PhysicalLeaseLocationSection,
-		Partial<PhysicalLeaseLocationSection>
+		InpersonLeaseLocationSection,
+		Partial<InpersonLeaseLocationSection>
 	>;
-	values: PhysicalLeaseLocationSection;
+	values: InpersonLeaseLocationSection;
 	visionForm: FormApi<VisionFormValues, Partial<VisionFormValues>>;
 }) => {
 	// Get form values
@@ -72,9 +72,9 @@ const LeaseForm = ({ children }: LeaseFormProps) => {
 		<LocationFormContextProvider
 			value={{ currencySymbol, countryOrigin, startDate, endDate }}
 		>
-			<Form<PhysicalLeaseLocationSection>
+			<Form<InpersonLeaseLocationSection>
 				initialValues={LeaseFormInitialValues}
-				validate={(values) => physicalLeaseLocationValidator(values)}
+				validate={(values) => inpersonLeaseLocationValidator(values)}
 				onSubmit={(values, form) =>
 					handleSubmitLease({ form, values, visionForm })
 				}

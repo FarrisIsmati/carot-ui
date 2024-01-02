@@ -15,7 +15,7 @@ export type TypeProps = StyledWrapperProps & {
 	 */
 	semanticfont?: RuleSet<object>;
 	/**
-	 * Set the semantic color used by the button
+	 * Set the semantic color used by the text
 	 * @default 'BASE'
 	 **/
 	colorset?: ColorSet;

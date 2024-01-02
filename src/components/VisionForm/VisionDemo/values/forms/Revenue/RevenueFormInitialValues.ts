@@ -11,7 +11,7 @@ export const revenueFormInitialValues: Omit<RevenueSection, "id"> = {
 	// Product name
 	productName: "",
 
-	// Physical price
+	// Inperson price
 	revenueRetailPriceLow: 0,
 	revenueRetailPriceAverage: 0,
 	revenueRetailPriceHigh: 0,

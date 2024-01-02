@@ -2,8 +2,8 @@ import { CapitalType } from "@/types/VisionForm/capitalSection";
 import { CountriesEnum } from "@/types/VisionForm/common/countries";
 import {
 	CurveType,
+	InpersonLeaseLocationSection,
 	LocationType,
-	PhysicalLeaseLocationSection,
 } from "@/types/VisionForm/locationSection";
 import { StaffType } from "@/types/VisionForm/staffSection";
 import { capitalize } from "lodash";
@@ -50,8 +50,8 @@ export const capitalTypeDropdownValues = [
 //
 export const locationTypeDropdownValues = [
 	{
-		value: capitalize(LocationType.PHYSICAL),
-		id: LocationType.PHYSICAL,
+		value: "In-person",
+		id: LocationType.INPERSON,
 	},
 	{
 		value: capitalize(LocationType.ONLINE),
@@ -92,7 +92,7 @@ export const trafficCurveDropdownValues = [
 //
 
 export const getLocationIdsDropdownValues = (
-	locations: PhysicalLeaseLocationSection[] | undefined,
+	locations: InpersonLeaseLocationSection[] | undefined,
 	selectedLocations: Set<string>
 ) => {
 	if (locations !== undefined) {

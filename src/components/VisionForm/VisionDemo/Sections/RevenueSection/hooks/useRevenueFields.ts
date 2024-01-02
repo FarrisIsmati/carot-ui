@@ -8,7 +8,7 @@ const useRevenueFields = () => {
 		useState(InputModeEnum.Average);
 	const [revenueProfitMarginInputMode, setRevenueProfitMarginInputMode] =
 		useState(InputModeEnum.Average);
-	const [revenueRetailPriceInputMode, setRevenuePhysicalPriceInputMode] =
+	const [revenueRetailPriceInputMode, setRevenueInpersonPriceInputMode] =
 		useState(InputModeEnum.Average);
 	const [revenueProfitAmountInputMode, setRevenueProfitAmountInputMode] =
 		useState(InputModeEnum.Average);
@@ -32,7 +32,7 @@ const useRevenueFields = () => {
 		revenueProfitMarginInputMode,
 		setRevenueProfitMarginInputMode,
 		revenueRetailPriceInputMode,
-		setRevenuePhysicalPriceInputMode,
+		setRevenueInpersonPriceInputMode,
 		revenueProfitAmountInputMode,
 		setRevenueProfitAmountInputMode,
 		revenueCostToProduceField,

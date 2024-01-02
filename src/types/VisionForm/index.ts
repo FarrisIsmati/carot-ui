@@ -6,9 +6,9 @@ import { LoanSection, LoansInputModeLess } from "./capitalSection/LoanSection";
 import { LegalSection } from "./legalSection";
 
 import {
-	PhysicalLeaseLocationSection,
-	PhysicalLocationSection,
-	PhysicalLocationSectionInputModeLess,
+	InpersonLeaseLocationSection,
+	InpersonLocationSection,
+	InpersonLocationSectionInputModeLess,
 } from "./locationSection";
 import {
 	LeaseSection,
@@ -27,7 +27,7 @@ export interface AllFormValues
 		RevenueSection,
 		InvestorSection,
 		LoanSection,
-		PhysicalLocationSection,
+		InpersonLocationSection,
 		LeaseSection,
 		StaffSection {}
 
@@ -40,7 +40,7 @@ export interface AllFormValuesInputModeLess
 	extends RevenueSectionInputModeLess,
 		InvestorsInputModeLess,
 		LoansInputModeLess,
-		PhysicalLocationSectionInputModeLess,
+		InpersonLocationSectionInputModeLess,
 		LeaseSectionInputModeLess,
 		TaxesInputModeLess {}
 
@@ -51,6 +51,6 @@ export interface VisionFormValues
 		TaxesSection {
 	investors: InvestorSection[];
 	loans: LoanSection[];
-	leases: PhysicalLeaseLocationSection[];
+	leases: InpersonLeaseLocationSection[];
 	products: RevenueSection[];
 }

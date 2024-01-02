@@ -26,6 +26,7 @@ const LeaseCost = () => {
 			fieldNameBase={"leaseCost"}
 			inputMode={inputMode}
 			placeholder={"Cost"}
+			width={"50%"}
 			prefix={formContext?.currencySymbol}
 			allowNegativeValue={false}
 			tooltip="The cost per unit of measurement to be paid per month"

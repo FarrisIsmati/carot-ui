@@ -1,18 +1,18 @@
 import {
-	PhysicalLeaseLocationSection,
-	PhysicalLocationSection,
+	InpersonLeaseLocationSection,
+	InpersonLocationSection,
 } from "@/types/VisionForm/locationSection";
-import { leaseLocationValidator } from "./Lease/LeaseLocationValidator";
 import {
 	constructionCostValidator,
 	locationNameValidator,
 	maxOccupancyValidator,
 	trafficCurveValidator,
 	trafficTurnoverTimeValidator,
-} from "./PhysicalLocationValidators";
+} from "./InpersonLocationValidators";
+import { leaseLocationValidator } from "./Lease/LeaseLocationValidator";
 
-export const physicalLocationValidator = (
-	formValues: PhysicalLocationSection
+export const inpersonLocationValidator = (
+	formValues: InpersonLocationSection
 ) => {
 	// Name
 	const locationName = locationNameValidator(formValues.locationName);
@@ -105,14 +105,14 @@ export const physicalLocationValidator = (
 	};
 };
 
-export const physicalLeaseLocationValidator = (
-	formValues: PhysicalLeaseLocationSection
+export const inpersonLeaseLocationValidator = (
+	formValues: InpersonLeaseLocationSection
 ) => {
-	const physical = physicalLocationValidator(formValues);
+	const inperson = inpersonLocationValidator(formValues);
 	const lease = leaseLocationValidator(formValues);
 
 	return {
-		...physical,
+		...inperson,
 		...lease,
 	};
 };

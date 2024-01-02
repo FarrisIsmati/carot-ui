@@ -47,7 +47,7 @@ export const calculateTaxes = ({
 };
 
 /**
- * Calculate number of customers that enter a physical location per day
+ * Calculate number of customers that enter a inperson location per day
  * @param companyValues
  * @returns
  */
@@ -59,7 +59,7 @@ export const calcCustomersPerDay = (
 	const day = moment(date).diff(values.startDate, "days");
 	// Hours open per day (only calculating generic not by actual hour)
 	const hoursOpen = values.hoursOpenPerDayGeneric;
-	// How long on average a patron will spend within the physical store
+	// How long on average a patron will spend within the inperson store
 	const footTrafficTurnoverTime = values.trafficTurnoverTime; // in minutes
 	// Maximum amount of people than can be in the store at any given time
 	const maxOccupancy = values.maxOccupancy;

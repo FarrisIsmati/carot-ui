@@ -51,7 +51,7 @@ const ProfitMarginField = () => {
 				);
 
 				//
-				// Physical price
+				// Inperson price
 				//
 				revenueRetailPriceField.input.onChange(
 					revenueFromMarginCalculator(

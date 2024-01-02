@@ -3,15 +3,15 @@ import { LeaseSection, LeaseSectionInputModeLess } from "./LeaseSection";
 export enum LocationType {
 	MOBILE = "MOBILE",
 	ONLINE = "ONLINE",
-	PHYSICAL = "PHYSICAL",
+	INPERSON = "INPERSON",
 }
 
-export enum PhysicalFinanceType {
+export enum InpersonFinanceType {
 	LEASE = "LEASE",
 	OWN = "OWN",
 }
 
-export enum PhysicalUseType {
+export enum InpersonUseType {
 	RETAIL = "RETAIL",
 	OFFICE = "RETAIL",
 }
@@ -26,20 +26,20 @@ export enum CurveType {
 }
 
 //
-// Physical
+// Inperson
 //
 
-export interface PhysicalLeaseLocationSection
-	extends PhysicalLocationSection,
+export interface InpersonLeaseLocationSection
+	extends InpersonLocationSection,
 		LeaseSection {
 	id: string;
 }
 
-export interface PhysicalLeaseLocationSectionInputModeLess
-	extends PhysicalLocationSectionInputModeLess,
+export interface InpersonLeaseLocationSectionInputModeLess
+	extends InpersonLocationSectionInputModeLess,
 		LeaseSectionInputModeLess {}
 
-export interface PhysicalLocationSection {
+export interface InpersonLocationSection {
 	// Name
 	locationName: string;
 
@@ -72,7 +72,7 @@ export interface PhysicalLocationSection {
 	trafficTurnoverTimeHigh: number;
 }
 
-export interface PhysicalLocationSectionInputModeLess {
+export interface InpersonLocationSectionInputModeLess {
 	constructionCost: any;
 	maxOccupancy: any;
 	hoursOpenPerDayGeneric: any;

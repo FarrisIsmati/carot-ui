@@ -25,9 +25,10 @@ const LeaseSize = () => {
 			label={`Size ${measurementLabel}`}
 			fieldNameBase={"leaseSize"}
 			inputMode={inputMode}
+			width={"50%"}
 			placeholder={"Size"}
 			allowNegativeValue={false}
-			tooltip="The size of the physical location (determines the lease length)"
+			tooltip="The size of the inperson location (determines the lease length)"
 		/>
 	);
 };
