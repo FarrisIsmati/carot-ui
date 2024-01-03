@@ -8,7 +8,7 @@ export const FieldsContainer = styled.div<{ noMargin?: boolean }>`
 	gap: ${spacer8};
 `;
 
-export const StyledDoubleDropdownContainer = styled.div`
+export const StyledDoubleFieldContainer = styled.div`
 	display: flex;
 	gap: ${spacer8};
 `;

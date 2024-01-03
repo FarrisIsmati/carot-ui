@@ -28,6 +28,7 @@ const HoursOpenPerDayGeneric = () => {
 					hoursOpenPerDayField.input.onChange(24);
 				}
 			}}
+			width={"50%"}
 			allowNegativeValue={false}
 			tooltip="The number of hours the store is open per day (out of 24)"
 		/>

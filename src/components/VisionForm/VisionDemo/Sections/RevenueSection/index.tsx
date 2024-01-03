@@ -7,7 +7,7 @@ import ProfitAmountField from "../../fields/Revenue/ProfitAmountField";
 import ProfitMarginField from "../../fields/Revenue/ProfitMarginField";
 import RetailPriceField from "../../fields/Revenue/RetailPriceField";
 import RevenueForm from "../../forms/RevenueForm";
-import { FieldsContainer, StyledDoubleDropdownContainer } from "../styles";
+import { FieldsContainer, StyledDoubleFieldContainer } from "../styles";
 
 const RevenueSection = () => {
 	return (
@@ -20,14 +20,14 @@ const RevenueSection = () => {
 					<LocationIdField />
 					<ProductNameField />
 					<CustomerConversionRateField />
-					<StyledDoubleDropdownContainer>
+					<StyledDoubleFieldContainer>
 						<CostToProduceField />
 						<ProfitMarginField />
-					</StyledDoubleDropdownContainer>
-					<StyledDoubleDropdownContainer>
+					</StyledDoubleFieldContainer>
+					<StyledDoubleFieldContainer>
 						<RetailPriceField />
 						<ProfitAmountField />
-					</StyledDoubleDropdownContainer>
+					</StyledDoubleFieldContainer>
 				</FieldsContainer>
 			</RevenueForm>
 		</FieldsContainer>

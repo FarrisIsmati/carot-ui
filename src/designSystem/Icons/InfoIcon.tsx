@@ -1,39 +1,14 @@
-import {
-	ColorBaseCore,
-	ColorSet,
-	SemanticSetCores,
-	colorBaseMap,
-	getColorSet,
-} from "@/styles/colors";
-import { PseudoClassProps, StyledWrapperProps } from "@/utils/typeHelpers";
+import { SemanticSetCores, getColorSet } from "@/styles/colors";
 import { styled } from "styled-components";
+import { IconProps, getFill } from "./utils";
 
-export type InfoIconProps = StyledWrapperProps &
-	Pick<PseudoClassProps, "isHover" | "isFocus"> & {
-		/**
-		 * Set the semantic color used by the button
-		 * @default 'brightAccent
-		 **/
-		colorSet?: ColorSet;
-	};
-
-const StyledSVG = styled.svg<InfoIconProps>`
+const StyledSVG = styled.svg<IconProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
 
-const getFill = (props: InfoIconProps) => {
-	if (props.colorSet === undefined) {
-		return colorBaseMap[ColorBaseCore.NEUTRAL_6];
-	}
-
-	return props.disabled
-		? props.colorSet?.text.disabled
-		: props.colorSet?.text.default;
-};
-
-const InfoIcon = (props: InfoIconProps) => {
+const InfoIcon = (props: IconProps) => {
 	const { colorSet = getColorSet(SemanticSetCores.BASE), disabled } = props;
 	const fill = getFill(props);
 	return (

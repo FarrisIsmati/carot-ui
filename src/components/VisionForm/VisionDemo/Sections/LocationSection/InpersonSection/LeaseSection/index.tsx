@@ -8,12 +8,14 @@ import MaxOccupancy from "@/components/VisionForm/VisionDemo/fields/Location/Inp
 import LocationFormContext from "@/components/VisionForm/VisionDemo/forms/LocationForm/LocationFormContext";
 import { datesDifference } from "@/components/VisionForm/utils/dates";
 import { useVisionFormField } from "@/components/VisionForm/utils/form";
-import { useContext, useMemo } from "react";
-import {
-	FieldsContainer,
-	StyledDoubleDropdownContainer,
-} from "../../../styles";
+import ButtonExpand from "@/designSystem/Button/ButtonExpand";
+import Type from "@/designSystem/Type";
+import { semanticFonts } from "@/styles/fonts";
+import numeral from "numeral";
+import { useContext, useMemo, useState } from "react";
+import { FieldsContainer, StyledDoubleFieldContainer } from "../../../styles";
 import GrowthCurveGraph from "../../GrowthCurveGraph";
+import useGetMonthlyRent from "./hooks/useGetMonthlyRent";
 
 const LeaseSection = () => {
 	// Context
@@ -29,23 +31,50 @@ const LeaseSection = () => {
 		[formContext!.startDate, formContext!.endDate]
 	);
 
+	// Expand more options
+	const [isAdvancedOptionsExpanded, setIsAdvancedOptionsExpanded] =
+		useState(false);
+
+	// Monthly rent
+	const monthlyRent = useGetMonthlyRent();
+
 	return (
 		<FieldsContainer noMargin>
-			<StyledDoubleDropdownContainer>
+			<StyledDoubleFieldContainer>
 				<LeaseCost />
 				<LeaseSize />
-			</StyledDoubleDropdownContainer>
-			<MaxOccupancy />
-			<StyledDoubleDropdownContainer>
+			</StyledDoubleFieldContainer>
+			<Type semanticfont={semanticFonts.bodySmall}>
+				Monthly rent {formContext?.currencySymbol}
+				{numeral(monthlyRent).format("0,0.00")}
+			</Type>
+
+			<StyledDoubleFieldContainer>
 				<HoursOpenPerDayGeneric />
 				<DaysOpenPerWeekGeneric />
-			</StyledDoubleDropdownContainer>
-			<GrowthCurveGraph
-				curveType={trafficCurveField.input.value}
-				length={trafficCurveLength}
+			</StyledDoubleFieldContainer>
+
+			{isAdvancedOptionsExpanded && (
+				<>
+					<GrowthCurveGraph
+						curveType={trafficCurveField.input.value}
+						length={trafficCurveLength}
+					/>
+					<FootTrafficCurve />
+					<StyledDoubleFieldContainer>
+						<MaxOccupancy />
+						<FootTrafficTurnoverTime />
+					</StyledDoubleFieldContainer>
+				</>
+			)}
+			<ButtonExpand
+				onClick={() => {
+					setIsAdvancedOptionsExpanded((prev) => !prev);
+				}}
+				isExpanded={isAdvancedOptionsExpanded}
+				collapsedText="See traffic options"
+				expandedText="Close traffic options"
 			/>
-			<FootTrafficCurve />
-			<FootTrafficTurnoverTime />
 		</FieldsContainer>
 	);
 };

@@ -10,11 +10,15 @@ import { AllFormValues, AllFormValuesInputModeLess } from "@/types/VisionForm";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
 import { useHasInputModeError } from "@/validators/utils";
 
-const getFieldName = (
-	fieldName: keyof AllFormValues | undefined,
-	fieldNameBase: keyof AllFormValuesInputModeLess | undefined,
-	inputMode: InputModeEnum | undefined
-): keyof AllFormValues => {
+export const getFieldName = ({
+	fieldName,
+	fieldNameBase,
+	inputMode,
+}: {
+	fieldName?: keyof AllFormValues;
+	fieldNameBase?: keyof AllFormValuesInputModeLess;
+	inputMode?: InputModeEnum;
+}): keyof AllFormValues => {
 	if (fieldNameBase && inputMode) {
 		return `${fieldNameBase}${inputMode}`;
 	}
@@ -60,7 +64,7 @@ const FormTextFieldNumericInputMode = ({
 	width,
 	onChange,
 }: FormTextFieldSelectorProps) => {
-	const fieldNameFull = getFieldName(fieldName, fieldNameBase, inputMode);
+	const fieldNameFull = getFieldName({ fieldName, fieldNameBase, inputMode });
 
 	// If a field has an input mode (other than DEFAULT) then they have a low, average, and high value as well
 	const field = useVisionFormField(fieldNameFull);

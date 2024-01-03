@@ -2,7 +2,7 @@ import SectionTitle from "@/components/form/SectionTitle";
 import CountryOriginField from "../../fields/Overview/CountryOriginField";
 import CurrencyField from "../../fields/Overview/CurrencyField";
 import IndustryField from "../../fields/Overview/IndustryField";
-import { FieldsContainer, StyledDoubleDropdownContainer } from "../styles";
+import { FieldsContainer, StyledDoubleFieldContainer } from "../styles";
 
 const OverviewSection = () => {
 	return (
@@ -11,10 +11,10 @@ const OverviewSection = () => {
 				What's your business type?
 			</SectionTitle>
 			<IndustryField />
-			<StyledDoubleDropdownContainer>
+			<StyledDoubleFieldContainer>
 				<CountryOriginField />
 				<CurrencyField />
-			</StyledDoubleDropdownContainer>
+			</StyledDoubleFieldContainer>
 		</FieldsContainer>
 	);
 };
