@@ -1,25 +1,39 @@
-import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { useCurrencySymbol } from "@/components/VisionForm/utils/currency";
+import { useInvestorField } from "@/components/VisionForm/utils/form";
+import FormTextFieldNumericInputMode, {
+	getFieldNameInputMode,
+} from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
 import { Sizes } from "@/styles/sizes";
+import { VisionFormValues } from "@/types/VisionForm";
+import { InvestorSection } from "@/types/VisionForm/capitalSection/InvestorSection";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
-import { useContext } from "react";
-import CapitalFormContext from "../../../forms/CapitalForm/CapitalFormContext";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
 
-const InvestorStartingCash = () => {
-	// Context
-	const formContext = useContext(CapitalFormContext);
-	const prefix = formContext?.currencySymbol;
+interface InvestorStartingCashProps {
+	investorPath: FieldPath<VisionFormValues>;
+}
 
-	// Input mode
+const InvestorStartingCash = ({ investorPath }: InvestorStartingCashProps) => {
 	const inputMode = InputModeEnum.Average;
+	const fieldName = getFieldNameInputMode({
+		fieldNameBase: "investorStartingCash",
+		inputMode,
+	}) as keyof InvestorSection;
+	const field = useInvestorField<"investorStartingCashAverage">(
+		investorPath,
+		fieldName
+	);
+
+	const currencySymbol = useCurrencySymbol();
 
 	return (
 		<FormTextFieldNumericInputMode
 			label={"Initial Investment"}
 			fieldNameBase={"investorStartingCash"}
 			placeholder={"Initial Investment"}
-			inputMode={inputMode}
+			field={field}
 			allowNegativeValue={false}
-			prefix={prefix}
+			prefix={currencySymbol}
 			tooltip="The amount of money the investor is putting into the company"
 			size={Sizes.LARGE}
 		/>

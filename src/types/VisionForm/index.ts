@@ -4,12 +4,12 @@ import {
 } from "./capitalSection/InvestorSection";
 import { LoanSection, LoansInputModeLess } from "./capitalSection/LoanSection";
 import { LegalSection } from "./legalSection";
-
 import {
 	InpersonLeaseLocationSection,
 	InpersonLocationSection,
 	InpersonLocationSectionInputModeLess,
 } from "./locationSection";
+
 import {
 	LeaseSection,
 	LeaseSectionInputModeLess,

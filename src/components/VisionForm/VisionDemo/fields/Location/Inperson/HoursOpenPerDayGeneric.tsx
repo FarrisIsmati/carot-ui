@@ -1,31 +1,39 @@
-import { useVisionFormField } from "@/components/VisionForm/utils/form";
-import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { useLeaseField } from "@/components/VisionForm/utils/form";
+import FormTextFieldNumericInputMode, {
+	getFieldNameInputMode,
+} from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
 import { Sizes } from "@/styles/sizes";
-import { AllFormValuesInputModeLess } from "@/types/VisionForm";
+import { VisionFormValues } from "@/types/VisionForm";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { InpersonLeaseLocationSection } from "@/types/VisionForm/locationSection";
 
-const HoursOpenPerDayGeneric = () => {
-	// Input mode
+interface HoursOpenPerDayGenericProps {
+	leasePath: FieldPath<VisionFormValues>;
+}
+
+const HoursOpenPerDayGeneric = ({ leasePath }: HoursOpenPerDayGenericProps) => {
 	const inputMode = InputModeEnum.Average;
-
-	// Field
-	const fieldNameBase: keyof AllFormValuesInputModeLess =
-		"hoursOpenPerDayGeneric";
-	const hoursOpenPerDayField = useVisionFormField(
-		`${fieldNameBase}${inputMode}`
+	const fieldName = getFieldNameInputMode({
+		fieldNameBase: "hoursOpenPerDayGeneric",
+		inputMode,
+	}) as keyof InpersonLeaseLocationSection;
+	const field = useLeaseField<"hoursOpenPerDayGenericAverage">(
+		leasePath,
+		fieldName
 	);
 
 	return (
 		<FormTextFieldNumericInputMode
 			label={"Hours open per day"}
 			fieldNameBase={"hoursOpenPerDayGeneric"}
-			inputMode={inputMode}
+			field={field}
 			placeholder={"Hours"}
 			size={Sizes.SMALL}
 			onChange={(value) => {
 				// Value cannot be greater than 24
 				if (value && value > 24) {
-					hoursOpenPerDayField.input.onChange(24);
+					field.input.onChange(24);
 				}
 			}}
 			width={"50%"}

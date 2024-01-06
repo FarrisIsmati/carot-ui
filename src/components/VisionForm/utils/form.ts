@@ -1,12 +1,55 @@
 import { DropdownData } from "@/designSystem/Dropdown/types";
-import { AllFormValues, AllFormValuesNoArrays } from "@/types/VisionForm";
+import {
+	AllFormValues,
+	AllFormValuesNoArrays,
+	VisionFormValues,
+} from "@/types/VisionForm";
+import { InvestorSection } from "@/types/VisionForm/capitalSection/InvestorSection";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { InpersonLeaseLocationSection } from "@/types/VisionForm/locationSection";
+import { RevenueSection } from "@/types/VisionForm/revenueSection";
 import { FieldMetaState, useField } from "react-final-form";
 
-// Get form field
+/**
+ * Get form field
+ * For properly typed nested form fields use their respective hook
+ * @param fieldKey
+ * @returns
+ */
 export const useVisionFormField = <K extends keyof AllFormValues>(
 	fieldKey: K
 ) => useField<AllFormValues[typeof fieldKey]>(fieldKey);
+
+/**
+ * Get investor form field
+ * @param fieldKey
+ * @returns
+ */
+export const useInvestorField = <T extends keyof InvestorSection>(
+	investorPath: FieldPath<VisionFormValues>,
+	fieldName: keyof InvestorSection
+) => useField<InvestorSection[T]>(`${investorPath}.${fieldName}`);
+
+/**
+ * Get lease form field
+ * @param fieldKey
+ * @returns
+ */
+export const useLeaseField = <T extends keyof InpersonLeaseLocationSection>(
+	leasePath: FieldPath<VisionFormValues>,
+	fieldName: keyof InpersonLeaseLocationSection
+) => useField<InpersonLeaseLocationSection[T]>(`${leasePath}.${fieldName}`);
+
+/**
+ * Get revenue form field
+ * @param fieldKey
+ * @returns
+ */
+export const useRevenueField = <T extends keyof RevenueSection>(
+	revenuePath: FieldPath<VisionFormValues>,
+	fieldName: keyof RevenueSection
+) => useField<RevenueSection[T]>(`${revenuePath}.${fieldName}`);
 
 // Input meta has visible errors
 export const hasVisibleErrors = <T>(meta?: FieldMetaState<T>) => {

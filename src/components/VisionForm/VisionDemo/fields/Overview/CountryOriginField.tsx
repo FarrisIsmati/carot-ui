@@ -10,6 +10,7 @@ import { countryToCurrencyTypeMap } from "../../../utils/currency";
 import { countryOriginDropdownValues } from "../../values/fields/dropdownValues";
 
 const CountryOriginField = () => {
+	const countryOriginField = useVisionFormField("overviewCountryOrigin");
 	const currencyField = useVisionFormField("overviewCurrency");
 
 	const changeCurrency = (selectedItemDataset: DropdownData<any>) => {
@@ -22,7 +23,7 @@ const CountryOriginField = () => {
 		<FormDropdown
 			label="Location"
 			placeholder="Select"
-			fieldName="overviewCountryOrigin"
+			field={countryOriginField}
 			dataset={countryOriginDropdownValues}
 			dropdownSize={Sizes.MEDIUM}
 			defaultValue={useGetDropdownDefaultValue(

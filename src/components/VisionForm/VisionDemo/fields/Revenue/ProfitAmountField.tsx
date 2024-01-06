@@ -1,29 +1,46 @@
-import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
-import { useContext } from "react";
+import { useCurrencySymbol } from "@/components/VisionForm/utils/currency";
+import { useRevenueField } from "@/components/VisionForm/utils/form";
+import FormTextFieldNumericInputMode, {
+	getFieldNameInputMode,
+} from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { VisionFormValues } from "@/types/VisionForm";
+import { InputModeEnum } from "@/types/VisionForm/common/values";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { RevenueSection } from "@/types/VisionForm/revenueSection";
 import useRevenueFields from "../../Sections/RevenueSection/hooks/useRevenueFields";
-import RevenueFormContext from "../../forms/RevenueForm/RevenueFormContext";
 import { marginFromProfitAmount, revenueFromProfitAmount } from "../util";
 
-const ProfitAmountField = () => {
-	// Context
-	const formContext = useContext(RevenueFormContext);
-	const prefix = formContext?.currencySymbol;
+interface ProfitAmountFieldProps {
+	revenuePath: FieldPath<VisionFormValues>;
+}
+
+const ProfitAmountField = ({ revenuePath }: ProfitAmountFieldProps) => {
+	const inputMode = InputModeEnum.Average;
+	const fieldName = getFieldNameInputMode({
+		fieldNameBase: "revenueProfitAmount",
+		inputMode,
+	}) as keyof RevenueSection;
+	const field = useRevenueField<"revenueProfitAmountAverage">(
+		revenuePath,
+		fieldName
+	);
+
+	const currencySymbol = useCurrencySymbol();
 
 	const {
-		revenueProfitAmountInputMode,
 		revenueCostToProduceField,
 		revenueProfitAmountField,
 		revenueRetailPriceField,
 		revenueProfitMarginField,
-	} = useRevenueFields();
+	} = useRevenueFields(revenuePath);
 
 	return (
 		<FormTextFieldNumericInputMode
 			label={"Profit"}
 			fieldNameBase={"revenueProfitAmount"}
 			placeholder={"Profit amount"}
-			inputMode={revenueProfitAmountInputMode}
-			prefix={prefix}
+			field={field}
+			prefix={currencySymbol}
 			width={"50%"}
 			tooltip="The amount of profit you will make on your product"
 			onChange={(value) => {

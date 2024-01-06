@@ -1,5 +1,7 @@
 import SectionTitle from "@/components/form/SectionTitle";
-import InvestorForm from "../../forms/CapitalForm/InvestorForm";
+import { VisionFormValues } from "@/types/VisionForm";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { FieldArray } from "react-final-form-arrays";
 import { FieldsContainer } from "../styles";
 import InvestorSection from "./InvestorSection";
 
@@ -10,9 +12,21 @@ const CapitalSection = () => {
 				How much money will you start your business with?
 			</SectionTitle>
 
-			<InvestorForm>
-				<InvestorSection />
-			</InvestorForm>
+			{/* In-person lease locations */}
+			<FieldArray name="investors">
+				{({ fields }) => (
+					<div>
+						{fields.map((investorPath) => {
+							return (
+								<InvestorSection
+									investorPath={investorPath as FieldPath<VisionFormValues>}
+									key={investorPath}
+								/>
+							);
+						})}
+					</div>
+				)}
+			</FieldArray>
 		</FieldsContainer>
 	);
 };

@@ -1,28 +1,45 @@
-import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
-import { useContext } from "react";
+import { useCurrencySymbol } from "@/components/VisionForm/utils/currency";
+import { useRevenueField } from "@/components/VisionForm/utils/form";
+import FormTextFieldNumericInputMode, {
+	getFieldNameInputMode,
+} from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { VisionFormValues } from "@/types/VisionForm";
+import { InputModeEnum } from "@/types/VisionForm/common/values";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { RevenueSection } from "@/types/VisionForm/revenueSection";
 import useRevenueFields from "../../Sections/RevenueSection/hooks/useRevenueFields";
-import RevenueFormContext from "../../forms/RevenueForm/RevenueFormContext";
 import { marginCalculator, profitCalculator } from "../util";
 
-const CostToProduceField = () => {
-	// Context
-	const formContext = useContext(RevenueFormContext);
-	const prefix = formContext?.currencySymbol;
+interface CostToProduceFieldProps {
+	revenuePath: FieldPath<VisionFormValues>;
+}
+
+const CostToProduceField = ({ revenuePath }: CostToProduceFieldProps) => {
+	const inputMode = InputModeEnum.Average;
+	const fieldName = getFieldNameInputMode({
+		fieldNameBase: "revenueCostToProduce",
+		inputMode,
+	}) as keyof RevenueSection;
+	const field = useRevenueField<"revenueCostToProduceAverage">(
+		revenuePath,
+		fieldName
+	);
+
+	const currencySymbol = useCurrencySymbol();
 
 	const {
-		revenueCostToProduceInputMode,
 		revenueProfitMarginField,
 		revenueRetailPriceField,
 		revenueProfitAmountField,
-	} = useRevenueFields();
+	} = useRevenueFields(revenuePath);
 
 	return (
 		<FormTextFieldNumericInputMode
 			label={"Cost"}
 			fieldNameBase={"revenueCostToProduce"}
-			inputMode={revenueCostToProduceInputMode}
+			field={field}
 			placeholder={"Cost to make"}
-			prefix={prefix}
+			prefix={currencySymbol}
 			width={"50%"}
 			allowNegativeValue={false}
 			tooltip="The amonut your product will cost you to make"

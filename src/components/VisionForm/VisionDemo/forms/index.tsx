@@ -4,6 +4,7 @@ import { submitVisionFormDemo } from "@/redux/visionFormDemo/actions";
 import { spacer8 } from "@/styles/sizes";
 import { VisionFormValues } from "@/types/VisionForm";
 import VisionFormValidator from "@/validators/VisionForm/Validator";
+import arrayMutators from "final-form-arrays";
 import { Form } from "react-final-form";
 import { useDispatch } from "react-redux";
 import type { Dispatch } from "redux";
@@ -34,6 +35,9 @@ export const VisionDemoForm = () => {
 	return (
 		<Form<VisionFormValues>
 			initialValues={visionFormDemoInitialValues}
+			mutators={{
+				...arrayMutators,
+			}}
 			validate={(values) => VisionFormValidator(values)}
 			subscription={{ submitting: true, pristine: true }}
 			onSubmit={(values) => handleSubmit(values, dispatch)} //testData1

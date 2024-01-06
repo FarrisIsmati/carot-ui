@@ -1,16 +1,13 @@
-import {
-	hasVisibleErrors,
-	useVisionFormField,
-} from "@/components/VisionForm/utils/form";
+import { hasVisibleErrors } from "@/components/VisionForm/utils/form";
 import Dropdown from "@/designSystem/Dropdown";
 import { DropdownData } from "@/designSystem/Dropdown/types";
 import { Sizes } from "@/styles/sizes";
-import { AllFormValues } from "@/types/VisionForm";
+import { FieldRenderProps } from "react-final-form";
 
 export interface FormDropdownSelectorProps {
+	field: FieldRenderProps<any, HTMLElement, any>;
 	label: string;
 	placeholder: string;
-	fieldName: keyof AllFormValues;
 	dataset: DropdownData<any>[];
 	dropdownSize?: Sizes;
 	defaultValue?: DropdownData<any>;
@@ -22,7 +19,7 @@ export interface FormDropdownSelectorProps {
 const FormDropdown = ({
 	label,
 	placeholder,
-	fieldName,
+	field,
 	dataset,
 	onChange,
 	dropdownSize = Sizes.LARGE,
@@ -30,7 +27,6 @@ const FormDropdown = ({
 	defaultValue,
 	tooltip,
 }: FormDropdownSelectorProps) => {
-	const field = useVisionFormField(fieldName);
 	const input = field.input;
 
 	return (

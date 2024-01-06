@@ -5,12 +5,16 @@ interface AnimateNumberProps {
 	value: number;
 	decimals?: number;
 	duration?: number;
+	preText?: string;
+	postText?: string;
 }
 
 const AnimateNumber = ({
 	value,
-	decimals = 2,
+	decimals = 0,
 	duration = 1,
+	preText,
+	postText,
 }: AnimateNumberProps) => {
 	// Revenue
 	const valueRef = useRef(value ?? 0);
@@ -30,7 +34,9 @@ const AnimateNumber = ({
 		>
 			{({ countUpRef }) => (
 				<div>
+					{preText}
 					<span ref={countUpRef} />
+					{postText}
 				</div>
 			)}
 		</CountUp>

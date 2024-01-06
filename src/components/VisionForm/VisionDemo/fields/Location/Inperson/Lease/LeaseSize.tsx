@@ -1,21 +1,34 @@
-import LocationFormContext from "@/components/VisionForm/VisionDemo/forms/LocationForm/LocationFormContext";
+import { useLeaseField } from "@/components/VisionForm/utils/form";
 import {
 	MeasurementSystemType,
 	getMeasurementSystem,
 } from "@/components/VisionForm/utils/measurement";
-import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import FormTextFieldNumericInputMode, {
+	getFieldNameInputMode,
+} from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { VisionFormValues } from "@/types/VisionForm";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
-import { useContext } from "react";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { InpersonLeaseLocationSection } from "@/types/VisionForm/locationSection";
+import { useFormState } from "react-final-form";
 
-const LeaseSize = () => {
-	// Input mode
+interface LeaseSizeProps {
+	leasePath: FieldPath<VisionFormValues>;
+}
+
+const LeaseSize = ({ leasePath }: LeaseSizeProps) => {
 	const inputMode = InputModeEnum.Average;
+	const fieldName = getFieldNameInputMode({
+		fieldNameBase: "leaseSize",
+		inputMode,
+	}) as keyof InpersonLeaseLocationSection;
+	const field = useLeaseField<"leaseSizeAverage">(leasePath, fieldName);
 
-	// Prefix
-	const formContext = useContext(LocationFormContext);
+	const countryOrigin =
+		useFormState<VisionFormValues>().values.overviewCountryOrigin;
 
 	// Measurement System
-	const measurementSystem = getMeasurementSystem(formContext?.countryOrigin);
+	const measurementSystem = getMeasurementSystem(countryOrigin);
 
 	const measurementLabel =
 		measurementSystem === MeasurementSystemType.IMPERIAL ? "ft²" : "m²";
@@ -24,7 +37,7 @@ const LeaseSize = () => {
 		<FormTextFieldNumericInputMode
 			label={`Size ${measurementLabel}`}
 			fieldNameBase={"leaseSize"}
-			inputMode={inputMode}
+			field={field}
 			width={"50%"}
 			placeholder={"Size"}
 			allowNegativeValue={false}

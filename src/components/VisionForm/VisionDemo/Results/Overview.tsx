@@ -5,7 +5,7 @@ import { spacer16, spacer24, spacer32, spacer4 } from "@/styles/sizes";
 import { CalendarResult } from "@/types/Charts";
 import { Calendar } from "@/types/VisionForm/calendar";
 import { styled } from "styled-components";
-import AnimateNumber from "./AnimateNumber";
+import AnimateNumber from "../../../common/AnimateNumber";
 
 const Container = styled.div`
 	display: flex;
@@ -75,7 +75,10 @@ export const ResultsOverview = ({
 							{currencySymbol}
 						</Type>
 						<Type semanticfont={semanticFonts.headlineMediumStrong}>
-							<AnimateNumber value={calendar?.lifetimeInvested ?? 0} />
+							<AnimateNumber
+								value={calendar?.lifetimeInvested ?? 0}
+								decimals={2}
+							/>
 						</Type>
 					</AmountContainer>
 				</ResultContainer>
@@ -96,7 +99,10 @@ export const ResultsOverview = ({
 							{currencySymbol}
 						</Type>
 						<Type semanticfont={semanticFonts.headlineMediumStrong}>
-							<AnimateNumber value={calendar?.lifetimeRevenue ?? 0} />
+							<AnimateNumber
+								value={calendar?.lifetimeRevenue ?? 0}
+								decimals={2}
+							/>
 						</Type>
 					</AmountContainer>
 				</ResultContainer>
@@ -113,7 +119,10 @@ export const ResultsOverview = ({
 							{currencySymbol}
 						</Type>
 						<Type semanticfont={semanticFonts.headlineMediumStrong}>
-							<AnimateNumber value={calendar?.lifetimeExpenses ?? 0} />
+							<AnimateNumber
+								value={calendar?.lifetimeExpenses ?? 0}
+								decimals={2}
+							/>
 						</Type>
 					</AmountContainer>
 				</ResultContainer>
@@ -133,7 +142,10 @@ export const ResultsOverview = ({
 							{currencySymbol}
 						</Type>
 						<Type semanticfont={semanticFonts.headlineMediumStrong}>
-							<AnimateNumber value={calendar?.lifetimeProfit ?? 0} />
+							<AnimateNumber
+								value={calendar?.lifetimeProfit ?? 0}
+								decimals={2}
+							/>
 						</Type>
 					</AmountContainer>
 				</ResultContainer>

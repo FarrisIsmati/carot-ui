@@ -1,27 +1,23 @@
-import {
-	hasVisibleErrors,
-	useVisionFormField,
-} from "@/components/VisionForm/utils/form";
+import { hasVisibleErrors } from "@/components/VisionForm/utils/form";
 import TextField, { FormInputProps } from "@/designSystem/TextField";
 import { Sizes } from "@/styles/sizes";
-import { AllFormValues } from "@/types/VisionForm";
+import { FieldRenderProps } from "react-final-form";
 
 type FormTextFieldSelectorProps = FormInputProps & {
 	/**
-	 * Name of field
+	 * Field
 	 */
-	fieldName: keyof AllFormValues;
+	field: FieldRenderProps<string, HTMLElement, string>;
 };
 
 const FormTextField = ({
 	label,
 	placeholder,
-	fieldName,
 	disabled,
 	tooltip,
+	field,
 	size = Sizes.LARGE,
 }: FormTextFieldSelectorProps) => {
-	const field = useVisionFormField(fieldName);
 	const input = field.input;
 
 	return (

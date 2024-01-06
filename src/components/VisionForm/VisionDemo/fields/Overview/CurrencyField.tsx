@@ -1,14 +1,19 @@
-import { useGetDropdownDefaultValue } from "@/components/VisionForm/utils/form";
+import {
+	useGetDropdownDefaultValue,
+	useVisionFormField,
+} from "@/components/VisionForm/utils/form";
 import FormDropdown from "@/components/form/FormDropdown";
 import { Sizes } from "@/styles/sizes";
 import { currencyDropdownValues } from "../../values/fields/dropdownValues";
 
 const CurrencyField = () => {
+	const currencyField = useVisionFormField("overviewCurrency");
+
 	return (
 		<FormDropdown
 			label="Currency"
 			placeholder="Select"
-			fieldName="overviewCurrency"
+			field={currencyField}
 			dataset={currencyDropdownValues}
 			defaultValue={useGetDropdownDefaultValue(
 				currencyDropdownValues,

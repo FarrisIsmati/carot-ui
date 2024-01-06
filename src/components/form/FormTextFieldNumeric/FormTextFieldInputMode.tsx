@@ -1,7 +1,4 @@
-import {
-	hasVisibleErrors,
-	useVisionFormField,
-} from "@/components/VisionForm/utils/form";
+import { hasVisibleErrors } from "@/components/VisionForm/utils/form";
 import TextFieldNumeric, {
 	TextFieldNumericProps,
 } from "@/designSystem/TextField/TextFieldNumeric";
@@ -9,6 +6,7 @@ import { Sizes } from "@/styles/sizes";
 import { AllFormValues, AllFormValuesInputModeLess } from "@/types/VisionForm";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
 import { useHasInputModeError } from "@/validators/utils";
+import { FieldRenderProps } from "react-final-form";
 
 export const getFieldName = ({
 	fieldName,
@@ -18,7 +16,7 @@ export const getFieldName = ({
 	fieldName?: keyof AllFormValues;
 	fieldNameBase?: keyof AllFormValuesInputModeLess;
 	inputMode?: InputModeEnum;
-}): keyof AllFormValues => {
+}) => {
 	if (fieldNameBase && inputMode) {
 		return `${fieldNameBase}${inputMode}`;
 	}
@@ -32,44 +30,43 @@ export const getFieldName = ({
 	);
 };
 
+export const getFieldNameInputMode = ({
+	fieldNameBase,
+	inputMode,
+}: {
+	fieldNameBase: keyof AllFormValuesInputModeLess;
+	inputMode: InputModeEnum;
+}) => {
+	return `${fieldNameBase}${inputMode}`;
+};
+
 type FormTextFieldSelectorProps = TextFieldNumericProps & {
 	/**
-	 * Name of field
-	 */
-	fieldName?: keyof AllFormValues;
-	/**
-	 * Base name of fieldname without input mode
+	 * Base name of fieldname without input mode or a fieldname
 	 */
 	fieldNameBase: keyof AllFormValuesInputModeLess;
 	/**
-	 * Input mode whether you are entering low, average, or high estimates
-	 * @default AVERAGE
+	 * Field
 	 */
-	inputMode?: InputModeEnum;
+	field: FieldRenderProps<number, HTMLElement, number>;
 };
 
 const FormTextFieldNumericInputMode = ({
 	label,
 	placeholder,
-	fieldName,
 	fieldNameBase,
 	disabled,
 	prefix,
 	suffix,
 	defaultValue,
 	size = Sizes.LARGE,
-	inputMode,
 	allowNegativeValue,
 	tooltip,
 	width,
+	field,
 	onChange,
 }: FormTextFieldSelectorProps) => {
-	const fieldNameFull = getFieldName({ fieldName, fieldNameBase, inputMode });
-
-	// If a field has an input mode (other than DEFAULT) then they have a low, average, and high value as well
-	const field = useVisionFormField(fieldNameFull);
 	const input = field.input;
-
 	const inputModeError = useHasInputModeError(fieldNameBase);
 
 	return (

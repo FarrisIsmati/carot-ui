@@ -1,8 +1,10 @@
-import { useVisionFormField } from "@/components/VisionForm/utils/form";
+import { useRevenueField } from "@/components/VisionForm/utils/form";
+import { VisionFormValues } from "@/types/VisionForm";
 import { InputModeEnum } from "@/types/VisionForm/common/values";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
 import { useState } from "react";
 
-const useRevenueFields = () => {
+const useRevenueFields = (revenuePath: FieldPath<VisionFormValues>) => {
 	// Get all input modes
 	const [revenueCostToProduceInputMode, setRevenueCostToProduceInputMode] =
 		useState(InputModeEnum.Average);
@@ -13,18 +15,26 @@ const useRevenueFields = () => {
 	const [revenueProfitAmountInputMode, setRevenueProfitAmountInputMode] =
 		useState(InputModeEnum.Average);
 	// Get all fields
-	const revenueCostToProduceField = useVisionFormField(
-		`revenueCostToProduce${revenueCostToProduceInputMode}`
-	);
-	const revenueProfitMarginField = useVisionFormField(
-		`revenueProfitMargin${revenueProfitMarginInputMode}`
-	);
-	const revenueRetailPriceField = useVisionFormField(
+	const revenueCostToProduceField =
+		useRevenueField<"revenueCostToProduceAverage">(
+			revenuePath,
+			`revenueCostToProduce${revenueCostToProduceInputMode}`
+		);
+	const revenueProfitMarginField =
+		useRevenueField<"revenueProfitMarginAverage">(
+			revenuePath,
+			`revenueProfitMargin${revenueProfitMarginInputMode}`
+		);
+
+	const revenueRetailPriceField = useRevenueField<"revenueRetailPriceAverage">(
+		revenuePath,
 		`revenueRetailPrice${revenueRetailPriceInputMode}`
 	);
-	const revenueProfitAmountField = useVisionFormField(
-		`revenueProfitAmount${revenueProfitAmountInputMode}`
-	);
+	const revenueProfitAmountField =
+		useRevenueField<"revenueProfitAmountAverage">(
+			revenuePath,
+			`revenueProfitAmount${revenueProfitAmountInputMode}`
+		);
 
 	return {
 		revenueCostToProduceInputMode,

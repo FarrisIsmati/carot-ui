@@ -48,7 +48,45 @@ export const visionFormDemoInitialValues: VisionFormValues = {
 	],
 	loans: [],
 	leases: [],
-	products: [],
+	products: [
+		{
+			id: "product1",
+			//
+			// Revenue Section
+			//
+
+			// Location link
+			locationIds: new Set<string>(["lease1"]),
+
+			// Product name
+			productName: "",
+
+			// Inperson price
+			revenueRetailPriceLow: 0,
+			revenueRetailPriceAverage: 0,
+			revenueRetailPriceHigh: 0,
+
+			// Cost to produce
+			revenueCostToProduceLow: 0,
+			revenueCostToProduceAverage: 0,
+			revenueCostToProduceHigh: 0,
+
+			// Profit amount
+			revenueProfitAmountLow: 0,
+			revenueProfitAmountAverage: 0,
+			revenueProfitAmountHigh: 0,
+
+			// Profit margin
+			revenueProfitMarginLow: 0,
+			revenueProfitMarginAverage: 0,
+			revenueProfitMarginHigh: 0,
+
+			// Customer conversion rate
+			customerConversionRateLow: 100,
+			customerConversionRateAverage: 100,
+			customerConversionRateHigh: 100,
+		},
+	],
 
 	//
 	// Legal Section

@@ -1,13 +1,37 @@
 import SectionTitle from "@/components/form/SectionTitle";
 import DropdownSelect from "@/designSystem/Dropdown/DropdownSelect";
+import { VisionFormValues } from "@/types/VisionForm";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
 import { LocationType } from "@/types/VisionForm/locationSection";
-import { useState } from "react";
+import { FormApi } from "final-form";
+import { useForm, useFormState } from "react-final-form";
+import { FieldArray } from "react-final-form-arrays";
 import { locationTypeDropdownValues } from "../../values/fields/dropdownValues";
+import getInitialLeaseFormValues from "../../values/forms/Location/getInitialLeaseFormValues";
 import { FieldsContainer } from "../styles";
-import InpersonSection from "./InpersonSection";
+import LeaseSection from "./LeaseSection";
+
+/**
+ * Add a blank lease to the location section passing in an unique id
+ * @param form
+ * @param formValues
+ */
+const addLeaseToForm = (
+	form: FormApi<VisionFormValues, Partial<VisionFormValues>>,
+	formValues: VisionFormValues
+) => {
+	form.change("leases", [
+		...formValues.leases,
+		{ ...getInitialLeaseFormValues("lease1") }, // Only adding a fixed id here so revenue section can reference it
+	]);
+};
 
 const LocationSection = () => {
-	const [locationType, setLocationType] = useState<LocationType | null>(null);
+	const form = useForm<VisionFormValues>();
+	const formValues = useFormState<VisionFormValues>().values;
+
+	// Disable dropdrown select if leases length > 0 (Demo only)
+	const isDropdownDisabled = formValues.leases.length > 0;
 
 	return (
 		<FieldsContainer>
@@ -17,12 +41,35 @@ const LocationSection = () => {
 			<DropdownSelect
 				id={"locationType"}
 				name={"locationType"}
-				placeholder={"Add location"}
+				placeholder={
+					isDropdownDisabled
+						? "Remove to add another (demo only)"
+						: "Add location"
+				}
 				dataset={locationTypeDropdownValues}
-				onselect={(value) => setLocationType(value.id)}
+				onselect={(value) => {
+					// Only handling leases now
+					if (value.id === LocationType.INPERSON) {
+						addLeaseToForm(form, formValues);
+					}
+				}}
+				disabled={isDropdownDisabled}
 			/>
-			{locationType === LocationType.INPERSON && <InpersonSection />}
-			{locationType === LocationType.ONLINE && <p>ONLINE</p>}
+			{/* In-person lease locations */}
+			<FieldArray name="leases">
+				{({ fields }) => (
+					<div>
+						{fields.map((leasePath) => {
+							return (
+								<LeaseSection
+									leasePath={leasePath as FieldPath<VisionFormValues>}
+									key={leasePath}
+								/>
+							);
+						})}
+					</div>
+				)}
+			</FieldArray>
 		</FieldsContainer>
 	);
 };

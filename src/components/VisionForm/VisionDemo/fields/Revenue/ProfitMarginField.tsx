@@ -1,31 +1,45 @@
-import FormTextFieldNumericInputMode from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
-import { useContext } from "react";
+import { useRevenueField } from "@/components/VisionForm/utils/form";
+import FormTextFieldNumericInputMode, {
+	getFieldNameInputMode,
+} from "@/components/form/FormTextFieldNumeric/FormTextFieldInputMode";
+import { VisionFormValues } from "@/types/VisionForm";
+import { InputModeEnum } from "@/types/VisionForm/common/values";
+import { FieldPath } from "@/types/VisionForm/fieldPath";
+import { RevenueSection } from "@/types/VisionForm/revenueSection";
 import useRevenueFields from "../../Sections/RevenueSection/hooks/useRevenueFields";
-import RevenueFormContext from "../../forms/RevenueForm/RevenueFormContext";
 import {
 	profitFromMarginCalculator,
 	revenueFromMarginCalculator,
 } from "../util";
 
-const ProfitMarginField = () => {
-	// Context
-	const formContext = useContext(RevenueFormContext);
-	const prefix = formContext?.currencySymbol;
+interface ProfitMarginFieldProps {
+	revenuePath: FieldPath<VisionFormValues>;
+}
+
+const ProfitMarginField = ({ revenuePath }: ProfitMarginFieldProps) => {
+	const inputMode = InputModeEnum.Average;
+	const fieldName = getFieldNameInputMode({
+		fieldNameBase: "revenueProfitMargin",
+		inputMode,
+	}) as keyof RevenueSection;
+	const field = useRevenueField<"revenueProfitMarginAverage">(
+		revenuePath,
+		fieldName
+	);
 
 	const {
-		revenueProfitMarginInputMode,
 		revenueCostToProduceField,
 		revenueProfitAmountField,
 		revenueRetailPriceField,
 		revenueProfitMarginField,
-	} = useRevenueFields();
+	} = useRevenueFields(revenuePath);
 
 	return (
 		<FormTextFieldNumericInputMode
 			label={"Margin"}
 			fieldNameBase={"revenueProfitMargin"}
 			placeholder={"Profit margin"}
-			inputMode={revenueProfitMarginInputMode}
+			field={field}
 			suffix={"%"}
 			width={"50%"}
 			tooltip="The percentage of profit you will make on your product"
