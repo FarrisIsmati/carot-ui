@@ -18,17 +18,26 @@ import { semanticFonts } from "@/styles/fonts";
 import { VisionFormValues } from "@/types/VisionForm";
 import { FieldPath } from "@/types/VisionForm/fieldPath";
 import { useMemo, useState } from "react";
-import { useFormState } from "react-final-form";
+import { useForm, useFormState } from "react-final-form";
+import { styled } from "styled-components";
 import { FieldsContainer, StyledDoubleFieldContainer } from "../../styles";
 import GrowthCurveGraph from "../GrowthCurveGraph";
 import useGetFootTrafficTotals from "./hooks/useGetFootTrafficTotals";
 import useGetMonthlyRent from "./hooks/useGetMonthlyRent";
+
+const FooterButtonContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
 
 interface LeaseSectionProps {
 	leasePath: FieldPath<VisionFormValues>;
 }
 
 const LeaseSection = ({ leasePath }: LeaseSectionProps) => {
+	// Form
+	const form = useForm<VisionFormValues>();
+
 	// Form Values
 	const formValues = useFormState<VisionFormValues>().values;
 
@@ -125,15 +134,24 @@ const LeaseSection = ({ leasePath }: LeaseSectionProps) => {
 					</Type>
 				</>
 			)}
-			<ButtonExpand
-				onClick={() => {
-					setIsAdvancedOptionsExpanded((prev) => !prev);
-				}}
-				isExpanded={isAdvancedOptionsExpanded}
-				collapsedText="See traffic options"
-				expandedText="Close traffic options"
-			/>
-			<ButtonChip>Remove</ButtonChip>
+			<FooterButtonContainer>
+				<ButtonExpand
+					onClick={() => {
+						setIsAdvancedOptionsExpanded((prev) => !prev);
+					}}
+					isExpanded={isAdvancedOptionsExpanded}
+					collapsedText="See traffic options"
+					expandedText="Close traffic options"
+				/>
+				<ButtonChip
+					onClick={() => {
+						// Assuming only one allowed at a time remove all leases
+						form.change("leases", []);
+					}}
+				>
+					Remove
+				</ButtonChip>
+			</FooterButtonContainer>
 		</FieldsContainer>
 	);
 };
