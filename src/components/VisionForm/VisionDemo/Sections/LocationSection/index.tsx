@@ -1,9 +1,12 @@
 import SectionTitle from "@/components/form/SectionTitle";
 import DropdownSelect from "@/designSystem/Dropdown/DropdownSelect";
+import Type from "@/designSystem/Type";
+import { semanticFonts } from "@/styles/fonts";
 import { VisionFormValues } from "@/types/VisionForm";
 import { FieldPath } from "@/types/VisionForm/fieldPath";
 import { LocationType } from "@/types/VisionForm/locationSection";
 import { FormApi } from "final-form";
+import { useState } from "react";
 import { useForm, useFormState } from "react-final-form";
 import { FieldArray } from "react-final-form-arrays";
 import { locationTypeDropdownValues } from "../../values/fields/dropdownValues";
@@ -28,10 +31,14 @@ const addLeaseToForm = (
 
 const LocationSection = () => {
 	const form = useForm<VisionFormValues>();
-	const formValues = useFormState<VisionFormValues>().values;
+	const formState = useFormState<VisionFormValues>();
+	const formValues = formState.values;
 
 	// Disable dropdrown select if leases length > 0 (Demo only)
 	const isDropdownDisabled = formValues.leases.length > 0;
+
+	// Has touched dropdown (for displaying error)
+	const [touchedDropdown, setTouchedDropdown] = useState<boolean>(false);
 
 	return (
 		<FieldsContainer>
@@ -42,10 +49,13 @@ const LocationSection = () => {
 				id={"locationType"}
 				name={"locationType"}
 				placeholder={
-					isDropdownDisabled
-						? "Remove to add another (demo only)"
-						: "Add location"
+					isDropdownDisabled ? "Remove to change option" : "Add location"
 				}
+				onClick={() => {
+					if (!touchedDropdown) {
+						setTouchedDropdown(true);
+					}
+				}}
 				dataset={locationTypeDropdownValues}
 				onselect={(value) => {
 					// Only handling leases now
@@ -55,6 +65,13 @@ const LocationSection = () => {
 				}}
 				disabled={isDropdownDisabled}
 			/>
+			{/* If no locations show error */}
+			{(touchedDropdown || formState.submitFailed) &&
+				formState?.errors?.locations && (
+					<Type error semanticfont={semanticFonts.bodySmall}>
+						{formState.errors.locations}
+					</Type>
+				)}
 			{/* In-person lease locations */}
 			<FieldArray name="leases">
 				{({ fields }) => (

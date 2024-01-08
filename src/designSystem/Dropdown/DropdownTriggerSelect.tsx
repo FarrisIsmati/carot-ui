@@ -94,6 +94,7 @@ const DropdownTriggerSelect = React.forwardRef<
 		if (isMenuOpen) {
 			return (
 				<IconWrapper
+					pointerEventsNone={true}
 					icon={Remove}
 					padding={spacer2}
 					size={Sizes.MEDIUM}
@@ -103,6 +104,7 @@ const DropdownTriggerSelect = React.forwardRef<
 		}
 		return (
 			<IconWrapper
+				pointerEventsNone={true}
 				icon={Add}
 				padding={spacer2}
 				size={Sizes.MEDIUM}

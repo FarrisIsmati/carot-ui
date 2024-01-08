@@ -30,31 +30,66 @@ export const getCountryDateFormat = (country: CountriesEnum) => {
 
 // Get the % margin +/- of goods
 export const marginCalculator = (cost: number, revenue: number) => {
-	if (cost === 0 && revenue === 0) {
-		return 0;
+	const result = _.round((Number(revenue) / Number(cost)) * 100 - 100, 2);
+
+	if (isNaN(result)) {
+		return undefined;
 	}
-	return _.round((revenue / cost) * 100 - 100, 2);
+
+	return result;
 };
 
 // Get cost to make from % margin
-export const revenueFromMarginCalculator = (cost: number, margin: number) =>
-	_.round((margin / 100 + 1) * cost);
+export const revenueFromMarginCalculator = (cost: number, margin: number) => {
+	const result = _.round((Number(margin) / 100 + 1) * Number(cost));
+
+	if (isNaN(result)) {
+		return undefined;
+	}
+
+	return result;
+};
 
 // Get profit amount from cost/revenue
-export const profitCalculator = (cost: number, revenue: number) =>
-	_.round(revenue - cost, 2);
+export const profitCalculator = (cost: number, revenue: number) => {
+	const result = _.round(Number(revenue) - Number(cost), 2);
+
+	if (isNaN(result)) {
+		return undefined;
+	}
+
+	return result;
+};
 
 // Get profit amount from margin
 export const profitFromMarginCalculator = (cost: number, margin: number) => {
-	return _.round((margin / 100) * cost);
+	const result = _.round((Number(margin) / 100) * Number(cost));
+
+	if (isNaN(result)) {
+		return undefined;
+	}
+
+	return result;
 };
 
 // Get revenue from profit amount
 export const revenueFromProfitAmount = (cost: number, profitAmount: number) => {
-	return _.round(cost + profitAmount);
+	const result = _.round(Number(cost) + Number(profitAmount));
+
+	if (isNaN(result)) {
+		return undefined;
+	}
+
+	return result;
 };
 
 // Get margin from profit amount
 export const marginFromProfitAmount = (cost: number, profitAmount: number) => {
-	return _.round((profitAmount / cost) * 100);
+	const result = _.round((Number(profitAmount) / Number(cost)) * 100);
+
+	if (isNaN(result)) {
+		return undefined;
+	}
+
+	return result;
 };

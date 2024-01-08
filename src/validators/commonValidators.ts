@@ -22,6 +22,11 @@ export const requiredArray = (value: any[]) =>
 export const requiredSet = (value: Set<any>) =>
 	value !== undefined && value.size > 0 && value !== null;
 
+export const fieldBitch = withCustomMessage<any>(
+	(value: any) => Number(value) !== 1,
+	"This field is a bitch."
+);
+
 export const fieldRequired = withCustomMessage<any>(
 	required,
 	"This field is required."
@@ -35,6 +40,11 @@ export const fieldRequiredArray = withCustomMessage<any[]>(
 export const fieldRequiredSet = withCustomMessage<Set<any>>(
 	requiredSet,
 	"This field is requires at least one value."
+);
+
+export const infiniteField = withCustomMessage<any>(
+	(value: number) => isFinite(value),
+	"This number cannot be infinite"
 );
 
 // Loops through an error object and sees if any errors are activated

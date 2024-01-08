@@ -3,7 +3,6 @@ import { RevenueSection } from "@/types/VisionForm/revenueSection";
 import {
 	customerConversionRateValidator,
 	locationIdsValidator,
-	productNameValidator,
 	revenueCostToProduceValidator,
 	revenueProfitAmountValidator,
 	revenueProfitMarginValidator,
@@ -30,9 +29,6 @@ export const revenueValidator = ({
 		revenueFormValues.locationIds,
 		locations
 	);
-
-	// Product name
-	const productName = productNameValidator(revenueFormValues.productName);
 
 	// Cost to produce
 	const revenueCostToProduceLow = revenueCostToProduceValidator(
@@ -96,9 +92,6 @@ export const revenueValidator = ({
 
 		// Location link
 		locationIds,
-
-		// Product name
-		productName,
 
 		// Cost to produce
 		revenueCostToProduceLow,

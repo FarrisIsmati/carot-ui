@@ -49,6 +49,10 @@ export type DropdownSelectProps = Omit<StyledWrapperProps, "label"> &
 		 * Text to display for an error state
 		 */
 		errorText?: string;
+		/**
+		 * on click no params to apss in
+		 */
+		onClick?: () => void;
 	};
 
 const DropdownSelect = ({
@@ -59,6 +63,7 @@ const DropdownSelect = ({
 	onselect,
 	islocked,
 	width,
+	onClick,
 	dropdownSize = Sizes.LARGE,
 	error,
 	errorText,
@@ -162,6 +167,7 @@ const DropdownSelect = ({
 						return;
 					}
 					setIsMenuOpen(!isMenuOpen);
+					onClick?.();
 				}}
 				onKeyDown={onEnterPress}
 				placeholder={placeholder}

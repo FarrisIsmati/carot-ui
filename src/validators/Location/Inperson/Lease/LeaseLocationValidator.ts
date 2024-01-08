@@ -1,4 +1,5 @@
-import { LeaseSection } from "@/types/VisionForm/locationSection/LeaseSection";
+import { InpersonLeaseLocationSection } from "@/types/VisionForm/locationSection";
+import { inpersonLocationValidator } from "../InpersonLocationValidator";
 import {
 	leaseCostValidator,
 	leaseLengthMonthsValidator,
@@ -6,7 +7,9 @@ import {
 	leaseSizeValidator,
 } from "./LeaseLocationValidators";
 
-export const leaseLocationValidator = (formValues: LeaseSection) => {
+export const leaseLocationValidator = (
+	formValues: InpersonLeaseLocationSection
+) => {
 	// Lease cost
 	const leaseCostLow = leaseCostValidator(formValues.leaseCostLow);
 	const leaseCostAverage = leaseCostValidator(formValues.leaseCostAverage);
@@ -56,5 +59,8 @@ export const leaseLocationValidator = (formValues: LeaseSection) => {
 		leaseLengthYearsLow,
 		leaseLengthYearsAverage,
 		leaseLengthYearsHigh,
+
+		// Inperson location
+		...inpersonLocationValidator(formValues),
 	};
 };

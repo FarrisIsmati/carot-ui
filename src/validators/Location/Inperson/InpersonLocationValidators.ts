@@ -1,11 +1,5 @@
 import { fieldRequired } from "@/validators/commonValidators";
 
-// Traffic turnoverTime
-export const locationNameValidator = fieldRequired;
-
-// Construction cost
-export const constructionCostValidator = fieldRequired;
-
 // Maximum occupancy
 export const maxOccupancyValidator = fieldRequired;
 

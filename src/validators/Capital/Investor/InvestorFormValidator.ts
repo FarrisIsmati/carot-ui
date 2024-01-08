@@ -16,6 +16,7 @@ const InvestorFormValidator = (formValues: InvestorSection) => {
 		formValues.investorStartingCashHigh
 	);
 
+	// Equity
 	const investorEquityPercentage = investorEquityValidator(
 		formValues.investorEquityPercentage
 	);

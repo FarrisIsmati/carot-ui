@@ -3,8 +3,6 @@ import {
 	InpersonLocationSection,
 } from "@/types/VisionForm/locationSection";
 import {
-	constructionCostValidator,
-	locationNameValidator,
 	maxOccupancyValidator,
 	trafficCurveValidator,
 	trafficTurnoverTimeValidator,
@@ -14,20 +12,6 @@ import { leaseLocationValidator } from "./Lease/LeaseLocationValidator";
 export const inpersonLocationValidator = (
 	formValues: InpersonLocationSection
 ) => {
-	// Name
-	const locationName = locationNameValidator(formValues.locationName);
-
-	// Construction cost
-	const constructionCostLow = constructionCostValidator(
-		formValues.constructionCostLow
-	);
-	const constructionCostAverage = constructionCostValidator(
-		formValues.constructionCostAverage
-	);
-	const constructionCostHigh = constructionCostValidator(
-		formValues.constructionCostHigh
-	);
-
 	// Maximum occupancy
 	const maxOccupancyLow = maxOccupancyValidator(formValues.maxOccupancyLow);
 	const maxOccupancyAverage = maxOccupancyValidator(
@@ -72,14 +56,6 @@ export const inpersonLocationValidator = (
 	);
 
 	return {
-		// Name
-		locationName,
-
-		// Construction cost
-		constructionCostLow,
-		constructionCostAverage,
-		constructionCostHigh,
-
 		// Maximum Occupancy
 		maxOccupancyLow,
 		maxOccupancyAverage,

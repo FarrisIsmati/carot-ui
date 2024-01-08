@@ -14,6 +14,7 @@ import {
 	spacer2,
 	spacer4,
 	spacer6,
+	spacer8,
 } from "@/styles/sizes";
 import { AsProp, StyledWrapperProps } from "@/utils/typeHelpers";
 import React from "react";
@@ -218,7 +219,7 @@ const ButtonChip = React.forwardRef<HTMLElement, ChipProps>(
 					icon={icon}
 					colorSet={colorSet}
 					position={position}
-					padding={spacer2}
+					padding={spacer8}
 					size={Sizes.SMALL}
 					disabled={props.disabled}
 				/>

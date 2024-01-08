@@ -109,12 +109,6 @@ const Results = () => {
 				{isDataLoaded && (
 					<Legend payload={createLegendPayload(legendColorMap)} />
 				)}
-
-				<StyledBlurbLarge
-					headline="Get more"
-					body="Way more options to fill in, numbers to see, and charts that make you go “hmm... interesting.”"
-					buttonText="Sign up free"
-				/>
 			</StickyContainer>
 		</div>
 	);

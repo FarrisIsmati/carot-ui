@@ -48,7 +48,7 @@ type FormTextFieldSelectorProps = TextFieldNumericProps & {
 	/**
 	 * Field
 	 */
-	field: FieldRenderProps<number, HTMLElement, number>;
+	field: FieldRenderProps<number | undefined, HTMLElement, number | undefined>;
 };
 
 const FormTextFieldNumericInputMode = ({

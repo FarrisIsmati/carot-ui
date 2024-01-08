@@ -52,6 +52,10 @@ export type IconWrapperProps = Omit<StyledWrapperProps, "size"> &
 		 * Enables a background color per color set
 		 */
 		hasBackground?: boolean;
+		/**
+		 * Can help with onClick events if the parent needs to trigger it and not the icon
+		 */
+		pointerEventsNone?: boolean;
 	};
 
 export const Wrapper = styled(
@@ -80,6 +84,7 @@ export const Wrapper = styled(
 	border-radius: ${spacer4};
 	border: none;
 	padding: 0;
+	pointer-events: ${(props) => (props.pointerEventsNone ? "none" : "auto")};
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -128,6 +133,7 @@ export const IconWrapper = ({
 	icon,
 	disabled,
 	hasBackground,
+	pointerEventsNone,
 	onMouseDown,
 }: IconWrapperProps) => {
 	const Icon = icon;
@@ -160,6 +166,7 @@ export const IconWrapper = ({
 			disabled={disabled}
 			onMouseDown={onMouseDown}
 			hasBackground={hasBackground}
+			pointerEventsNone={pointerEventsNone}
 		>
 			<Icon
 				style={{ fontSize: iconSize }}

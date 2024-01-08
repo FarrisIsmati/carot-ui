@@ -101,8 +101,11 @@ export const StyledDropdownTrigger = styled(
 			padding: ${spacer10} ${spacer12} ${spacer12} ${spacer12};
 			box-shadow: ${nonFocusBoxShadow()};
 
+			cursor: pointer;
+
 			&:disabled {
 				background-color: ${props.colorSet?.essential.disabled};
+				cursor: default;
 			}
 
 			&:hover:not([disabled]) {

@@ -30,7 +30,7 @@ const InvestorStartingCash = ({ investorPath }: InvestorStartingCashProps) => {
 		<FormTextFieldNumericInputMode
 			label={"Initial Investment"}
 			fieldNameBase={"investorStartingCash"}
-			placeholder={"Initial Investment"}
+			placeholder={`${currencySymbol}3,000`}
 			field={field}
 			allowNegativeValue={false}
 			prefix={currencySymbol}

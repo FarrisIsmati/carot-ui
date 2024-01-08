@@ -18,9 +18,9 @@ export interface InvestorSection {
 	investorEquityPercentage: number;
 
 	// How much starting cash the investor is putting into the company
-	investorStartingCashLow: number;
-	investorStartingCashAverage: number;
-	investorStartingCashHigh: number;
+	investorStartingCashLow: number | undefined;
+	investorStartingCashAverage: number | undefined;
+	investorStartingCashHigh: number | undefined;
 
 	// Percentage of profits an employee can choose to pay themselves with
 	// TODO: Add field to figure out when the draw begins (When does it start, reoccuring days, etc)

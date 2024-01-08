@@ -12,9 +12,12 @@ import { useLeaseField } from "@/components/VisionForm/utils/form";
 import AnimateNumber from "@/components/common/AnimateNumber";
 import ButtonChip from "@/designSystem/Button/ButtonChip";
 import ButtonExpand from "@/designSystem/Button/ButtonExpand";
+import { ChipType } from "@/designSystem/Chip";
+import TrashCan from "@/designSystem/Icons/TrashCan";
 import Type from "@/designSystem/Type";
 import { ColorBaseCore, colorBaseMap } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
+import { Sizes } from "@/styles/sizes";
 import { VisionFormValues } from "@/types/VisionForm";
 import { FieldPath } from "@/types/VisionForm/fieldPath";
 import { useMemo, useState } from "react";
@@ -144,6 +147,9 @@ const LeaseSection = ({ leasePath }: LeaseSectionProps) => {
 					expandedText="Close traffic options"
 				/>
 				<ButtonChip
+					size={Sizes.SMALL}
+					chipType={ChipType.LABEL}
+					iconTrailing={TrashCan}
 					onClick={() => {
 						// Assuming only one allowed at a time remove all leases
 						form.change("leases", []);

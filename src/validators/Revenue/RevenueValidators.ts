@@ -26,9 +26,6 @@ export const locationIdsValidator = (
 		fieldRequiredSet(locationIds),
 	]);
 
-// Product name
-export const productNameValidator = fieldRequired;
-
 // Revenue cost to produce
 export const revenueCostToProduceValidator = fieldRequired;
 
