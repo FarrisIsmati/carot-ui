@@ -27,7 +27,7 @@ export const StyledContainer = styled.div`
 export const StyledDropdownTriggerText = styled(Type)<{
 	selectedItem: DropdownData<any> | null;
 }>`
-	${semanticFonts.bodyLarge};
+	${semanticFonts.bodyMedium};
 
 	color: ${(props) =>
 		!props.selectedItem
@@ -45,7 +45,7 @@ export const StyledDropdownTriggerText = styled(Type)<{
 
 // Dropdown Select Trigger
 export const StyledDropdownSelectTriggerText = styled(Type)`
-	${semanticFonts.bodyLarge};
+	${semanticFonts.bodyMedium};
 
 	color: ${(props) =>
 		props.disabled
@@ -137,7 +137,7 @@ export const StyledDropdownItem = styled(
 		return <Component {...props} ref={ref} />;
 	})
 )`
-	${semanticFonts.bodyLarge};
+	${semanticFonts.bodyMedium};
 	padding-block-end: 0;
 	padding: ${spacer12} ${spacer16};
 

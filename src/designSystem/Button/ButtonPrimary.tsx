@@ -100,7 +100,7 @@ export const ButtonStyled = styled(
 )`
 	${(props) => {
 		return css`
-			${semanticFonts.labelLarge}
+			${semanticFonts.labelMedium}
 			color: ${props.colorSet?.text.default};
 			border: none;
 			background-color: ${props.colorSet?.essential.default};

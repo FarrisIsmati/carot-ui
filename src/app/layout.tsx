@@ -20,7 +20,7 @@ export default function RootLayout({
 				<StyledComponentsRegistry>
 					<header>
 						<Navbar />
-						{/* Basic Sans & Filson Pro */}
+						{/* Basic Sans & Neue Haas Grotesk Text Pro */}
 						<link rel="stylesheet" href="https://use.typekit.net/wak4qgj.css" />
 					</header>
 					{children}

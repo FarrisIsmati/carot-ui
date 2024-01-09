@@ -13,14 +13,11 @@ import Dot from "../Badge/Dot";
 import getFieldWidth from "../Dropdown/utils/getFieldWidth";
 import { IconWrapper } from "../IconWrapper";
 import CrossSmall from "../Icons/CrossSmall";
-import InfoIcon from "../Icons/InfoIcon";
-import TooltipPortal from "../Tooltip/TooltipPortal";
-import Type from "../Type";
+import FieldLabel from "../common/FieldLabel";
 import {
 	ClearButtonContainer,
 	ContentContainer,
 	IconWrapperContainer,
-	LabelContainer,
 	MarginTopType,
 	StyledInput,
 	StyledInputContainer,
@@ -157,21 +154,14 @@ const TextField = React.forwardRef<HTMLElement, FormInputProps>(
 				{renderIcon()}
 				<ContentContainer>
 					{label && (
-						<LabelContainer>
-							<Type
-								colorset={colorSet}
-								disabled={disabled}
-								error={error}
-								semanticfont={semanticFonts.bodySmall}
-							>
-								{label}
-							</Type>
-							{tooltip !== undefined && (
-								<TooltipPortal tooltip={tooltip}>
-									<InfoIcon />
-								</TooltipPortal>
-							)}
-						</LabelContainer>
+						<FieldLabel
+							colorSet={colorSet}
+							disabled={disabled}
+							error={error}
+							tooltip={tooltip}
+						>
+							{label}
+						</FieldLabel>
 					)}
 					<StyledInput
 						ref={(el: HTMLInputElement) => {

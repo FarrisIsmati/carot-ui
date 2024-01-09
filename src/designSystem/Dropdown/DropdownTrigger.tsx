@@ -9,11 +9,8 @@ import {
 import { KeyboardArrowDown, KeyboardArrowUp } from "@material-ui/icons";
 import React from "react";
 import { IconWrapper } from "../IconWrapper";
-import InfoIcon from "../Icons/InfoIcon";
-import TooltipPortal from "../Tooltip/TooltipPortal";
-import Type from "../Type";
+import FieldLabel from "../common/FieldLabel";
 import {
-	LabelContainer,
 	StyledDropdownTrigger,
 	StyledDropdownTriggerContentContainer,
 	StyledDropdownTriggerText,
@@ -107,21 +104,14 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 			>
 				{/* Top label to display */}
 				{label && (
-					<LabelContainer>
-						<Type
-							colorset={colorSet}
-							disabled={disabled}
-							error={error}
-							semanticfont={semanticFonts.bodySmall}
-						>
-							{label}
-						</Type>
-						{tooltip !== undefined && (
-							<TooltipPortal tooltip={tooltip}>
-								<InfoIcon />
-							</TooltipPortal>
-						)}
-					</LabelContainer>
+					<FieldLabel
+						colorSet={colorSet}
+						disabled={disabled}
+						error={error}
+						tooltip={tooltip}
+					>
+						{label}
+					</FieldLabel>
 				)}
 				{/* Content inside the dropdown */}
 				<StyledDropdownTriggerContentContainer>
@@ -159,7 +149,7 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 					<StyledErrorTextDropdownTrigger
 						colorset={colorSet}
 						error={error}
-						semanticfont={semanticFonts.bodySmall}
+						semanticfont={semanticFonts.labelSmall}
 					>
 						{errorText}
 					</StyledErrorTextDropdownTrigger>

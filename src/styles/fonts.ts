@@ -10,20 +10,17 @@ export const poppins = Poppins({
 });
 
 import {
-	spacer11,
+	spacer10,
 	spacer12,
-	spacer14,
+	spacer120,
+	spacer140,
 	spacer16,
 	spacer20,
 	spacer24,
-	spacer28,
-	spacer32,
 	spacer40,
 	spacer48,
 	spacer64,
-	spacer72,
 	spacer80,
-	spacer9,
 } from "./sizes";
 
 const fontFamilyA = css`
@@ -32,104 +29,113 @@ const fontFamilyA = css`
 `;
 
 const fontFamilyB = css`
-	font-family: "Poppins";
+	font-family: "neue-haas-grotesk-display", sans-serif !important;
 	font-style: normal !important;
 `;
 
 const fontFamilyC = css`
+	font-family: "neue-haas-grotesk-text", sans-serif !important;
+	font-style: normal !important;
+`;
+
+const fontFamilyD = css`
 	font-family: "filson-pro", sans-serif !important;
 	font-style: normal !important;
 `;
 
 export const semanticFonts = {
 	logo: css`
-		${fontFamilyC}
+		${fontFamilyD}
 		font-weight: 900 !important;
 		font-size: ${spacer40} !important;
-		/* line-height: ${spacer48} !important; */
+		line-height: ${spacer48} !important;
+		letter-spacing: 0.5px;
 	`,
 	displayLarge: css`
-		${fontFamilyA}
-		font-weight: 700 !important;
-		font-size: ${spacer80} !important;
-		/* line-height: ${spacer80} !important; */
+		${fontFamilyB}
+		font-weight: 600 !important;
+		font-size: ${spacer140} !important;
+		line-height: ${spacer120} !important;
 	`,
 	displayMedium: css`
-		${fontFamilyA}
-		font-weight: 250 !important;
-		font-size: ${spacer64} !important;
-		/* line-height: ${spacer72} !important; */
+		${fontFamilyB}
+		font-weight: 600 !important;
+		font-size: ${spacer80} !important;
 	`,
 	displaySmall: css`
 		${fontFamilyA}
-		font-weight: 700 !important;
-		font-size: ${spacer40} !important;
-		/* line-height: ${spacer48} !important; */
+		font-weight: 600 !important;
+		font-size: ${spacer64} !important;
 	`,
 	headlineLarge: css`
-		${fontFamilyA}
-		font-weight: 700 !important;
-		font-size: ${spacer32} !important;
-		/* line-height: ${spacer40} !important; */
+		${fontFamilyB}
+		font-weight: 600 !important;
+		font-size: ${spacer40} !important;
 	`,
 	headlineMediumStrong: css`
-		${fontFamilyB}
+		${fontFamilyC}
 		font-weight: 700 !important;
-		font-size: ${spacer24} !important;
-		/* line-height: ${spacer32} !important; */
+		font-size: ${spacer40} !important;
 	`,
 	headlineMedium: css`
-		${fontFamilyB}
+		${fontFamilyC}
 		font-weight: 400 !important;
-		font-size: ${spacer24} !important;
-		/* line-height: ${spacer32} !important; */
+		font-size: ${spacer40} !important;
 	`,
 	headlineSmall: css`
-		${fontFamilyB}
+		${fontFamilyC}
+		font-weight: 400 !important;
+		font-size: ${spacer24} !important;
+	`,
+	labelExtraLarge: css`
+		${fontFamilyC}
 		font-weight: 700 !important;
 		font-size: ${spacer20} !important;
-		/* line-height: ${spacer28} !important; */
 	`,
 	labelLarge: css`
-		${fontFamilyB}
-		font-weight: 600 !important;
-		font-size: ${spacer14} !important;
-		/* line-height: ${spacer20} !important; */
+		${fontFamilyC}
+		font-weight: 700 !important;
+		font-size: ${spacer20} !important;
 	`,
 	labelMedium: css`
-		${fontFamilyB}
+		${fontFamilyC}
 		font-weight: 500 !important;
-		font-size: ${spacer12} !important;
-		/* line-height: ${spacer16} !important; */
+		font-size: ${spacer16} !important;
+		line-height: 125% !important;
 	`,
 	labelSmall: css`
-		${fontFamilyB}
-		font-weight: 600 !important;
-		font-size: ${spacer11} !important;
-		line-height: ${spacer16} !important;
-	`,
-	labelExtraSmall: css`
-		${fontFamilyB}
-		font-weight: 500 !important;
-		font-size: ${spacer9} !important;
-		line-height: ${spacer12} !important;
-	`,
-	bodyLarge: css`
-		${fontFamilyB}
-		font-weight: 400 !important;
-		font-size: ${spacer16} !important;
-		/* line-height: ${spacer24} !important; */
-	`,
-	bodyMedium: css`
-		${fontFamilyB}
-		font-weight: 400 !important;
-		font-size: ${spacer14} !important;
-		/* line-height: ${spacer20} !important; */
-	`,
-	bodySmall: css`
-		${fontFamilyB}
+		${fontFamilyC}
 		font-weight: 400 !important;
 		font-size: ${spacer12} !important;
-		/* line-height: ${spacer16} !important; */
+		line-height: 125% !important;
+	`,
+	labelExtraSmall: css`
+		${fontFamilyC}
+		font-weight: 500 !important;
+		font-size: ${spacer10} !important;
+	`,
+	bodyLarge: css`
+		${fontFamilyC}
+		font-weight: 400 !important;
+		font-size: ${spacer20} !important;
+		line-height: 135% !important;
+	`,
+	bodyMedium: css`
+		${fontFamilyC}
+		font-weight: 400 !important;
+		font-size: ${spacer16} !important;
+		line-height: 125% !important;
+	`,
+	bodySmall: css`
+		${fontFamilyA}
+		font-weight: 400 !important;
+		font-size: ${spacer12} !important;
+		line-height: 135% !important;
+	`,
+	bodyExtraSmall: css`
+		${fontFamilyA}
+		font-weight: 400 !important;
+		font-size: ${spacer12} !important;
+		line-height: 135% !important;
 	`,
 };

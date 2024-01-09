@@ -25,30 +25,24 @@ const Navbar = () => {
 			<StyledNavbuttonsContainer>
 				{/* TOOL */}
 				<ButtonText
-					semanticfont={semanticFonts.headlineSmall}
+					semanticfont={semanticFonts.labelMedium}
 					navigate="/vision-free"
 				>
 					Tool
 				</ButtonText>
 				{/* ABOUT */}
-				<ButtonText
-					semanticfont={semanticFonts.headlineSmall}
-					navigate="/about"
-				>
+				<ButtonText semanticfont={semanticFonts.labelMedium} navigate="/about">
 					About
 				</ButtonText>
 				{/* BLOG */}
-				<ButtonText semanticfont={semanticFonts.headlineSmall} navigate="/blog">
+				<ButtonText semanticfont={semanticFonts.labelMedium} navigate="/blog">
 					Blog
 				</ButtonText>
 			</StyledNavbuttonsContainer>
 
 			{/* Login */}
 			<StyledNavbuttonsContainer>
-				<ButtonText
-					semanticfont={semanticFonts.headlineSmall}
-					navigate="/login"
-				>
+				<ButtonText semanticfont={semanticFonts.labelMedium} navigate="/login">
 					Login
 				</ButtonText>
 				<ButtonPrimary

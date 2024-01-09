@@ -46,7 +46,7 @@ export const StyledInput = styled(
 
 		/* Carot */
 		background-color: transparent;
-		${semanticFonts.bodyLarge}
+		${semanticFonts.bodyMedium}
 		margin-top: ${spacer8};
 		height: ${spacer24};
 
@@ -78,7 +78,7 @@ export const StyledTextFieldNumeric = styled(
 
 		/* Carot */
 		background-color: transparent;
-		${semanticFonts.bodyLarge}
+		${semanticFonts.bodyMedium}
 		margin-top: ${spacer8};
 		height: ${spacer24};
 
