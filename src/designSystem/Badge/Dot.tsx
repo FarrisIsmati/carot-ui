@@ -45,7 +45,7 @@ export const DotStyled = styled(
 const Dot = React.forwardRef<HTMLElement, BadgeProps>(
 	(
 		{
-			colorSet = getColorSet(SemanticSetCores.PRIMARY),
+			colorSet = getColorSet(SemanticSetCores.PRIMARY_ALT),
 			component,
 			children,
 			"aria-label": ariaLabel,

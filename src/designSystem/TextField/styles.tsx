@@ -101,8 +101,8 @@ export const StyledInputContainer = styled.div<
 	Pick<StyledInputProps, "colorSet" | "disabled" | "error" | "size" | "width">
 >`
 	${(props) => {
-		const highlightColor = getColorSet(SemanticSetCores.PRIMARY_ALT).essential
-			.default;
+		const highlightColor = getColorSet(SemanticSetCores.PRIMARY_2).essential
+			.active;
 		const errorColor = getColorSet(SemanticSetCores.NEGATIVE).essential.default;
 
 		return css`

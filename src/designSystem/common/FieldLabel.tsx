@@ -1,6 +1,6 @@
 import { ColorSet, SemanticSetCores, getColorSet } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
-import { spacer8 } from "@/styles/sizes";
+import { spacer1, spacer8 } from "@/styles/sizes";
 import { PseudoClassProps, StyledWrapperProps } from "@/utils/typeHelpers";
 import React from "react";
 import styled from "styled-components";
@@ -8,10 +8,14 @@ import InfoIcon from "../Icons/InfoIcon";
 import TooltipPortal from "../Tooltip/TooltipPortal";
 import Type from "../Type";
 
-export const LabelContainer = styled.div`
+const LabelContainer = styled.div`
 	display: flex;
 	align-items: center;
 	gap: ${spacer8};
+`;
+
+const StyledType = styled(Type)`
+	text-transform: uppercase;
 `;
 
 export type FieldLabelProps = StyledWrapperProps &
@@ -32,28 +36,24 @@ export type FieldLabelProps = StyledWrapperProps &
 	};
 
 const FieldLabel = React.forwardRef<HTMLElement, FieldLabelProps>(
-	function FieldLabel(
-		{
-			colorSet = getColorSet(SemanticSetCores.SECONDARY),
-			error,
-			children,
-			disabled,
-			placeholder,
-			tooltip,
-			...props
-		},
-		ref
-	) {
+	function FieldLabel({
+		colorSet = getColorSet(SemanticSetCores.NEGATIVE),
+		error,
+		children,
+		disabled,
+		tooltip,
+	}) {
 		return (
 			<LabelContainer>
-				<Type
-					colorset={colorSet}
+				<StyledType
+					colorSet={getColorSet(SemanticSetCores.BASE_SOFT)}
 					disabled={disabled}
 					error={error}
+					letterSpacing={spacer1}
 					semanticfont={semanticFonts.labelSmall}
 				>
 					{children}
-				</Type>
+				</StyledType>
 				{tooltip !== undefined && (
 					<TooltipPortal tooltip={tooltip}>
 						<InfoIcon />

@@ -1,7 +1,12 @@
 import Type from "@/designSystem/Type";
-import { ColorBaseCore, colorBaseMap } from "@/styles/colors";
+import {
+	ColorBaseCore,
+	SemanticSetCores,
+	colorBaseMap,
+	getColorSet,
+} from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
-import { spacer16, spacer24, spacer32, spacer4 } from "@/styles/sizes";
+import { spacer1, spacer16, spacer24, spacer32, spacer4 } from "@/styles/sizes";
 import { CalendarResult } from "@/types/Charts";
 import { Calendar } from "@/types/VisionForm/calendar";
 import { styled } from "styled-components";
@@ -58,7 +63,7 @@ export const ResultsOverview = ({
 
 	return (
 		<Container>
-			<Type semanticfont={semanticFonts.headlineSmall}>
+			<Type semanticfont={semanticFonts.headlineSmall} letterSpacing={spacer1}>
 				Projected {years} year growth
 			</Type>
 			<ResultsContainer>
@@ -66,15 +71,15 @@ export const ResultsOverview = ({
 				<ResultContainer>
 					<Type
 						semanticfont={semanticFonts.bodySmall}
-						color={colorBaseMap[ColorBaseCore.NEUTRAL_2]}
+						colorSet={getColorSet(SemanticSetCores.BASE_SOFT)}
 					>
 						Invested
 					</Type>
 					<AmountContainer>
-						<Type semanticfont={semanticFonts.bodyMedium}>
+						<Type semanticfont={semanticFonts.labelMedium}>
 							{currencySymbol}
 						</Type>
-						<Type semanticfont={semanticFonts.headlineMediumStrong}>
+						<Type semanticfont={semanticFonts.headlineMedium}>
 							<AnimateNumber
 								value={calendar?.lifetimeInvested ?? 0}
 								decimals={2}
@@ -84,21 +89,21 @@ export const ResultsOverview = ({
 				</ResultContainer>
 
 				<Divider />
-				<Divider />
 
 				{/* Revenue */}
 				<ResultContainer>
 					<Type
 						semanticfont={semanticFonts.bodySmall}
-						color={colorBaseMap[ColorBaseCore.NEUTRAL_2]}
+						colorSet={getColorSet(SemanticSetCores.BASE_SOFT)}
+						letterSpacing={spacer1}
 					>
 						Revenue
 					</Type>
 					<AmountContainer>
-						<Type semanticfont={semanticFonts.bodyMedium}>
+						<Type semanticfont={semanticFonts.labelMedium}>
 							{currencySymbol}
 						</Type>
-						<Type semanticfont={semanticFonts.headlineMediumStrong}>
+						<Type semanticfont={semanticFonts.headlineMedium}>
 							<AnimateNumber
 								value={calendar?.lifetimeRevenue ?? 0}
 								decimals={2}
@@ -110,15 +115,16 @@ export const ResultsOverview = ({
 				<ResultContainer>
 					<Type
 						semanticfont={semanticFonts.bodySmall}
-						color={colorBaseMap[ColorBaseCore.NEUTRAL_2]}
+						colorSet={getColorSet(SemanticSetCores.BASE_SOFT)}
+						letterSpacing={spacer1}
 					>
 						Expenses
 					</Type>
 					<AmountContainer>
-						<Type semanticfont={semanticFonts.bodyMedium}>
+						<Type semanticfont={semanticFonts.labelMedium}>
 							{currencySymbol}
 						</Type>
-						<Type semanticfont={semanticFonts.headlineMediumStrong}>
+						<Type semanticfont={semanticFonts.headlineMedium}>
 							<AnimateNumber
 								value={calendar?.lifetimeExpenses ?? 0}
 								decimals={2}
@@ -133,15 +139,16 @@ export const ResultsOverview = ({
 				<ResultContainer>
 					<Type
 						semanticfont={semanticFonts.bodySmall}
-						color={colorBaseMap[ColorBaseCore.NEUTRAL_2]}
+						colorSet={getColorSet(SemanticSetCores.BASE_SOFT)}
+						letterSpacing={spacer1}
 					>
 						Profit
 					</Type>
 					<AmountContainer>
-						<Type semanticfont={semanticFonts.bodyMedium}>
+						<Type semanticfont={semanticFonts.labelMedium}>
 							{currencySymbol}
 						</Type>
-						<Type semanticfont={semanticFonts.headlineMediumStrong}>
+						<Type semanticfont={semanticFonts.headlineMedium}>
 							<AnimateNumber
 								value={calendar?.lifetimeProfit ?? 0}
 								decimals={2}

@@ -181,12 +181,7 @@ const TextFieldNumeric = React.forwardRef<HTMLElement, TextFieldNumericProps>(
 				{renderIcon()}
 				<ContentContainer>
 					{label && (
-						<FieldLabel
-							colorSet={colorSet}
-							disabled={disabled}
-							error={error}
-							tooltip={tooltip}
-						>
+						<FieldLabel disabled={disabled} error={error} tooltip={tooltip}>
 							{label}
 						</FieldLabel>
 					)}

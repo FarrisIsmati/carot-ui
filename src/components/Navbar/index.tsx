@@ -5,6 +5,7 @@ import { ColorBaseCore, colorBaseMap } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
 import { useRouter } from "next/navigation";
 
+import { Sizes } from "@/styles/sizes";
 import { StyledNavbar, StyledNavbuttonsContainer } from "./styles";
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
 			<ButtonText
 				navigate="/"
 				semanticfont={semanticFonts.logo}
-				color={colorBaseMap[ColorBaseCore.RED_3]}
+				color={colorBaseMap[ColorBaseCore.GREEN_3]}
 			>
 				CAROT
 			</ButtonText>
@@ -46,6 +47,7 @@ const Navbar = () => {
 					Login
 				</ButtonText>
 				<ButtonPrimary
+					size={Sizes.SMALL}
 					routeTo={() => {
 						router.push(`/get-started`);
 					}}

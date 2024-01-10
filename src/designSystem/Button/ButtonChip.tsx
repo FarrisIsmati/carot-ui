@@ -8,6 +8,7 @@ import {
 import { semanticFonts } from "@/styles/fonts";
 import {
 	Sizes,
+	spacer1,
 	spacer10,
 	spacer100,
 	spacer12,
@@ -130,6 +131,7 @@ export const ChipStyled = styled(
 			font-size: inherit;
 			align-items: center;
 			justify-content: center;
+			letter-spacing: ${spacer1};
 
 			&:disabled {
 				background-color: ${props.colorSet?.essential.disabled};
@@ -194,7 +196,7 @@ export const ChipStyled = styled(
 const ButtonChip = React.forwardRef<HTMLElement, ChipProps>(
 	(
 		{
-			colorSet = getColorSet(SemanticSetCores.BASE_INVERTED),
+			colorSet = getColorSet(SemanticSetCores.BASE_SOFT),
 			chipType = ChipType.AVATAR,
 			component,
 			iconLeading,

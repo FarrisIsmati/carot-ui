@@ -66,8 +66,8 @@ export const StyledDropdownTrigger = styled(
 	})
 )`
 	${(props) => {
-		const highlightColor = getColorSet(SemanticSetCores.PRIMARY_ALT).essential
-			.default;
+		const highlightColor = getColorSet(SemanticSetCores.PRIMARY_2).essential
+			.active;
 		const errorColor = getColorSet(SemanticSetCores.NEGATIVE).essential.default;
 		const nonFocusBoxShadow = () => {
 			if (props.error) {

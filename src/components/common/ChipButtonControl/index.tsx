@@ -1,4 +1,4 @@
-import ButtonChip from "@/designSystem/Button/ButtonChip";
+import ButtonChip, { ChipType } from "@/designSystem/Button/ButtonChip";
 import { spacer4 } from "@/styles/sizes";
 import { Dispatch, SetStateAction } from "react";
 import { styled } from "styled-components";
@@ -24,6 +24,7 @@ const ChipButtonControl = <T extends string | number | symbol>({
 			{Object.entries(state).map(([label, isActive]) => (
 				<ButtonChip
 					key={label}
+					chipType={ChipType.LABEL}
 					onClick={() => {
 						Object.keys(state).forEach((key) => {
 							if (key === label) {

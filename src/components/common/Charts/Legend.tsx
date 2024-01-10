@@ -37,7 +37,7 @@ const Legend = ({
 			{payload.map((entry, index) => (
 				<LegenedItem key={`item-${index}`}>
 					<LegendCircle color={entry.color} />
-					<Type semanticfont={semanticFonts.bodyLarge}>{entry.value}</Type>
+					<Type semanticfont={semanticFonts.bodySmall}>{entry.value}</Type>
 				</LegenedItem>
 			))}
 		</LegendContainer>

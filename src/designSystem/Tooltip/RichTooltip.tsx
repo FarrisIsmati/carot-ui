@@ -1,6 +1,7 @@
 import { ColorSet, SemanticSetCores, getColorSet } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
 import {
+	spacer1,
 	spacer12,
 	spacer16,
 	spacer24,
@@ -52,7 +53,7 @@ export type RichTooltipProps = Omit<StyledWrapperProps, "size"> &
 		 * Set the semantic color used by the button
 		 * @default 'BASE'
 		 **/
-		colorset?: ColorSet;
+		colorSet?: ColorSet;
 		/**
 		 * Semantic font
 		 **/
@@ -71,8 +72,8 @@ export const StyledRichTooltip = styled(
 		return css`
 			display: flex;
 			flex-direction: column;
-			color: ${props.colorset?.text.default};
-			background-color: ${props.colorset?.essential.default};
+			color: ${props.colorSet?.text.default};
+			background-color: ${props.colorSet?.essential.default};
 			gap: ${spacer24};
 			border-radius: ${spacer8};
 			width: ${spacer320};
@@ -86,6 +87,7 @@ const StyledRichTooltipContentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: ${spacer8};
+	letter-spacing: ${spacer1};
 `;
 
 const StyledRichTooltipActionContainer = styled.div`
@@ -105,7 +107,7 @@ const RichTooltip = React.forwardRef<HTMLElement, RichTooltipProps>(
 			component,
 			children,
 			semanticfont = semanticFonts.bodyMedium,
-			colorset = getColorSet(SemanticSetCores.DARK),
+			colorSet = getColorSet(SemanticSetCores.DARK),
 			"aria-label": ariaLabel,
 			"aria-labelledby": ariaLabelledBy,
 			...props
@@ -114,21 +116,27 @@ const RichTooltip = React.forwardRef<HTMLElement, RichTooltipProps>(
 	) => {
 		const TitleComponent = elementOrStringToTypeComponent({
 			el: title,
-			font: semanticFonts.labelLarge,
+			font: semanticFonts.labelMedium,
+			colorSet: colorSet,
+			letterSpacing: spacer1,
 		});
 		const BodyComponent = elementOrStringToTypeComponent({
 			el: body,
 			font: semanticfont,
+			colorSet: colorSet,
+			letterSpacing: spacer1,
 		});
 		const ChildrenComponent = elementOrStringToTypeComponent({
 			el: children,
 			font: semanticfont,
+			colorSet: colorSet,
+			letterSpacing: spacer1,
 		});
 		return (
 			<StyledRichTooltip
 				ref={ref}
 				component={!component && props.href ? "a" : component}
-				colorset={colorset}
+				colorSet={colorSet}
 				{...props}
 			>
 				<StyledRichTooltipContentContainer>

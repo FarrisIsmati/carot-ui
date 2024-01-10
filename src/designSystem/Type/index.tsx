@@ -15,10 +15,14 @@ export type TypeProps = StyledWrapperProps & {
 	 */
 	semanticfont?: RuleSet<object>;
 	/**
+	 * @deprecated The method should not be used
+	 */
+	colorset?: ColorSet;
+	/**
 	 * Set the semantic color used by the text
 	 * @default 'BASE'
 	 **/
-	colorset?: ColorSet;
+	colorSet?: ColorSet;
 	/**
 	 * If the text is to show an error state
 	 */
@@ -31,6 +35,10 @@ export type TypeProps = StyledWrapperProps & {
 	 * Padding bottom
 	 */
 	paddingbottom?: string;
+	/**
+	 * Letter spacing
+	 */
+	letterSpacing?: string;
 };
 
 export const TypeStyled = styled(
@@ -38,8 +46,10 @@ export const TypeStyled = styled(
 		{
 			component: Component = "p",
 			colorset,
+			colorSet = SemanticSetCores.BASE,
 			semanticfont,
 			paddingbottom,
+			letterSpacing,
 			...props
 		},
 		ref
@@ -48,10 +58,16 @@ export const TypeStyled = styled(
 	})
 )`
 	${(props) => {
-		let fontColor = props.color ? props.color : props.colorset?.text.default;
+		const colorSet = props.colorSet ?? props.colorset;
+
+		if (!colorSet) {
+			throw new Error("Type is missing a colorSet");
+		}
+
+		let fontColor = props.color ? props.color : colorSet.text.default;
 
 		if (props.disabled) {
-			fontColor = props.colorset?.text.disabled;
+			fontColor = colorSet.text.disabled;
 		}
 
 		if (props.error && !props.disabled) {
@@ -65,6 +81,7 @@ export const TypeStyled = styled(
 			width: fit-content;
 			margin-block-start: 0;
 			margin-block-end: 0;
+			letter-spacing: ${props.letterSpacing ?? 0};
 		`;
 	}}
 `;

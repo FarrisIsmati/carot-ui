@@ -16,6 +16,7 @@ import {
 	spacer20,
 	spacer24,
 	spacer8,
+	spacerHalf,
 } from "@/styles/sizes";
 import {
 	AsProp,
@@ -117,6 +118,7 @@ export const ButtonStyled = styled(
 			font-size: inherit;
 			align-items: center;
 			justify-content: center;
+			letter-spacing: ${spacerHalf};
 
 			&:disabled {
 				background-color: ${props.colorSet?.essential.disabled};

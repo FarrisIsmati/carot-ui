@@ -49,7 +49,7 @@ export const CountStyled = styled(
 const Count = React.forwardRef<HTMLElement, BadgeProps>(
 	(
 		{
-			colorSet = getColorSet(SemanticSetCores.PRIMARY),
+			colorSet = getColorSet(SemanticSetCores.PRIMARY_ALT),
 			component,
 			children,
 			"aria-label": ariaLabel,

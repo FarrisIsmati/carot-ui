@@ -74,7 +74,7 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 		{
 			onClickMenu,
 			label,
-			colorSet = getColorSet(SemanticSetCores.SECONDARY),
+			colorSet = getColorSet(SemanticSetCores.PRIMARY_2),
 			error,
 			errorText,
 			children,
@@ -104,12 +104,7 @@ const DropdownTrigger = React.forwardRef<HTMLElement, DropdownTriggerProps>(
 			>
 				{/* Top label to display */}
 				{label && (
-					<FieldLabel
-						colorSet={colorSet}
-						disabled={disabled}
-						error={error}
-						tooltip={tooltip}
-					>
+					<FieldLabel disabled={disabled} error={error} tooltip={tooltip}>
 						{label}
 					</FieldLabel>
 				)}

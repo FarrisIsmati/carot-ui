@@ -9,10 +9,12 @@ export const elementOrStringToTypeComponent = ({
 	el,
 	font,
 	colorSet,
+	letterSpacing,
 }: {
 	el: JSX.Element | React.ReactNode | string | number | undefined | null;
 	font?: RuleSet<object>;
 	colorSet?: ColorSet;
+	letterSpacing?: string;
 }) => {
 	if (el !== undefined && el !== null) {
 		if (React.isValidElement(el)) {
@@ -23,7 +25,8 @@ export const elementOrStringToTypeComponent = ({
 			return (
 				<Type
 					semanticfont={font ?? semanticFonts.bodyMedium}
-					colorset={colorSet}
+					colorSet={colorSet}
+					letterSpacing={letterSpacing}
 				>
 					{el}
 				</Type>

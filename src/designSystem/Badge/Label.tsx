@@ -1,6 +1,13 @@
 import { ColorSet, SemanticSetCores, getColorSet } from "@/styles/colors";
 import { semanticFonts } from "@/styles/fonts";
-import { Sizes, spacer2, spacer4, spacer6, spacer8 } from "@/styles/sizes";
+import {
+	Sizes,
+	spacer1,
+	spacer2,
+	spacer4,
+	spacer6,
+	spacer8,
+} from "@/styles/sizes";
 import { AsProp, StyledWrapperProps } from "@/utils/typeHelpers";
 import React from "react";
 import styled, { css } from "styled-components";
@@ -52,6 +59,7 @@ export const LabelStyled = styled(
 	${(props) => {
 		return css`
 			${semanticFonts.labelSmall}
+			letter-spacing: ${spacer1};
 			width: fit-content;
 			color: ${props.colorSet?.text.default};
 			border: none;
@@ -75,7 +83,7 @@ export const LabelStyled = styled(
 const Label = React.forwardRef<HTMLElement, BadgeProps>(
 	(
 		{
-			colorSet = getColorSet(SemanticSetCores.PRIMARY),
+			colorSet = getColorSet(SemanticSetCores.PRIMARY_ALT),
 			component,
 			iconLeading,
 			iconTrailing,

@@ -8,6 +8,7 @@ import {
 import { semanticFonts } from "@/styles/fonts";
 import {
 	Sizes,
+	spacer1,
 	spacer10,
 	spacer100,
 	spacer12,
@@ -104,9 +105,9 @@ export const ChipStyled = styled(
 	${(props) => {
 		const clickable =
 			props.onClick || props.onClickIconLeft || props.onClickIconRight;
-		const isActive = props.isActive;
 		return css`
-			${semanticFonts.bodySmall}
+			${semanticFonts.bodyExtraSmall}
+			letter-spacing: ${spacer1};
 			width: fit-content;
 			color: ${props.colorSet?.text.default};
 			border: none;
