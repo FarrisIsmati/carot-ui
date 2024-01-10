@@ -7,6 +7,7 @@ interface AnimateNumberProps {
 	duration?: number;
 	preText?: string;
 	postText?: string;
+	onEnd?: () => void;
 }
 
 const AnimateNumber = ({
@@ -15,6 +16,7 @@ const AnimateNumber = ({
 	duration = 1,
 	preText,
 	postText,
+	onEnd,
 }: AnimateNumberProps) => {
 	// Revenue
 	const valueRef = useRef(value ?? 0);
@@ -28,6 +30,7 @@ const AnimateNumber = ({
 		<CountUp
 			start={prevVal}
 			end={curVal}
+			onEnd={onEnd}
 			delay={0}
 			decimals={decimals}
 			duration={duration}

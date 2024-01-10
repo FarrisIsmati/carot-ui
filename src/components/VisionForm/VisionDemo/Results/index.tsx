@@ -1,4 +1,3 @@
-import BlurbLarge from "@/components/common/Blurb/BlurbLarge";
 import Legend from "@/components/common/Charts/Legend";
 import { createLegendPayload } from "@/components/common/Charts/utils/legend";
 import ChipButtonControl, {
@@ -6,7 +5,7 @@ import ChipButtonControl, {
 } from "@/components/common/ChipButtonControl";
 import { getVFDemoCurrencySymbol } from "@/redux/visionFormDemo/selectors";
 import { ColorBaseCore, colorBaseMap } from "@/styles/colors";
-import { spacer16, spacer24, spacer4, spacer40 } from "@/styles/sizes";
+import { spacer16, spacer24, spacer4 } from "@/styles/sizes";
 import { CalendarResult } from "@/types/Charts";
 import { ChartFilterEnum } from "@/types/Charts/Filter";
 import { legendColorMap } from "@/types/Charts/Legend";
@@ -17,6 +16,7 @@ import LineChart from "../../../common/Charts/LineChart";
 import { ResultsOverview } from "./Overview";
 import { defaultVisionDemoLineChartData } from "./defaultData";
 import useCalendar from "./hooks/useCalendar";
+import useResultsWidth from "./hooks/useResultsWidth";
 import { getChartFilterData } from "./utils/chartFilter";
 
 const ChartFilterContainer = styled.div`
@@ -35,16 +35,15 @@ const StickyContainer = styled.div<{ width: number }>`
 	gap: ${spacer16};
 	position: sticky;
 	top: ${spacer16};
-	max-width: ${(props) => props.width};
-`;
-
-const StyledBlurbLarge = styled(BlurbLarge)`
-	margin-top: ${spacer40};
+	width: ${(props) => `${props.width}px`};
 `;
 
 export const ResultsDimensions = { height: 400, width: 900 };
 
 const Results = () => {
+	// Get width
+	const resultsWidth = useResultsWidth();
+
 	// Creates a calendar everytime the form state on redux updates (redux triggers the calendar update)
 	const [calendar, calendarData] = useCalendar();
 
@@ -80,13 +79,9 @@ const Results = () => {
 	return (
 		<div>
 			{/* Div required to allow sticky container to work  */}
-			<StickyContainer width={ResultsDimensions.width}>
+			<StickyContainer width={resultsWidth}>
 				{/* Top bar data preview */}
-				<ResultsOverview
-					calendar={calendar}
-					data={data}
-					currencySymbol={currencySymbol}
-				/>
+				<ResultsOverview calendar={calendar} currencySymbol={currencySymbol} />
 				{/* Chart */}
 				<ChartFilterContainer>
 					<FilterContainer>

@@ -39,6 +39,10 @@ export type TypeProps = StyledWrapperProps & {
 	 * Letter spacing
 	 */
 	letterSpacing?: string;
+	/**
+	 * Font size
+	 */
+	fontSize?: string;
 };
 
 export const TypeStyled = styled(
@@ -50,6 +54,7 @@ export const TypeStyled = styled(
 			semanticfont,
 			paddingbottom,
 			letterSpacing,
+			fontSize,
 			...props
 		},
 		ref
@@ -74,6 +79,10 @@ export const TypeStyled = styled(
 			fontColor = getColorSet(SemanticSetCores.NEGATIVE).essential.default;
 		}
 
+		const fontSize = props.fontSize
+			? `font-size: ${props.fontSize} !important`
+			: "";
+
 		return css`
 			${props.semanticfont}
 			color: ${fontColor};
@@ -82,6 +91,7 @@ export const TypeStyled = styled(
 			margin-block-start: 0;
 			margin-block-end: 0;
 			letter-spacing: ${props.letterSpacing ?? 0};
+			${fontSize}
 		`;
 	}}
 `;
@@ -91,9 +101,11 @@ const Type = React.forwardRef<HTMLEmbedElement, TypeProps>(
 		{
 			semanticfont = semanticFonts.bodyMedium,
 			colorset = getColorSet(SemanticSetCores.BASE),
+			colorSet = getColorSet(SemanticSetCores.BASE),
 			paddingbottom,
 			color,
 			children,
+			fontSize,
 			...props
 		},
 		ref
@@ -102,9 +114,10 @@ const Type = React.forwardRef<HTMLEmbedElement, TypeProps>(
 			<TypeStyled
 				ref={ref}
 				semanticfont={semanticfont}
-				colorSet={colorset}
+				colorSet={colorSet}
 				color={color}
 				paddingBottom={paddingbottom}
+				fontSize={fontSize}
 				{...props}
 			>
 				{children}
