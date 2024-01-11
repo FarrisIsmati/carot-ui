@@ -76,13 +76,11 @@ const updateChartYAxis = ({
 	currencySymbol,
 	yAxis,
 	svg,
-	data,
 	yRange,
 }: {
 	currencySymbol: string;
 	yAxis: d3.Axis<d3.AxisDomain>;
 	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
-	data: any[];
 	yRange: [number, number];
 }) => {
 	// Create grid lines
@@ -150,7 +148,6 @@ const updateChartAxis = ({
 			currencySymbol,
 			yAxis,
 			svg,
-			data,
 			yRange,
 		});
 

@@ -12,13 +12,14 @@ import {
 	spacer24,
 	spacer32,
 	spacer4,
-	spacer60,
+	spacer64,
 } from "@/styles/sizes";
 import { Calendar } from "@/types/VisionForm/calendar";
 import { useRef } from "react";
 import { styled } from "styled-components";
 import AnimateNumber from "../../../common/AnimateNumber";
-import useProjectedWidth from "./hooks/useProjectedWidth";
+import useUpdateOverviewHeaderSizing from "./hooks/useUpdateOverviewHeaderSizing";
+import { getFontSizeByNumberWidth } from "./utils/fontSize";
 
 const Container = styled.div`
 	display: flex;
@@ -48,7 +49,7 @@ const ResultContainer = styled.div<{ width: number }>`
 	justify-content: flex-start;
 	overflow: hidden;
 	width: ${(props) => `${props.width}px`};
-	height: ${spacer60};
+	height: ${spacer64};
 `;
 
 const AmountContainer = styled.div`
@@ -60,35 +61,6 @@ export interface ResultsOverviewProps {
 	calendar: Calendar | undefined;
 }
 
-/**
- * Makes font smaller based on width of number
- * @param initialSize
- * @param v
- * @returns
- */
-const getFontSizeByNumberWidth = (initialSize: number, v: number) => {
-	if (isNaN(v)) {
-		return initialSize;
-	}
-
-	const val = v.toString().split(".")[0];
-	const numWidth = val.length;
-	const multiplier = numWidth - 3;
-
-	if (multiplier <= 0) {
-		return initialSize;
-	}
-
-	if (multiplier === 1) {
-		return initialSize - 6 * multiplier;
-	} else if (multiplier === 2) {
-		return initialSize - 5 * multiplier;
-	} else if (multiplier === 3) {
-		return initialSize - 4 * multiplier;
-	}
-	return initialSize - 3 * multiplier;
-};
-
 export const ResultsOverview = ({
 	currencySymbol,
 	calendar,
@@ -98,16 +70,17 @@ export const ResultsOverview = ({
 
 	const years = calendar?.years.length;
 
-	const displayWidth = useProjectedWidth(4, projectedRef);
+	const displayWidth = useUpdateOverviewHeaderSizing(4, projectedRef);
 
 	// TODO: On filtered set of data (use data instead of calendar for data points)
 
-	const fontSizeNum = Math.min(
-		getFontSizeByNumberWidth(40, calendar?.lifetimeInvested ?? 0),
-		getFontSizeByNumberWidth(40, calendar?.lifetimeRevenue ?? 0),
-		getFontSizeByNumberWidth(40, calendar?.lifetimeExpenses ?? 0),
-		getFontSizeByNumberWidth(40, calendar?.lifetimeProfit ?? 0)
-	);
+	const fontSizeNum = getFontSizeByNumberWidth(40, [
+		calendar?.lifetimeInvested ?? 0,
+		calendar?.lifetimeRevenue ?? 0,
+		calendar?.lifetimeExpenses ?? 0,
+		calendar?.lifetimeProfit ?? 0,
+	]);
+
 	const fontSize = `${fontSizeNum}px`;
 
 	return (

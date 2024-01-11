@@ -5,8 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ChartProps } from "../LineChart";
 
 interface CreateLineProps {
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
-	data: CalendarResult[];
+	svg: d3.Selection<SVGGElement, unknown, any, undefined>;
 	key: keyof Omit<CalendarResult, "date">;
 	x: d3.ScaleTime<number, number, never>;
 	y: d3.ScaleLinear<number, number, never>;
@@ -16,12 +15,11 @@ interface CreateLineProps {
 // Create a blank line (for initializing chart)
 export const createChartLine = ({
 	svg,
-	data,
 	initialLineChartData,
 	key,
 	x,
 	y,
-}: CreateLineProps): d3.Selection<SVGPathElement, any[], null, undefined> => {
+}: CreateLineProps) => {
 	const lineAttr = d3
 		.line()
 		.x((d) => {
@@ -35,7 +33,7 @@ export const createChartLine = ({
 		// @ts-ignore
 		.y((d) => y(d[key]));
 
-	const res: d3.Selection<SVGPathElement, any[], null, undefined> = svg
+	const res = svg
 		.append("path")
 		.data([[initialLineChartData]])
 		.attr("fill", "none")
@@ -49,7 +47,7 @@ interface CreateChartLinesProps {
 	data: any[];
 	x: d3.ScaleTime<number, number, never>;
 	y: d3.ScaleLinear<number, number, never>;
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
+	svg: d3.Selection<SVGGElement, unknown, any, undefined>;
 	initialLineChartData: {};
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
 }
@@ -77,7 +75,6 @@ const createChartLines = ({
 			x,
 			y,
 			svg,
-			data,
 			key,
 		});
 

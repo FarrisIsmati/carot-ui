@@ -71,7 +71,7 @@ export const createXAxis = ({
 	setChart,
 }: {
 	x: d3.ScaleTime<number, number, never>;
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
+	svg: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
 	height: number;
 	filter: ChartFilterEnum;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
@@ -154,18 +154,14 @@ export const Y_AXIS_ID = "Y_AXIS_ID";
  */
 export const createYAxis = ({
 	y,
-	data,
 	yRange,
 	svg,
-	height,
 	currencySymbol,
 	setChart,
 }: {
 	y: any;
-	data: any[];
 	yRange: [number, number];
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
-	height: number;
+	svg: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
 	currencySymbol: string;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
 }) => {
@@ -209,7 +205,7 @@ export const createGridLines = ({
 }: {
 	y: any;
 	yTickValues: number[];
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
+	svg: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
 	width: number;
 }) => {
 	const gridClass = "gridLine";
@@ -231,7 +227,7 @@ export const createGridLines = ({
 };
 
 export const updateTickFont = (
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>
+	svg: d3.Selection<SVGGElement, unknown, any, any>
 ) => {
 	// Set tick font
 	svg
@@ -264,7 +260,7 @@ const createChartAxis = ({
 	y: d3.ScaleLinear<number, number, never>;
 	xRange: [number, number];
 	yRange: [number, number];
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
+	svg: d3.Selection<SVGGElement, unknown, any, any>;
 	height: number;
 	width: number;
 	currencySymbol: string;
@@ -281,9 +277,7 @@ const createChartAxis = ({
 		y,
 		svg,
 		currencySymbol,
-		data,
 		yRange,
-		height,
 		setChart,
 	});
 

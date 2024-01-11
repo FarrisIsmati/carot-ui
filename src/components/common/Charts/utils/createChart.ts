@@ -36,12 +36,22 @@ const createChart = ({
 	currencySymbol,
 	setChart,
 }: useSetChartProps) => {
-	// Set initial SVG, append it to ref
 	const svg = d3
-		.select(ref.current)
+		.select("div#chartId")
+		.append("div")
+		// Container class to make it responsive.
+		.classed("svg-container", true)
 		.append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
+		// Responsive SVG needs these 2 attributes and no width and height attr.
+		.attr("preserveAspectRatio", "xMinYMin meet")
+		.attr(
+			"viewBox",
+			`0 0 ${width + margin.left + margin.right} ${
+				height + margin.top + margin.bottom
+			}`
+		)
+		// Class to make it responsive.
+		.classed("svg-content-responsive", true)
 		.append("g")
 		.attr("transform", `translate(${margin.left},${margin.top})`);
 

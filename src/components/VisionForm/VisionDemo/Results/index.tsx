@@ -26,7 +26,7 @@ const ChartFilterContainer = styled.div`
 `;
 
 const FilterContainer = styled.div`
-	margin: ${spacer16} ${spacer24} 0 ${spacer16};
+	margin: ${spacer16} ${spacer24} ${spacer16} ${spacer16};
 `;
 
 const StickyContainer = styled.div<{ width: number }>`

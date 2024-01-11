@@ -1,4 +1,4 @@
-import { spacer16, spacer24, spacer8 } from "@/styles/sizes";
+import { spacer8 } from "@/styles/sizes";
 import { Margin } from "@/types/Charts";
 import { ChartFilterEnum } from "@/types/Charts/Filter";
 import * as d3 from "d3";
@@ -13,10 +13,21 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: ${spacer8};
-`;
 
-const LineChartWrapper = styled.div`
-	padding: ${spacer16} ${spacer24} 0 ${spacer24};
+	.svg-container {
+		display: inline-block;
+		position: relative;
+		width: 100%;
+		padding-bottom: 47%; /* aspect ratio */
+		vertical-align: top;
+		overflow: hidden;
+	}
+	.svg-content-responsive {
+		display: inline-block;
+		position: absolute;
+		top: 10px;
+		left: 0;
+	}
 `;
 
 export interface ChartProps {
@@ -27,9 +38,9 @@ export interface ChartProps {
 		| null;
 	y: d3.ScaleLinear<number, number, never>;
 	yAxis: d3.Axis<d3.AxisDomain> | null;
-	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
+	svg: d3.Selection<SVGGElement, unknown, any, undefined>;
 	lines: {
-		[key: string]: d3.Selection<SVGPathElement, any, null, undefined>;
+		[key: string]: d3.Selection<SVGPathElement, any, any, undefined>;
 	};
 }
 
@@ -108,21 +119,13 @@ const LineChart = ({
 			xRange,
 			yRange,
 			data,
-			width: w,
+			width,
 		});
 	}
 
 	return (
 		<Container>
-			<LineChartWrapper>
-				<svg
-					width={w}
-					height={h}
-					id="lineChart"
-					// @ts-ignore
-					ref={ref}
-				/>
-			</LineChartWrapper>
+			<div id="chartId"></div>
 		</Container>
 	);
 };

@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-const useProjectedWidth = (
+/**
+ * Updates sizing of overview headers so each section can have a fixed width in px
+ * @param divisons
+ * @param parentRef
+ * @returns
+ */
+const useUpdateOverviewHeaderSizing = (
 	divisons: number,
 	parentRef: React.RefObject<HTMLDivElement>
 ): number => {
@@ -26,4 +32,4 @@ const useProjectedWidth = (
 	return width;
 };
 
-export default useProjectedWidth;
+export default useUpdateOverviewHeaderSizing;
