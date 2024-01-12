@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
 /**
- * Get all they curve types for leases, memoize entire function
+ * Get all the curve types for leases, memoize entire function
  * Note this only handles traffic curves, if adding more curves need to modify function
  * @returns CurveDataPointMap
  */
@@ -33,10 +33,11 @@ const useCalcAllLeaseCurveDataPoints = (): CurveDataPointMap => {
 
 			// If curve type doesn't have data points generated generate them
 			if (!curveTypeDataPointMap[trafficCurveType]) {
-				curveTypeDataPointMap[trafficCurveType] = createGrowthCurve(
-					trafficCurveType,
-					lengthDays
-				);
+				curveTypeDataPointMap[trafficCurveType] = createGrowthCurve({
+					curveType: trafficCurveType,
+					length: lengthDays,
+					startDate: visionFormDemoState.overviewStartDate,
+				});
 			}
 
 			// Associate data points with leases

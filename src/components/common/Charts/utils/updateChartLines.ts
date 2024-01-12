@@ -1,14 +1,14 @@
-import { CalendarResult } from "@/types/Charts";
-import { legendColorMap } from "@/types/Charts/Legend";
+import { getLineColor } from "@/types/Charts/Legend";
 import * as d3 from "d3";
 import { ChartProps } from "../LineChart";
 
 interface UpdateChartLineProps {
 	data: any[];
 	chart: ChartProps;
+	xField: string;
 }
 
-const updateChartLines = ({ data, chart }: UpdateChartLineProps) => {
+const updateChartLines = ({ data, chart, xField }: UpdateChartLineProps) => {
 	const { x, y, lines } = chart;
 	// Update line
 	const existingLinesKey = Object.keys(lines);
@@ -19,7 +19,7 @@ const updateChartLines = ({ data, chart }: UpdateChartLineProps) => {
 			const lineAttr = d3
 				.line()
 				// @ts-ignore
-				.x((d) => x(d.date))
+				.x((d) => x(d[xField]))
 				// @ts-ignore
 
 				.y((d) => y(d[k]));
@@ -29,8 +29,7 @@ const updateChartLines = ({ data, chart }: UpdateChartLineProps) => {
 				.transition()
 				.duration(1000)
 				.attr("fill", "none")
-				// TODO: Consider generics here?
-				.attr("stroke", legendColorMap[k as keyof Omit<CalendarResult, "date">])
+				.attr("stroke", getLineColor(k))
 				.attr("stroke-width", 1)
 				// @ts-ignore
 				.attr("d", lineAttr);

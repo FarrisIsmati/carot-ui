@@ -25,12 +25,9 @@ export const getXRange = ({
 	xField,
 	data,
 }: {
-	xField?: string;
+	xField: string;
 	data: any[];
 }) => {
-	if (!xField) {
-		return d3.extent(data, (d) => d["date"]) as [number, number];
-	}
 	return d3.extent(data, (d) => d[xField]) as [number, number];
 };
 
@@ -39,9 +36,11 @@ export const getXRange = ({
  */
 export const getYRange = ({
 	yField,
+	xField,
 	data,
 }: {
 	yField?: string;
+	xField: string;
 	data: any[];
 }): [number, number] => {
 	if (yField) {
@@ -51,7 +50,7 @@ export const getYRange = ({
 	let min = 0;
 	let max = 0;
 	Object.keys(data[0]).forEach((key) => {
-		if (key === "date") {
+		if (key === xField) {
 			return;
 		}
 

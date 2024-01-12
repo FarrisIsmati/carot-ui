@@ -168,6 +168,10 @@ const generateInitYearCalendars = (startDate: string, endDate: string) => {
 
 // Create inital calendar results
 export const generateInitCalendar = (startDate: string, endDate: string) => {
+	if (!startDate || !endDate) {
+		return;
+	}
+
 	if (moment(new Date(endDate)).isBefore(new Date(startDate))) {
 		throw new Error("Cannot have an end date starting before your start date");
 	}

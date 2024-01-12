@@ -107,6 +107,7 @@ const LeaseSection = ({ leasePath }: LeaseSectionProps) => {
 					<GrowthCurveGraph
 						curveType={trafficCurveField.input.value}
 						length={trafficCurveLength}
+						startDate={formValues.overviewStartDate}
 					/>
 					<FootTrafficCurve leasePath={leasePath} />
 					<StyledDoubleFieldContainer>

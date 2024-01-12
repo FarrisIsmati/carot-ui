@@ -51,6 +51,7 @@ const Results = () => {
 	const data: CalendarResult[] = !calendarData.length
 		? defaultVisionDemoLineChartData
 		: calendarData;
+
 	//
 	// Filter data sets the time scale a user looks at
 	//
@@ -65,8 +66,7 @@ const Results = () => {
 	// Is calendar data loaded
 	const isDataLoaded = calendarData.length > 0;
 	// Selected currency
-	const cs = useSelector(getVFDemoCurrencySymbol);
-	const currencySymbol = isDataLoaded ? cs : "";
+	const currencySymbol = useSelector(getVFDemoCurrencySymbol) ?? "";
 
 	// Initial Line Chart Data
 	const initialLineChartData: CalendarResult = {
@@ -92,7 +92,6 @@ const Results = () => {
 						isDataLoaded={isDataLoaded}
 						initialLineChartData={initialLineChartData}
 						xField="date"
-						// yField="lifetimeRevenue"
 						height={ResultsDimensions.height}
 						width={ResultsDimensions.width}
 						margin={{ top: 10, right: 20, bottom: 20, left: 20 }}

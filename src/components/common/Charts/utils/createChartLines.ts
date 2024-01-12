@@ -1,21 +1,22 @@
-import { CalendarResult } from "@/types/Charts";
-import { legendColorMap } from "@/types/Charts/Legend";
+import { getLineColor } from "@/types/Charts/Legend";
 import * as d3 from "d3";
 import { Dispatch, SetStateAction } from "react";
 import { ChartProps } from "../LineChart";
 
 interface CreateLineProps {
 	svg: d3.Selection<SVGGElement, unknown, any, undefined>;
-	key: keyof Omit<CalendarResult, "date">;
+	key: string;
 	x: d3.ScaleTime<number, number, never>;
 	y: d3.ScaleLinear<number, number, never>;
 	initialLineChartData: {};
+	xField: string;
 }
 
 // Create a blank line (for initializing chart)
 export const createChartLine = ({
 	svg,
 	initialLineChartData,
+	xField,
 	key,
 	x,
 	y,
@@ -25,10 +26,10 @@ export const createChartLine = ({
 		.x((d) => {
 			// @ts-ignore
 			if (!d.date) {
-				throw new Error("Line chart data must include a date field");
+				throw new Error(`Line chart data must include a ${xField} field`);
 			}
 			// @ts-ignore
-			return x(d.date);
+			return x(d[xField]);
 		})
 		// @ts-ignore
 		.y((d) => y(d[key]));
@@ -37,7 +38,7 @@ export const createChartLine = ({
 		.append("path")
 		.data([[initialLineChartData]])
 		.attr("fill", "none")
-		.attr("stroke", legendColorMap[key])
+		.attr("stroke", getLineColor(key))
 		.attr("stroke-width", 0)
 		.attr("d", lineAttr as unknown as readonly (string | number)[]);
 	return res;
@@ -49,6 +50,7 @@ interface CreateChartLinesProps {
 	y: d3.ScaleLinear<number, number, never>;
 	svg: d3.Selection<SVGGElement, unknown, any, undefined>;
 	initialLineChartData: {};
+	xField: string;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
 }
 
@@ -58,14 +60,15 @@ const createChartLines = ({
 	svg,
 	data,
 	initialLineChartData,
+	xField,
 	setChart,
 }: CreateChartLinesProps) => {
 	// Create init lines (will have no data)
 	const fields = Object.keys(data[0]) as Array<keyof (typeof data)[0]>;
 	fields.forEach((k) => {
-		const key = k as keyof CalendarResult;
+		const key = k as string;
 
-		if (key === "date") {
+		if (key === xField) {
 			return;
 		}
 
@@ -76,6 +79,7 @@ const createChartLines = ({
 			y,
 			svg,
 			key,
+			xField,
 		});
 
 		setChart((prev) => {

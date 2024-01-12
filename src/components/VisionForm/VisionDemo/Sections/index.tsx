@@ -5,11 +5,7 @@ import RevenueSection from "./RevenueSection";
 import Staff from "./Staff";
 import Taxes from "./Taxes";
 
-interface MainSectionProps {
-	onSubmit: () => void;
-}
-
-const Sections = ({ onSubmit }: MainSectionProps) => {
+const Sections = () => {
 	return (
 		<div>
 			<BusinessTypeSection />

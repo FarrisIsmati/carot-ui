@@ -47,7 +47,7 @@ export interface ChartProps {
 export interface LineChartProps {
 	data: any[]; // Data values represented
 	isDataLoaded: boolean; // Whether or not to render blank chart before data is set
-	xField?: string; // X field to represent on data
+	xField: string; // X field to represent on data
 	yField?: string; // Y field to represent on data
 	width: number; // Sizing
 	height: number; // Sizing
@@ -60,7 +60,7 @@ export interface LineChartProps {
 const LineChart = ({
 	data,
 	isDataLoaded,
-	xField = "date",
+	xField,
 	yField,
 	width: w,
 	height: h,
@@ -70,7 +70,7 @@ const LineChart = ({
 	currencySymbol = "",
 }: LineChartProps) => {
 	// Ref
-	const ref = useRef<SVGElement>(null);
+	const ref = useRef<HTMLDivElement>(null);
 
 	// Chart elements
 	const [chart, setChart] = useState<ChartProps>();
@@ -78,7 +78,7 @@ const LineChart = ({
 	// Get greatest extent of X Field
 	const xRange = getXRange({ data, xField });
 	// Get greatest extent of Y Fields
-	const yRange = getYRange({ data, yField });
+	const yRange = getYRange({ data, yField, xField });
 
 	// Get width height + margins
 	const { width, height, margin } = useMemo(
@@ -104,13 +104,14 @@ const LineChart = ({
 			height,
 			data,
 			ref,
+			xField,
 			margin,
 			setChart,
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	// Only should run on updates to data
+	// Only should run on updates to data after component mounts
 	if (isDataLoaded && chart) {
 		updateChart({
 			currencySymbol,
@@ -120,12 +121,13 @@ const LineChart = ({
 			yRange,
 			data,
 			width,
+			xField,
 		});
 	}
 
 	return (
 		<Container>
-			<div id="chartId"></div>
+			<div ref={ref}></div>
 		</Container>
 	);
 };

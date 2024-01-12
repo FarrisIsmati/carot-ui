@@ -245,7 +245,6 @@ export const updateTickFont = (
 const createChartAxis = ({
 	x,
 	y,
-	data,
 	xRange,
 	yRange,
 	svg,
@@ -255,7 +254,6 @@ const createChartAxis = ({
 	filter,
 	setChart,
 }: {
-	data: any[];
 	x: d3.ScaleTime<number, number, never>;
 	y: d3.ScaleLinear<number, number, never>;
 	xRange: [number, number];

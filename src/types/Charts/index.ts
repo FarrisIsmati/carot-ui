@@ -16,5 +16,5 @@ export interface Margin {
 // Line Chart
 
 export type LineChartKeyMapType = {
-	[key in keyof Omit<CalendarResult, "date">]: string;
+	[key: string]: string;
 };

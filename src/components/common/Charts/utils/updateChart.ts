@@ -11,6 +11,7 @@ interface UpdateCreateChartProps {
 	yRange: [number, number];
 	data: any[];
 	width: number;
+	xField: string;
 }
 
 const updateChart = ({
@@ -21,6 +22,7 @@ const updateChart = ({
 	yRange,
 	data,
 	width,
+	xField,
 }: UpdateCreateChartProps) => {
 	// Update axis
 	updateChartAxis({
@@ -34,7 +36,7 @@ const updateChart = ({
 	});
 
 	// Update lines
-	updateChartLines({ data, chart });
+	updateChartLines({ data, chart, xField });
 };
 
 export default updateChart;

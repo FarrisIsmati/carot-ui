@@ -6,7 +6,10 @@ import { CountriesEnum } from "@/types/VisionForm/common/countries";
 import { CurrencyTypes } from "@/types/VisionForm/common/currency";
 import { ScheduleType } from "@/types/VisionForm/common/schedule";
 import moment from "moment";
-import { LegalStructureDropdownValuesEnum } from "../fields/dropdownValues";
+import {
+	LegalStructureDropdownValuesEnum,
+	industryDropdownValues,
+} from "../fields/dropdownValues";
 
 export const visionFormDemoInitialValues: VisionFormValues = {
 	//
@@ -14,7 +17,7 @@ export const visionFormDemoInitialValues: VisionFormValues = {
 	//
 	overviewName: "",
 	overviewCurrency: CurrencyTypes.USD, // Need to set based on location
-	overviewIndustry: "",
+	overviewIndustry: industryDropdownValues[1].id,
 	overviewCountryOrigin: CountriesEnum.USA, // Need to ask for users location/ or default to unknown
 	overviewStartDate: moment().format(dateFormatMapper[DateFormatEnum.MMDDYYYY]),
 	overviewEndDate: moment()
@@ -32,9 +35,9 @@ export const visionFormDemoInitialValues: VisionFormValues = {
 			investorType: InvestorType.ACTIVE,
 			investorJoinDate: "",
 			investorEquityPercentage: 100,
-			investorStartingCashLow: undefined,
-			investorStartingCashAverage: undefined,
-			investorStartingCashHigh: undefined,
+			investorStartingCashLow: 0,
+			investorStartingCashAverage: 0,
+			investorStartingCashHigh: 0,
 			investorDrawProfitPercentageLow: 0,
 			investorDrawProfitPercentageAverage: 0,
 			investorDrawProfitPercentageHigh: 0,

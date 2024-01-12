@@ -44,7 +44,7 @@ export const VisionDemoForm = () => {
 			render={({ handleSubmit }) => {
 				return (
 					<div>
-						<Sections onSubmit={handleSubmit} />
+						<Sections />
 						<StyledSubmitButton onClick={handleSubmit}>
 							Submit
 						</StyledSubmitButton>

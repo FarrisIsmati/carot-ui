@@ -1,9 +1,9 @@
-import { visionFormDemoInitialValues } from "@/components/VisionForm/VisionDemo/values/forms/VisionFormDemoInitialValues";
 import { VisionFormValues } from "@/types/VisionForm";
 import { SUBMIT_VISION_FORM_DEMO } from "./constants";
+import { initialVisionFormDemoReduxState } from "./initialState";
 
 const visionFormDemoReducer = (
-	state: VisionFormValues = visionFormDemoInitialValues,
+	state: VisionFormValues = initialVisionFormDemoReduxState,
 	action: any
 ) => {
 	switch (action.type) {

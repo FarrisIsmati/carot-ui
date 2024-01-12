@@ -25,7 +25,7 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: ${spacer16};
-	padding: ${spacer16} ${spacer24} 0 ${spacer24};
+	padding: ${spacer16} ${spacer24};
 	border-radius: ${spacer4};
 	background-color: ${colorBaseMap[ColorBaseCore.WHITE]};
 `;

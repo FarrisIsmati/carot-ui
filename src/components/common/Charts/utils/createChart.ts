@@ -7,7 +7,7 @@ import createChartAxis from "../utils/createChartAxis";
 import createChartLines from "./createChartLines";
 
 interface useSetChartProps {
-	ref: RefObject<SVGElement>;
+	ref: RefObject<HTMLDivElement>;
 	width: number;
 	height: number;
 	margin: Margin;
@@ -17,6 +17,7 @@ interface useSetChartProps {
 	filter: ChartFilterEnum;
 	currencySymbol: string;
 	initialLineChartData: {};
+	xField: string;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
 }
 
@@ -34,10 +35,11 @@ const createChart = ({
 	filter,
 	initialLineChartData,
 	currencySymbol,
+	xField,
 	setChart,
 }: useSetChartProps) => {
 	const svg = d3
-		.select("div#chartId")
+		.select(ref.current)
 		.append("div")
 		// Container class to make it responsive.
 		.classed("svg-container", true)
@@ -68,7 +70,6 @@ const createChart = ({
 		filter,
 		height,
 		width,
-		data,
 		svg,
 		x,
 		y,
@@ -78,7 +79,7 @@ const createChart = ({
 	});
 
 	// Create lines
-	createChartLines({ x, y, svg, data, initialLineChartData, setChart });
+	createChartLines({ x, y, svg, data, initialLineChartData, xField, setChart });
 };
 
 export default createChart;

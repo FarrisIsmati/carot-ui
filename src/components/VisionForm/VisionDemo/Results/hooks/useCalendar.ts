@@ -28,16 +28,21 @@ import useCalcAllLeaseCurveDataPoints from "./useCalcAllLeaseCurveDataPoints";
 
 const useCalendar = (): [Calendar | undefined, CalendarResult[]] => {
 	const visionFormDemoState = useSelector(getVisionFormDemoSelector);
+
 	const { products, investors, leases } = visionFormDemoState;
 	const startDate = visionFormDemoState.overviewStartDate;
 	const endDate = visionFormDemoState.overviewEndDate;
 
-	// Memoized: generate the initial calendar
-	const calendar = generateInitCalendar(startDate, endDate);
-
 	// Memoized: calculate all lease traffic curve data points
 	const leasesFootTrafficCurveIdDataPointsMap =
 		useCalcAllLeaseCurveDataPoints();
+
+	// Memoized: generate the initial calendar
+	const calendar = generateInitCalendar(startDate, endDate);
+
+	if (!calendar) {
+		return [undefined, []];
+	}
 
 	//
 	// 0. Capital: Updates company reserve with starting capital
