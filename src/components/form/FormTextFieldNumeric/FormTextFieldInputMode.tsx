@@ -16,7 +16,7 @@ export const getFieldName = ({
 	fieldName?: keyof AllFormValues;
 	fieldNameBase?: keyof AllFormValuesInputModeLess;
 	inputMode?: InputModeEnum;
-}) => {
+}): keyof AllFormValues => {
 	if (fieldNameBase && inputMode) {
 		return `${fieldNameBase}${inputMode}`;
 	}
