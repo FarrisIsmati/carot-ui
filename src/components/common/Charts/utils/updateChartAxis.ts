@@ -73,12 +73,14 @@ const updateChartXAxis = ({
  * @param param0
  */
 const updateChartYAxis = ({
-	currencySymbol,
+	prefix,
+	suffix,
 	yAxis,
 	svg,
 	yRange,
 }: {
-	currencySymbol: string;
+	prefix: string;
+	suffix: string;
 	yAxis: d3.Axis<d3.AxisDomain>;
 	svg: d3.Selection<SVGGElement, unknown, null, undefined>;
 	yRange: [number, number];
@@ -91,7 +93,7 @@ const updateChartYAxis = ({
 
 	yAxis
 		.tickValues(yTickValues)
-		.tickFormat((d) => `${currencySymbol}${numeral(d).format("0,0")}`);
+		.tickFormat((d) => `${prefix}${numeral(d).format("0,0")}${suffix}`);
 	svg
 		.select(`#${Y_AXIS_ID}`)
 		.transition()
@@ -114,7 +116,8 @@ const updateChartYAxis = ({
  * Update axis for chart
  */
 const updateChartAxis = ({
-	currencySymbol,
+	prefix,
+	suffix,
 	data,
 	chart,
 	filter,
@@ -122,7 +125,8 @@ const updateChartAxis = ({
 	yRange,
 	width,
 }: {
-	currencySymbol: string;
+	prefix: string;
+	suffix: string;
 	data: any[];
 	chart: ChartProps;
 	filter: ChartFilterEnum;
@@ -145,7 +149,8 @@ const updateChartAxis = ({
 	if (yAxis) {
 		// Update Y axis
 		const { yTickValues } = updateChartYAxis({
-			currencySymbol,
+			prefix,
+			suffix,
 			yAxis,
 			svg,
 			yRange,

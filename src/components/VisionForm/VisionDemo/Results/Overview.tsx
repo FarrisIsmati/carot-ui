@@ -1,3 +1,4 @@
+import AnimateNumber from "@/components/common/AnimateNumber";
 import Type from "@/designSystem/Type";
 import {
 	ColorBaseCore,
@@ -17,7 +18,6 @@ import {
 import { Calendar } from "@/types/VisionForm/calendar";
 import { useRef } from "react";
 import { styled } from "styled-components";
-import AnimateNumber from "../../../common/AnimateNumber";
 import useUpdateOverviewHeaderSizing from "./hooks/useUpdateOverviewHeaderSizing";
 import { getFontSizeByNumberWidth } from "./utils/fontSize";
 

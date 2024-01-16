@@ -15,7 +15,8 @@ interface useSetChartProps {
 	xRange: [number, number];
 	yRange: [number, number];
 	filter: ChartFilterEnum;
-	currencySymbol: string;
+	prefix: string;
+	suffix: string;
 	initialLineChartData: {};
 	xField: string;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
@@ -34,7 +35,8 @@ const createChart = ({
 	yRange,
 	filter,
 	initialLineChartData,
-	currencySymbol,
+	prefix,
+	suffix,
 	xField,
 	setChart,
 }: useSetChartProps) => {
@@ -66,7 +68,8 @@ const createChart = ({
 
 	// Create axis
 	createChartAxis({
-		currencySymbol,
+		prefix,
+		suffix,
 		filter,
 		height,
 		width,

@@ -156,13 +156,15 @@ export const createYAxis = ({
 	y,
 	yRange,
 	svg,
-	currencySymbol,
+	prefix,
+	suffix,
 	setChart,
 }: {
 	y: any;
 	yRange: [number, number];
 	svg: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
-	currencySymbol: string;
+	prefix: string;
+	suffix: string;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
 }) => {
 	const yTickValues = generateYaxisTickValues({
@@ -175,7 +177,7 @@ export const createYAxis = ({
 		.tickSize(0)
 		.tickPadding(4)
 		.tickValues(yTickValues)
-		.tickFormat((d) => `${currencySymbol}${numeral(d).format("0,0")}`);
+		.tickFormat((d) => `${prefix}${numeral(d).format("0,0")}${suffix}`);
 	setChart((prev) => ({ ...(prev as ChartProps), yAxis }));
 
 	svg
@@ -250,7 +252,8 @@ const createChartAxis = ({
 	svg,
 	height,
 	width,
-	currencySymbol,
+	prefix,
+	suffix,
 	filter,
 	setChart,
 }: {
@@ -261,7 +264,8 @@ const createChartAxis = ({
 	svg: d3.Selection<SVGGElement, unknown, any, any>;
 	height: number;
 	width: number;
-	currencySymbol: string;
+	prefix: string;
+	suffix: string;
 	filter: ChartFilterEnum;
 	setChart: Dispatch<SetStateAction<ChartProps | undefined>>;
 }) => {
@@ -274,7 +278,8 @@ const createChartAxis = ({
 	const { yTickValues } = createYAxis({
 		y,
 		svg,
-		currencySymbol,
+		prefix,
+		suffix,
 		yRange,
 		setChart,
 	});

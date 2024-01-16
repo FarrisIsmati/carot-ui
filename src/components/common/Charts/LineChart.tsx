@@ -49,12 +49,14 @@ export interface LineChartProps {
 	isDataLoaded: boolean; // Whether or not to render blank chart before data is set
 	xField: string; // X field to represent on data
 	yField?: string; // Y field to represent on data
+	yRangeOverride?: [number, number]; // Overrides what the maximum range can B
 	width: number; // Sizing
 	height: number; // Sizing
 	margin: Margin;
 	initialLineChartData: {};
 	filter: ChartFilterEnum; // Defines what timescale is selected
-	currencySymbol?: string;
+	prefix?: string;
+	suffix?: string;
 }
 
 const LineChart = ({
@@ -62,12 +64,14 @@ const LineChart = ({
 	isDataLoaded,
 	xField,
 	yField,
+	yRangeOverride,
 	width: w,
 	height: h,
 	margin: m,
 	filter,
 	initialLineChartData,
-	currencySymbol = "",
+	prefix = "",
+	suffix = "",
 }: LineChartProps) => {
 	// Ref
 	const ref = useRef<HTMLDivElement>(null);
@@ -78,7 +82,7 @@ const LineChart = ({
 	// Get greatest extent of X Field
 	const xRange = getXRange({ data, xField });
 	// Get greatest extent of Y Fields
-	const yRange = getYRange({ data, yField, xField });
+	const yRange = yRangeOverride ?? getYRange({ data, yField, xField });
 
 	// Get width height + margins
 	const { width, height, margin } = useMemo(
@@ -95,7 +99,8 @@ const LineChart = ({
 	// Create initial chart
 	useEffect(() => {
 		createChart({
-			currencySymbol,
+			prefix,
+			suffix,
 			initialLineChartData,
 			filter,
 			xRange,
@@ -114,7 +119,8 @@ const LineChart = ({
 	// Only should run on updates to data after component mounts
 	if (isDataLoaded && chart) {
 		updateChart({
-			currencySymbol,
+			prefix,
+			suffix,
 			chart,
 			filter,
 			xRange,

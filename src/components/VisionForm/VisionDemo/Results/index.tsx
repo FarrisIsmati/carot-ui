@@ -1,4 +1,5 @@
 import Legend from "@/components/common/Charts/Legend";
+import LineChart from "@/components/common/Charts/LineChart";
 import { createLegendPayload } from "@/components/common/Charts/utils/legend";
 import ChipButtonControl, {
 	ChipButtonControlState,
@@ -12,7 +13,6 @@ import { legendColorMap } from "@/types/Charts/Legend";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { styled } from "styled-components";
-import LineChart from "../../../common/Charts/LineChart";
 import { ResultsOverview } from "./Overview";
 import { defaultVisionDemoLineChartData } from "./defaultData";
 import useCalendar from "./hooks/useCalendar";
@@ -96,7 +96,7 @@ const Results = () => {
 						width={ResultsDimensions.width}
 						margin={{ top: 10, right: 20, bottom: 20, left: 20 }}
 						filter={filter}
-						currencySymbol={currencySymbol}
+						prefix={currencySymbol}
 					/>
 				</ChartFilterContainer>
 				{/* Legend */}

@@ -4,7 +4,8 @@ import updateChartAxis from "./updateChartAxis";
 import updateChartLines from "./updateChartLines";
 
 interface UpdateCreateChartProps {
-	currencySymbol: string;
+	prefix: string;
+	suffix: string;
 	chart: ChartProps;
 	filter: ChartFilterEnum;
 	xRange: [number, number];
@@ -15,7 +16,8 @@ interface UpdateCreateChartProps {
 }
 
 const updateChart = ({
-	currencySymbol,
+	suffix,
+	prefix,
 	chart,
 	filter,
 	xRange,
@@ -26,7 +28,8 @@ const updateChart = ({
 }: UpdateCreateChartProps) => {
 	// Update axis
 	updateChartAxis({
-		currencySymbol,
+		prefix,
+		suffix,
 		data,
 		chart,
 		filter,

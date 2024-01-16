@@ -16,7 +16,7 @@ export interface GrowthCurveGraphProps {
 	/**
 	 * Start date
 	 */
-	startDate: string;
+	startDate: Date;
 }
 
 const GrowthCurveGraph = ({
@@ -40,50 +40,15 @@ const GrowthCurveGraph = ({
 			data={curveDataPoints}
 			isDataLoaded={curveDataPoints.length > 0}
 			initialLineChartData={initialLineChartData}
+			yRangeOverride={[0, 100]}
 			xField="date"
 			height={320}
-			width={400}
+			width={750}
 			margin={{ top: 10, right: 20, bottom: 20, left: 20 }}
-			filter={ChartFilterEnum.Month}
+			filter={ChartFilterEnum.Year}
+			suffix="%"
 		/>
 	);
 };
 
 export default GrowthCurveGraph;
-
-// import { Label, Line, LineChart, XAxis, YAxis } from "recharts";
-
-// 		// RECHARTS
-// 		<LineChart
-// 			width={pxStringToNum(spacer320)}
-// 			height={pxStringToNum(spacer320)}
-// 			data={curveDataPoints}
-// 		>
-// 			<Line
-// 				type="monotone"
-// 				dataKey="uv"
-// 				strokeWidth={2}
-// 				stroke={getLineColor("uv")}
-// 				dot={false}
-// 			/>
-// 			<XAxis dataKey="name">
-// 				<Label
-// 					style={{
-// 						textAnchor: "middle",
-// 						fontSize: "80%",
-// 					}}
-// 					angle={0}
-// 					value={"Time"}
-// 				/>
-// 			</XAxis>
-// 			<YAxis>
-// 				<Label
-// 					style={{
-// 						textAnchor: "middle",
-// 						fontSize: "80%",
-// 					}}
-// 					angle={270}
-// 					value={"Growth Percentage"}
-// 				/>
-// 			</YAxis>
-// 		</LineChart>

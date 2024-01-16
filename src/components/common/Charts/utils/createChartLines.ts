@@ -24,6 +24,7 @@ export const createChartLine = ({
 	const lineAttr = d3
 		.line()
 		.x((d) => {
+			console.log("LE D", d);
 			// @ts-ignore
 			if (!d.date) {
 				throw new Error(`Line chart data must include a ${xField} field`);
@@ -41,6 +42,7 @@ export const createChartLine = ({
 		.attr("stroke", getLineColor(key))
 		.attr("stroke-width", 0)
 		.attr("d", lineAttr as unknown as readonly (string | number)[]);
+
 	return res;
 };
 
@@ -65,6 +67,7 @@ const createChartLines = ({
 }: CreateChartLinesProps) => {
 	// Create init lines (will have no data)
 	const fields = Object.keys(data[0]) as Array<keyof (typeof data)[0]>;
+
 	fields.forEach((k) => {
 		const key = k as string;
 

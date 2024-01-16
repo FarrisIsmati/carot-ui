@@ -1,6 +1,6 @@
 export interface CurveDataPoint {
 	uv: number;
-	date: string;
+	date: Date;
 }
 
 // export interface CurveDataPoint {

@@ -135,16 +135,21 @@ export const calculateGrowthCurve = ({
 }: {
 	points: Point[];
 	length: number;
-	startDate: string;
+	startDate: Date;
 }): CurveDataPoint[] => {
 	const dataArr = [];
 	let d = 0;
 	// Calculate points on the Bézier curve
 	for (let t = 0; t <= 1; t += 1 / length) {
 		const point = calculateBezierCurve(points, t);
+
+		if (point.y > 100) {
+			point.y = 100;
+		}
+
 		dataArr.push({
 			uv: point.y,
-			date: moment(startDate).add("days", d).toString(),
+			date: moment(startDate).add("days", d).toDate(),
 		});
 		d++;
 	}
@@ -161,7 +166,7 @@ export const createGrowthCurve = ({
 }: {
 	curveType: CurveType | undefined;
 	length: number | undefined;
-	startDate: string | undefined;
+	startDate: Date | undefined;
 }): CurveDataPoint[] => {
 	if (!curveType || !length || !startDate) {
 		return [];
