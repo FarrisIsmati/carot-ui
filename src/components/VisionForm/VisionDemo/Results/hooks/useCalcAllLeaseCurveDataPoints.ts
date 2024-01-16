@@ -36,7 +36,7 @@ const useCalcAllLeaseCurveDataPoints = (): CurveDataPointMap => {
 				curveTypeDataPointMap[trafficCurveType] = createGrowthCurve({
 					curveType: trafficCurveType,
 					length: lengthDays,
-					startDate: visionFormDemoState.overviewStartDate,
+					startDate: new Date(visionFormDemoState.overviewStartDate),
 				});
 			}
 
